@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flywheel — Community Gravity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-bg: #0f0e0c;
+    --dark-fg: #f5f0e6;
+    --dark-muted: #7a756c;
+    --dark-accent: #e8a830;
+    --warm-red: #b8432a;
+    --teal: #3a9e8f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--dark-bg);
+    color: var(--dark-fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem 4rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 72;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .accent { color: var(--dark-accent); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--dark-muted);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.65;
+  }
+
+  /* ---- THE CONVERGENCE DIAGRAM ---- */
+  .convergence {
+    width: min(780px, 94vw);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ---- YOUR COMMUNITIES (top layer) ---- */
+  .communities-layer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .community-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.1rem 1.2rem;
+    border-radius: 14px;
+    border: 1.5px solid rgba(245,240,230,0.08);
+    background: rgba(245,240,230,0.025);
+    min-width: 180px;
+    flex: 1;
+    max-width: 240px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .community-card:hover { border-color: rgba(232,168,48,0.25); }
+
+  .community-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dark-accent), transparent);
+    opacity: 0.3;
+  }
+
+  .comm-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .comm-emoji { font-size: 1.3rem; }
+
+  .comm-name {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+    line-height: 1.2;
+  }
+
+  .comm-feeds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .comm-feed-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--dark-muted);
+  }
+
+  .feed-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .feed-dot.event { background: var(--dark-accent); }
+  .feed-dot.creator { background: var(--warm-red); }
+  .feed-dot.highlight { background: var(--teal); }
+
+  /* ---- FLOW ARROWS (converging down) ---- */
+  .flow-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin: 0.5rem 0;
+    height: 50px;
+    position: relative;
+    width: 100%;
+  }
+
+  .flow-line {
+    width: 1px;
+    height: 100%;
+    position: relative;
+  }
+
+  .flow-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(232,168,48,0.3), rgba(232,168,48,0.08));
+  }
+
+  .flow-line .dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--dark-accent);
+    left: -2.5px;
+    animation: fall-dot 2.5s ease-in-out infinite;
+  }
+
+  .flow-line:nth-child(1) .dot { animation-delay: 0s; }
+  .flow-line:nth-child(2) .dot { animation-delay: 0.8s; }
+  .flow-line:nth-child(3) .dot { animation-delay: 1.6s; }
+
+  @keyframes fall-dot {
+    0% { top: 0; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* ---- YOUR CALENDAR (the center, the YOU) ---- */
+  .your-view {
+    width: min(620px, 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(232,168,48,0.2);
+    background: rgba(232,168,48,0.03);
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .your-view::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(232,168,48,0.06), transparent 70%);
+    pointer-events: none;
+  }
+
+  .your-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark-accent);
+    text-align: center;
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+
+  .your-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 800;
+    font-variation-settings: "opsz" 144;
+    text-align: center;
+    color: var(--dark-fg);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .your-title em {
+    color: var(--dark-accent);
+    font-style: normal;
+  }
+
+  /* Mock calendar / feed inside the "your view" box */
+  .your-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .feed-entry {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    background: rgba(245,240,230,0.04);
+    border: 1px solid rgba(245,240,230,0.06);
+    opacity: 0;
+    animation: entry-in 0.5s ease forwards;
+  }
+
+  .feed-entry:nth-child(1) { animation-delay: 0.3s; }
+  .feed-entry:nth-child(2) { animation-delay: 0.5s; }
+  .feed-entry:nth-child(3) { animation-delay: 0.7s; }
+  .feed-entry:nth-child(4) { animation-delay: 0.9s; }
+  .feed-entry:nth-child(5) { animation-delay: 1.1s; }
+  .feed-entry:nth-child(6) { animation-delay: 1.3s; }
+
+  @keyframes entry-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .entry-type {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .entry-type.event {
+    background: rgba(232,168,48,0.15);
+    border: 1px solid rgba(232,168,48,0.25);
+  }
+  .entry-type.creator {
+    background: rgba(184,67,42,0.12);
+    border: 1px solid rgba(184,67,42,0.25);
+  }
+  .entry-type.highlight {
+    background: rgba(58,158,143,0.12);
+    border: 1px solid rgba(58,158,143,0.25);
+  }
+
+  .entry-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .entry-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--dark-fg);
+    line-height: 1.3;
+  }
+
+  .entry-meta {
+    font-size: 0.68rem;
+    color: var(--dark-muted);
+    margin-top: 0.1rem;
+  }
+
+  .entry-source {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--dark-muted);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* ---- PERSONALIZE NOTE ---- */
+  .personalize {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245,240,230,0.06);
+    justify-content: center;
+  }
+
+  .personalize-icon {
+    font-size: 0.9rem;
+    opacity: 0.5;
+  }
+
+  .personalize-text {
+    font-size: 0.75rem;
+    color: var(--dark-muted);
+    font-style: italic;
+  }
+
+  /* ---- LEGEND ---- */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    color: var(--dark-muted);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.event { background: var(--dark-accent); }
+  .legend-dot.creator { background: var(--warm-red); }
+  .legend-dot.highlight { background: var(--teal); }
+
+  /* ---- EXPLANATION ---- */
+  .explain {
+    max-width: 600px;
+    margin: 3.5rem auto 0;
+    text-align: center;
+  }
+
+  .explain p {
+    font-size: 1rem;
+    color: var(--dark-muted);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .explain strong {
+    color: var(--dark-fg);
+    font-weight: 500;
+  }
+
+  .explain em {
+    color: var(--dark-accent);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ---- THREE STREAMS ---- */
+  .streams {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 640px;
+    margin: 2rem auto 0;
+    width: 100%;
+  }
+
+  .stream {
+    padding: 1.2rem 1rem;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .stream-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stream-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+
+  .stream-desc {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--dark-muted);
+  }
+
+  .stream.events {
+    background: rgba(232,168,48,0.06);
+    border: 1px solid rgba(232,168,48,0.15);
+  }
+  .stream.events .stream-title { color: var(--dark-accent); }
+
+  .stream.creators {
+    background: rgba(184,67,42,0.06);
+    border: 1px solid rgba(184,67,42,0.15);
+  }
+  .stream.creators .stream-title { color: var(--warm-red); }
+
+  .stream.highlights {
+    background: rgba(58,158,143,0.06);
+    border: 1px solid rgba(58,158,143,0.15);
+  }
+  .stream.highlights .stream-title { color: var(--teal); }
+
+  /* ---- RESULT ---- */
+  .result {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    background: rgba(232,168,48,0.05);
+    border: 1.5px solid rgba(232,168,48,0.15);
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+  }
+
+  .result .detail {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--dark-muted);
+    margin-top: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .tag-row { text-align: center; }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid rgba(245,240,230,0.1);
+    color: var(--dark-muted);
+    margin-top: 2.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 640px) {
+    .communities-layer { flex-direction: column; align-items: center; }
+    .community-card { max-width: 100%; min-width: 0; }
+    .flow-arrows { gap: 2rem; height: 35px; }
+    .your-view { padding: 1.5rem 1.2rem 1.2rem; }
+    .streams { grid-template-columns: 1fr; }
+    .entry-source { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-num">FLYWHEEL 01</div>
+<h2>Your world. <span class="accent">Your calendar.</span></h2>
+<p class="subtitle">Every community you belong to feeds into one view — designed for you. Events, creators, member picks. All in one place, easy to personalize.</p>
+
+<!-- YOUR COMMUNITIES feeding in -->
+<div class="convergence">
+
+  <div class="communities-layer">
+    <div class="community-card">
+      <div class="comm-header">
+        <div class="comm-emoji">&#128131;</div>
+        <div class="comm-name">Lindy Hop<br>Brussels</div>
+      </div>
+      <div class="comm-feeds">
+        <div class="comm-feed-item"><div class="feed-dot event"></div>3 events this week</div>
+        <div class="comm-feed-item"><div class="feed-dot creator"></div>12 creators sharing</div>
+        <div class="comm-feed-item"><div class="feed-dot highlight"></div>2 member picks</div>
+      </div>
+    </div>
+
+    <div class="community-card">
+      <div class="comm-header">
+        <div class="comm-emoji">&#127912;</div>
+        <div class="comm-name">Saint-Gilles<br>Art Collective</div>
+      </div>
+      <div class="comm-feeds">
+        <div class="comm-feed-item"><div class="feed-dot event"></div>1 exhibition opening</div>
+        <div class="comm-feed-item"><div class="feed-dot creator"></div>8 creators sharing</div>
+        <div class="comm-feed-item"><div class="feed-dot highlight"></div>1 member pick</div>
+      </div>
+    </div>
+
+    <div class="community-card">
+      <div class="comm-header">
+        <div class="comm-emoji">&#127939;</div>
+        <div class="comm-name">Brussels<br>Running Club</div>
+      </div>
+      <div class="comm-feeds">
+        <div class="comm-feed-item"><div class="feed-dot event"></div>2 runs scheduled</div>
+        <div class="comm-feed-item"><div class="feed-dot creator"></div>4 creators sharing</div>
+        <div class="comm-feed-item"><div class="feed-dot highlight"></div>3 member picks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Converging flow -->
+  <div class="flow-arrows">
+    <div class="flow-line"><div class="dot"></div></div>
+    <div class="flow-line"><div class="dot"></div></div>
+    <div class="flow-line"><div class="dot"></div></div>
+  </div>
+
+  <!-- YOUR UNIFIED VIEW -->
+  <div class="your-view">
+    <div class="your-label">Your calendar</div>
+    <div class="your-title">Everything that matters to <em>you</em>,<br>from every community you're part of.</div>
+
+    <div class="your-feed">
+      <div class="feed-entry">
+        <div class="entry-type event">&#9670;</div>
+        <div class="entry-content">
+          <div class="entry-title">Thursday Social &mdash; Lindy Hop</div>
+          <div class="entry-meta">Thu 8pm &middot; Recyclart</div>
+        </div>
+        <div class="entry-source">Lindy Hop</div>
+      </div>
+
+      <div class="feed-entry">
+        <div class="entry-type creator">&#9998;</div>
+        <div class="entry-content">
+          <div class="entry-title">New paintings by Clara</div>
+          <div class="entry-meta">Posted today &middot; 3 new works</div>
+        </div>
+        <div class="entry-source">Art Collective</div>
+      </div>
+
+      <div class="feed-entry">
+        <div class="entry-type highlight">&#10024;</div>
+        <div class="entry-content">
+          <div class="entry-title">Marco recommends: Vinyl Night at Flagey</div>
+          <div class="entry-meta">Fri 7pm &middot; highlighted by a member</div>
+        </div>
+        <div class="entry-source">Running Club</div>
+      </div>
+
+      <div class="feed-entry">
+        <div class="entry-type event">&#9670;</div>
+        <div class="entry-content">
+          <div class="entry-title">Exhibition opening &mdash; "Traces"</div>
+          <div class="entry-meta">Sat 6pm &middot; Gallery Saint-Gilles</div>
+        </div>
+        <div class="entry-source">Art Collective</div>
+      </div>
+
+      <div class="feed-entry">
+        <div class="entry-type creator">&#9998;</div>
+        <div class="entry-content">
+          <div class="entry-title">New poem by Thomas</div>
+          <div class="entry-meta">Posted yesterday</div>
+        </div>
+        <div class="entry-source">Lindy Hop</div>
+      </div>
+
+      <div class="feed-entry">
+        <div class="entry-type highlight">&#10024;</div>
+        <div class="entry-content">
+          <div class="entry-title">Sarah recommends: Beginner pottery workshop</div>
+          <div class="entry-meta">Next week &middot; highlighted by a member</div>
+        </div>
+        <div class="entry-source">Lindy Hop</div>
+      </div>
+    </div>
+
+    <div class="personalize">
+      <div class="personalize-icon">&#9881;</div>
+      <div class="personalize-text">Mute what you don't want. One tap. Your view, your rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot event"></div>Events from your communities</div>
+  <div class="legend-item"><div class="legend-dot creator"></div>Creators in your communities</div>
+  <div class="legend-item"><div class="legend-dot highlight"></div>Highlighted by members</div>
+</div>
+
+<!-- Three streams explained -->
+<div class="streams">
+  <div class="stream events">
+    <div class="stream-icon">&#9670;</div>
+    <div class="stream-title">Your events</div>
+    <div class="stream-desc">Every event from every community you belong to. The single source of truth for your week.</div>
+  </div>
+  <div class="stream creators">
+    <div class="stream-icon">&#9998;</div>
+    <div class="stream-title">Your creators</div>
+    <div class="stream-desc">The creative work of people you already know. Paintings, poems, photos, music — familiar faces, hidden lives.</div>
+  </div>
+  <div class="stream highlights">
+    <div class="stream-icon">&#10024;</div>
+    <div class="stream-title">Member picks</div>
+    <div class="stream-desc">Events and creators highlighted by people in your community. Not an algorithm — real people saying "go see this."</div>
+  </div>
+</div>
+
+<div class="explain">
+  <p><strong>Three streams flow into one view.</strong> Events from all your communities, the creative work of people inside those communities, and things members highlight for each other. That's it.</p>
+  <p>No algorithm decides what you see. <em>Your communities decide.</em> You mute what you don't care about. You discover what's left. The calendar becomes the single source of truth for your creative life.</p>
+  <p><strong>The more communities you join, the richer your view becomes.</strong> And every community you join was entered in person — QR code, spoken password, real place. So everything you see comes from people you've actually met.</p>
+</div>
+
+<div class="result">
+  <p>A calendar <span class="accent">designed for you</span> — by the communities you chose to be part of.</p>
+  <div class="detail">Not curated by an algorithm. Not sold to advertisers. Built from the communities you physically walked into, the people you actually know, and the things they think you should see.</div>
+</div>
+
+<div class="tag-row">
+  <span class="tag">Natural movement: convergence &mdash; everything flows toward you</span>
+</div>
+
+</body>
+</html>

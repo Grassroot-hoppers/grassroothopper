@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flywheel — Creator Amplification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-bg: #0f0e0c;
+    --dark-fg: #f5f0e6;
+    --dark-muted: #7a756c;
+    --dark-accent: #e8a830;
+    --warm-red: #b8432a;
+    --teal: #3a9e8f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--dark-bg);
+    color: var(--dark-fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem 4rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 72;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .accent { color: var(--dark-accent); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--dark-muted);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.65;
+  }
+
+  /* ---- THE RIPPLE DIAGRAM ---- */
+  .ripple-stage {
+    position: relative;
+    width: min(700px, 92vw);
+    margin: 0 auto;
+  }
+
+  /* Clara at center */
+  .clara {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .clara-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dark-accent), var(--warm-red));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 0 40px rgba(232,168,48,0.2);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 30px rgba(232,168,48,0.15); }
+    50% { box-shadow: 0 0 60px rgba(232,168,48,0.3); }
+  }
+
+  .clara-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+  }
+
+  .clara-role {
+    font-size: 0.82rem;
+    color: var(--dark-muted);
+    margin-top: 0.15rem;
+  }
+
+  /* Community bubbles spread out */
+  .communities {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .comm-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.2rem 1rem;
+    border-radius: 16px;
+    border: 1.5px solid rgba(245,240,230,0.08);
+    background: rgba(245,240,230,0.03);
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .comm-bubble:hover {
+    border-color: rgba(232,168,48,0.3);
+    background: rgba(232,168,48,0.04);
+  }
+
+  .comm-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 200%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(232,168,48,0.06), transparent);
+    animation: shimmer 4s ease-in-out infinite;
+  }
+
+  .comm-bubble:nth-child(2)::before { animation-delay: 1.3s; }
+  .comm-bubble:nth-child(3)::before { animation-delay: 2.6s; }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .comm-emoji { font-size: 1.5rem; }
+
+  .comm-name {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+    text-align: center;
+  }
+
+  .comm-count {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--dark-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* Connection lines */
+  .conn-line {
+    display: flex;
+    justify-content: center;
+    margin: 0.6rem 0;
+  }
+
+  .conn-line .line {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(to bottom, rgba(232,168,48,0.3), rgba(232,168,48,0.05));
+  }
+
+  .conn-line.spread {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+  }
+
+  /* The story flow */
+  .story {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .story-step {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: step-in 0.6s ease forwards;
+  }
+
+  .story-step:nth-child(1) { animation-delay: 0.5s; }
+  .story-step:nth-child(2) { animation-delay: 1.2s; }
+  .story-step:nth-child(3) { animation-delay: 1.9s; }
+  .story-step:nth-child(4) { animation-delay: 2.6s; }
+  .story-step:nth-child(5) { animation-delay: 3.3s; }
+  .story-step:nth-child(6) { animation-delay: 4.0s; }
+  .story-step:nth-child(7) { animation-delay: 4.7s; }
+
+  @keyframes step-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-marker {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .step-marker.amber {
+    background: rgba(232,168,48,0.15);
+    color: var(--dark-accent);
+    border: 1px solid rgba(232,168,48,0.3);
+  }
+
+  .step-marker.red {
+    background: rgba(184,67,42,0.15);
+    color: var(--warm-red);
+    border: 1px solid rgba(184,67,42,0.3);
+  }
+
+  .step-marker.teal {
+    background: rgba(58,158,143,0.15);
+    color: var(--teal);
+    border: 1px solid rgba(58,158,143,0.3);
+  }
+
+  .step-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--dark-muted);
+  }
+
+  .step-text strong {
+    color: var(--dark-fg);
+    font-weight: 500;
+  }
+
+  .step-text em {
+    color: var(--dark-accent);
+    font-style: normal;
+  }
+
+  /* Result banner */
+  .result {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    background: rgba(232,168,48,0.06);
+    border: 1.5px solid rgba(232,168,48,0.18);
+    text-align: center;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result p {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+  }
+
+  .result .detail {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--dark-muted);
+    margin-top: 0.7rem;
+    line-height: 1.55;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid rgba(245,240,230,0.1);
+    color: var(--dark-muted);
+    margin-top: 2.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .tag-row {
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .communities { gap: 0.6rem; }
+    .comm-bubble { min-width: 100px; padding: 0.9rem 0.6rem; }
+    .comm-name { font-size: 0.72rem; }
+    .conn-line.spread { gap: 3rem; }
+    .story-step { gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-num">FLYWHEEL 02</div>
+<h2>The <span class="accent">Creator Amplification</span> Loop</h2>
+<p class="subtitle">A creator doesn't promote herself. She simply exists in real communities. The communities do the rest.</p>
+
+<!-- Clara -->
+<div class="clara">
+  <div class="clara-avatar">&#127912;</div>
+  <div class="clara-name">Clara</div>
+  <div class="clara-role">painter &middot; dancer &middot; runner &middot; poet</div>
+</div>
+
+<div class="conn-line"><div class="line"></div></div>
+
+<!-- Communities she belongs to -->
+<div class="communities">
+  <div class="comm-bubble">
+    <div class="comm-emoji">&#128131;</div>
+    <div class="comm-name">Lindy Hop<br>Brussels</div>
+    <div class="comm-count">148 members</div>
+  </div>
+  <div class="comm-bubble">
+    <div class="comm-emoji">&#127939;</div>
+    <div class="comm-name">Brussels<br>Running Club</div>
+    <div class="comm-count">92 members</div>
+  </div>
+  <div class="comm-bubble">
+    <div class="comm-emoji">&#9997;&#65039;</div>
+    <div class="comm-name">Ixelles<br>Poetry Night</div>
+    <div class="comm-count">64 members</div>
+  </div>
+</div>
+
+<div class="conn-line"><div class="line"></div></div>
+
+<!-- The story -->
+<div class="story">
+  <div class="story-step">
+    <div class="step-marker amber">1</div>
+    <div class="step-text"><strong>Clara posts her paintings</strong> on her blog. Nothing else. No hashtags, no promotion, no "check out my work." Just the paintings.</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker amber">2</div>
+    <div class="step-text">Everyone in her three communities sees her work. <em>304 people who already know her face.</em> The dancer she tangos with. The runner she high-fives at the finish line. The poet she sits next to.</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker red">3</div>
+    <div class="step-text"><strong>They become genuine fans.</strong> Not followers. Fans. Because they know her. Next time they see her, they say it: "I love your last paintings."</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker red">4</div>
+    <div class="step-text">A gallery invites Clara to exhibit. She posts about the exhibition on her blog.</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker teal">5</div>
+    <div class="step-text"><strong>Every community lights up.</strong> The runners see it. The dancers see it. The poetry group sees it. "One of our members is exhibiting at Gallery X!"</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker teal">6</div>
+    <div class="step-text">The gallery fills with visitors <em>who actually care</em>. Not strangers who clicked an ad. Real people with a real connection.</div>
+  </div>
+  <div class="story-step">
+    <div class="step-marker teal">7</div>
+    <div class="step-text"><strong>The gallery is thrilled.</strong> Clara is thrilled. The community members feel proud. Nobody paid for an ad. Nobody gamed an algorithm.</div>
+  </div>
+</div>
+
+<div class="result">
+  <p>The network creates value through <span class="accent">real human connections</span> — not algorithms.</p>
+  <div class="detail">People in real communities naturally amplify the creative lives of people they already know. That's the mechanism. That's the flywheel.</div>
+</div>
+
+<div class="tag-row">
+  <span class="tag">Natural movement: ripple outward</span>
+</div>
+
+</body>
+</html>

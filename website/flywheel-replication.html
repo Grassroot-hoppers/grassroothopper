@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flywheel — Replication Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --light-bg: #f5f0e6;
+    --light-fg: #1a1714;
+    --light-muted: #8a8279;
+    --light-accent: #b8432a;
+    --dark-accent: #e8a830;
+    --teal: #3a9e8f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--light-bg);
+    color: var(--light-fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem 4rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 72;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .accent { color: var(--light-accent); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--light-muted);
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.65;
+  }
+
+  /* ==== THE ORGANIC GROWTH JOURNEY ==== */
+  /* Shows ONE city's journey from person → community → city co-op */
+
+  .journey {
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    position: relative;
+  }
+
+  /* Vertical stem line */
+  .journey::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--light-accent),
+      var(--dark-accent) 40%,
+      var(--teal) 75%,
+      rgba(58,158,143,0.2)
+    );
+  }
+
+  .stage {
+    position: relative;
+    padding-left: 72px;
+    padding-bottom: 2.5rem;
+  }
+
+  .stage:last-child { padding-bottom: 0; }
+
+  /* The circle marker on the stem */
+  .stage-marker {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 2;
+  }
+
+  .stage-marker.seed {
+    background: var(--light-accent);
+    color: #fff;
+    box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(184,67,42,0.2);
+  }
+
+  .stage-marker.grow {
+    background: var(--dark-accent);
+    color: var(--light-fg);
+    box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(232,168,48,0.2);
+  }
+
+  .stage-marker.coop {
+    background: var(--teal);
+    color: #fff;
+    box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(58,158,143,0.2);
+  }
+
+  .stage-marker.split {
+    background: var(--light-muted);
+    color: #fff;
+    box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(138,130,121,0.2);
+  }
+
+  .stage-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .stage-label.red { color: var(--light-accent); }
+  .stage-label.amber { color: #b8860b; }
+  .stage-label.teal { color: var(--teal); }
+  .stage-label.gray { color: var(--light-muted); }
+
+  .stage-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .stage-text {
+    font-size: 0.9rem;
+    color: var(--light-muted);
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .stage-text strong {
+    color: var(--light-fg);
+    font-weight: 500;
+  }
+
+  .stage-text em {
+    color: var(--light-accent);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* Mini hub bubbles that grow inside a stage */
+  .hub-cluster {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+
+  .mini-hub {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: pop-in 0.4s ease forwards;
+  }
+
+  .mini-hub:nth-child(1) { animation-delay: 0.3s; }
+  .mini-hub:nth-child(2) { animation-delay: 0.6s; }
+  .mini-hub:nth-child(3) { animation-delay: 0.9s; }
+  .mini-hub:nth-child(4) { animation-delay: 1.2s; }
+  .mini-hub:nth-child(5) { animation-delay: 1.5s; }
+  .mini-hub:nth-child(6) { animation-delay: 1.8s; }
+
+  @keyframes pop-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .mini-hub.first {
+    background: rgba(184,67,42,0.1);
+    border: 1px solid rgba(184,67,42,0.25);
+    color: var(--light-accent);
+  }
+
+  .mini-hub.organic {
+    background: rgba(232,168,48,0.1);
+    border: 1px solid rgba(232,168,48,0.25);
+    color: #b8860b;
+  }
+
+  .mini-hub .hub-emoji { font-size: 0.82rem; }
+
+  /* ==== THE PATTERN REPEATS ==== */
+  .pattern-section {
+    max-width: 700px;
+    width: 100%;
+    margin: 1rem auto 0;
+  }
+
+  .pattern-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--light-fg);
+  }
+
+  .pattern-subtitle {
+    font-size: 0.9rem;
+    color: var(--light-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* City growth cards — each showing its own organic journey */
+  .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .city-card {
+    padding: 1.2rem 1.1rem;
+    border-radius: 14px;
+    border: 1.5px solid rgba(26,23,20,0.06);
+    background: rgba(26,23,20,0.015);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .city-card:hover {
+    border-color: rgba(184,67,42,0.2);
+    transform: translateY(-2px);
+  }
+
+  .city-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .city-flag { font-size: 1.3rem; }
+
+  .city-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    color: var(--light-fg);
+  }
+
+  .city-story {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .city-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--light-muted);
+    line-height: 1.35;
+  }
+
+  .city-step-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .city-step-dot.person { background: var(--light-accent); }
+  .city-step-dot.hubs { background: var(--dark-accent); }
+  .city-step-dot.coop { background: var(--teal); }
+
+  .city-card .started-by {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--light-accent);
+    letter-spacing: 0.04em;
+    margin-top: 0.7rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(26,23,20,0.06);
+  }
+
+  /* Note about multiple co-ops */
+  .multi-coop-note {
+    padding: 1.2rem 1.5rem;
+    border-radius: 14px;
+    background: rgba(58,158,143,0.04);
+    border: 1.5px solid rgba(58,158,143,0.12);
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .multi-coop-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .multi-coop-text {
+    font-size: 0.88rem;
+    color: var(--light-muted);
+    line-height: 1.6;
+  }
+
+  .multi-coop-text strong {
+    color: var(--light-fg);
+    font-weight: 500;
+  }
+
+  /* ==== MECHANISM CARDS ==== */
+  .mechanism {
+    max-width: 680px;
+    margin: 2.5rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .mech-card {
+    padding: 1.2rem 1.3rem;
+    border-radius: 14px;
+    background: rgba(26,23,20,0.03);
+    border: 1px solid rgba(26,23,20,0.08);
+  }
+
+  .mech-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    margin-bottom: 0.4rem;
+    color: var(--light-fg);
+  }
+
+  .mech-card p {
+    font-size: 0.85rem;
+    color: var(--light-muted);
+    line-height: 1.55;
+  }
+
+  .mech-card .mech-ref {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: #b8860b;
+    margin-top: 0.5rem;
+    display: block;
+    letter-spacing: 0.03em;
+  }
+
+  /* ==== RESULT ==== */
+  .result {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    background: rgba(184,67,42,0.04);
+    border: 1.5px solid rgba(184,67,42,0.12);
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+    color: var(--light-fg);
+  }
+
+  .result .detail {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--light-muted);
+    margin-top: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .tag-row { text-align: center; }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid rgba(26,23,20,0.1);
+    color: var(--light-muted);
+    margin-top: 2.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 640px) {
+    .journey::before { left: 18px; }
+    .stage { padding-left: 52px; }
+    .stage-marker { left: 2px; width: 30px; height: 30px; font-size: 0.85rem; }
+    .cities-grid { grid-template-columns: 1fr; }
+    .multi-coop-note { flex-direction: column; gap: 0.5rem; }
+    .mechanism { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-num">FLYWHEEL 03</div>
+<h2>It always starts with <span class="accent">one person.</span></h2>
+<p class="subtitle">One passionate person forks the code and starts with their own community. From there, it grows organically. Bottom up. Always.</p>
+
+<!-- ==== THE ORGANIC GROWTH JOURNEY (one city) ==== -->
+<div class="journey">
+
+  <!-- Stage 1: One person -->
+  <div class="stage">
+    <div class="stage-marker seed">&#9829;</div>
+    <div class="stage-label red">It starts here</div>
+    <div class="stage-title">One person. One community.</div>
+    <div class="stage-text">Someone who cares forks the repo. They don't need permission, funding, or a team. They start with <strong>the community they already belong to</strong> &mdash; the one where they know faces, show up to events, and feel at home.</div>
+    <div class="hub-cluster">
+      <div class="mini-hub first"><span class="hub-emoji">&#128131;</span> Lindy Hop Brussels</div>
+    </div>
+  </div>
+
+  <!-- Stage 2: More communities join -->
+  <div class="stage">
+    <div class="stage-marker grow">&#10070;</div>
+    <div class="stage-label amber">Organic growth</div>
+    <div class="stage-title">Word spreads. More communities join.</div>
+    <div class="stage-text">People in that first community belong to <em>other</em> communities too. They see it works. They say: "We should do this for our group." Each new hub starts the same way &mdash; someone who cares, a QR code, a spoken password.</div>
+    <div class="hub-cluster">
+      <div class="mini-hub first"><span class="hub-emoji">&#128131;</span> Lindy Hop</div>
+      <div class="mini-hub organic"><span class="hub-emoji">&#127912;</span> Saint-Gilles Art</div>
+      <div class="mini-hub organic"><span class="hub-emoji">&#127925;</span> Jazz Community</div>
+      <div class="mini-hub organic"><span class="hub-emoji">&#127939;</span> Running Club</div>
+      <div class="mini-hub organic"><span class="hub-emoji">&#128218;</span> Poetry Night</div>
+    </div>
+  </div>
+
+  <!-- Stage 3: City co-op forms -->
+  <div class="stage">
+    <div class="stage-marker coop">&#127969;</div>
+    <div class="stage-label teal">Maturity</div>
+    <div class="stage-title">Hubs mature into a city-wide cooperative.</div>
+    <div class="stage-text">When enough communities are active, the members form a <strong>soci&eacute;t&eacute; coop&eacute;rative</strong>. They choose a name. They elect governance. Creators, readers, event planners, devs &mdash; each with weighted voting power. The city now owns its own creative infrastructure.</div>
+  </div>
+
+  <!-- Stage 4: Multiple co-ops possible -->
+  <div class="stage">
+    <div class="stage-marker split">&#8734;</div>
+    <div class="stage-label gray">Natural divergence</div>
+    <div class="stage-title">One city, multiple co-ops. That's fine.</div>
+    <div class="stage-text">If members feel the need &mdash; different age groups, different vibes, different neighborhoods &mdash; <strong>multiple cooperatives can coexist in the same city.</strong> No one decides this from the top. The community decides by doing. Fork again. Start again. The code is open.</div>
+  </div>
+
+</div>
+
+<!-- ==== THE PATTERN REPEATS ==== -->
+<div class="pattern-section">
+  <div class="pattern-title">The same pattern, everywhere.</div>
+  <div class="pattern-subtitle">Every city starts the same way: one person who cares, one community they already belong to, one fork of the repo. The rest is organic.</div>
+
+  <div class="cities-grid">
+    <div class="city-card">
+      <div class="city-top">
+        <div class="city-flag">&#127463;&#127466;</div>
+        <div class="city-name">Brussels</div>
+      </div>
+      <div class="city-story">
+        <div class="city-step"><div class="city-step-dot person"></div>Started with Lindy Hop</div>
+        <div class="city-step"><div class="city-step-dot hubs"></div>5 communities active</div>
+        <div class="city-step"><div class="city-step-dot coop"></div>SC formed, members govern</div>
+      </div>
+      <div class="started-by">&#9829; started by Julien &mdash; dancer, shopkeeper</div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-top">
+        <div class="city-flag">&#127477;&#127481;</div>
+        <div class="city-name">Lisbon</div>
+      </div>
+      <div class="city-story">
+        <div class="city-step"><div class="city-step-dot person"></div>Started with capoeira</div>
+        <div class="city-step"><div class="city-step-dot hubs"></div>3 communities growing</div>
+        <div class="city-step"><div class="city-step-dot coop"></div>Cooperative forming</div>
+      </div>
+      <div class="started-by">&#9829; started by Ana &mdash; capoeira instructor</div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-top">
+        <div class="city-flag">&#127465;&#127466;</div>
+        <div class="city-name">Berlin</div>
+      </div>
+      <div class="city-story">
+        <div class="city-step"><div class="city-step-dot person"></div>Started with gallery regulars</div>
+        <div class="city-step"><div class="city-step-dot hubs"></div>2 communities so far</div>
+        <div class="city-step"><div class="city-step-dot coop"></div>Still growing</div>
+      </div>
+      <div class="started-by">&#9829; started by Felix &mdash; illustrator, cyclist</div>
+    </div>
+
+    <div class="city-card">
+      <div class="city-top">
+        <div class="city-flag">&#127464;&#127462;</div>
+        <div class="city-name">Montr&eacute;al</div>
+      </div>
+      <div class="city-story">
+        <div class="city-step"><div class="city-step-dot person"></div>Started with jazz community</div>
+        <div class="city-step"><div class="city-step-dot hubs"></div>1 community, 1 person</div>
+        <div class="city-step"><div class="city-step-dot coop"></div>Just seeded</div>
+      </div>
+      <div class="started-by">&#9829; started by No&eacute;mie &mdash; jazz pianist</div>
+    </div>
+  </div>
+
+  <!-- Multiple co-ops note -->
+  <div class="multi-coop-note">
+    <div class="multi-coop-icon">&#9878;</div>
+    <div class="multi-coop-text">
+      <strong>No central authority decides how many co-ops exist in a city.</strong> If a group of members feels they want a different vibe &mdash; younger crowd, different language, neighborhood-focused &mdash; they fork and start their own. The city becomes a garden, not a franchise. Multiple co-ops can share the same open-source tools and even federate if they choose. Or not. That's up to them.
+    </div>
+  </div>
+</div>
+
+<!-- ==== MECHANISM CARDS ==== -->
+<div class="mechanism">
+  <div class="mech-card">
+    <h3>Fork, don't ask</h3>
+    <p>Coopyleft license. Any cooperative or non-profit can fork and launch. No permission, no franchise fee, no headquarters.</p>
+    <span class="mech-ref">Model: CoopCycle</span>
+  </div>
+  <div class="mech-card">
+    <h3>The handbook</h3>
+    <p>How to start, how to run, how to sustain. Written by the cities that came before you. Peer learning, not top-down instruction.</p>
+    <span class="mech-ref">Model: Transition Towns</span>
+  </div>
+  <div class="mech-card">
+    <h3>Federate, don't centralize</h3>
+    <p>Each city and each co-op governs itself independently. They can share decisions and templates. Or not. Nobody decides for them.</p>
+    <span class="mech-ref">Model: Decidim</span>
+  </div>
+  <div class="mech-card">
+    <h3>The LLM play</h3>
+    <p>Be so visible that when someone searches "cooperative local creative platform," every AI references Grassroot Hopper.</p>
+    <span class="mech-ref">Strategy: semantic dominance</span>
+  </div>
+</div>
+
+<div class="result">
+  <p>Every city starts with <span class="accent">one person who cares.</span></p>
+  <div class="detail">Not a launch strategy. Not a marketing campaign. One person who belongs to a community and says: "I can set this up for us." That's the entire replication engine. Bottom up. Always.</div>
+</div>
+
+<div class="tag-row">
+  <span class="tag">Natural movement: organic &mdash; each seed grows at its own pace, in its own soil</span>
+</div>
+
+</body>
+</html>
