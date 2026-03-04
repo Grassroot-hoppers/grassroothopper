@@ -1,0 +1,43 @@
+---
+description: Website design system and constraints for the pitch deck site
+globs: website/**
+alwaysApply: false
+---
+
+# Website — Pitch Deck Site
+
+## What it is
+
+A single-page static site styled as a story scroll pitch deck. The audience is potential collaborators, builders, partners — NOT end-user customers. The goal is making the project instantly understandable.
+
+## Tech stack
+
+Vanilla HTML + CSS + JS. No build tools. No frameworks. No dependencies beyond Google Fonts. The entire site is one `index.html` file deployed to GitHub Pages.
+
+## Design system
+
+- **Display font:** Fraunces (variable, optical sizing) — warm, wonky serif
+- **Body font:** DM Sans — clean geometric sans
+- **Mono font:** JetBrains Mono — for slide numbers and labels
+
+### Colors
+
+Dark sections: `--dark-bg: #0f0e0c`, `--dark-fg: #f5f0e6`, `--dark-accent: #e8a830`
+Light sections: `--light-bg: #f5f0e6`, `--light-fg: #1a1714`, `--light-accent: #b8432a`
+
+### Layout
+
+- Full-viewport sections (min-height: 100vh), alternating dark/light
+- One idea per section, big headlines, minimal text
+- Slide numbers in monospace (01, 02, 03...)
+- Scroll-triggered fade-in animations via IntersectionObserver
+- Staggered animation on list items via `.stagger` class
+
+## CTAs
+
+- "Email Julien" → mailto:staycreative@julien.care
+- "View on GitHub" → https://github.com/raclettemeister/grassroothopper
+
+## Deployment
+
+Pushes to `main` auto-deploy `website/` to GitHub Pages via `.github/workflows/pages.yml`.

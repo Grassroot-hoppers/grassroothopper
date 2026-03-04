@@ -1,0 +1,47 @@
+---
+description: Core project context for Grassroot Hopper — what it is, how the repo works, non-negotiable constraints
+alwaysApply: true
+---
+
+# Grassroot Hopper — Project Context
+
+## What this is
+
+Grassroot Hopper is a cooperative, open-source movement where any community on the planet can set up its own hub. You join through a community you already belong to (dance scene, art collective, dog park), scan a QR code, say a secret password spoken in person, and discover the hidden creative lives of the people you already know.
+
+The founder is Julien, based in Brussels. The legal entity is GPFC srl. The first community is Lindy Hop Brussels.
+
+## Repo structure
+
+```
+SPEC.md              — the source of truth (vision, principles, features, strategy)
+ROADMAP.md           — technical & admin timeline, subsidies, legal structure
+STATUS.md            — current project phase and decisions
+CREATOR-SPEECH.md    — the creator pitch (café conversation format)
+LAUNCH-SPEECH.md     — the reader pitch (event speech format)
+website/index.html   — the live pitch deck site (static, no build tools)
+.github/workflows/   — GitHub Pages deployment
+```
+
+## Non-negotiable constraints
+
+These are core principles. Never suggest changes that violate them:
+
+- **No comments, no likes, no DMs, no reactions. Ever.** Feedback happens in person.
+- **No payments on the platform.** Business happens between humans.
+- **Community-first entry.** QR code + secret password spoken in person. No browse, no discover page.
+- **Cooperative ownership.** Each city is a cooperative (SC). Members vote by role.
+- **Open source. Aggregate, don't build.** If someone built a great tool, integrate it.
+- **No money flow through the platform.** The cooperative advises on tools but doesn't handle transactions.
+
+## Tone of voice
+
+Warm, direct, slightly rebellious. Anti-corporate but not angry. "Your neighbor who has a crazy idea and you believe them." Never corporate jargon, never startup-speak.
+
+## Domains
+
+grassroothopper.com, .org, .eu, .be — all owned.
+
+## Key rule
+
+Always read SPEC.md before making significant changes. It's the source of truth.

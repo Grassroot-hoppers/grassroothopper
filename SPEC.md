@@ -80,8 +80,10 @@ A Grassroot Hopper is an enthusiast about why new technology is revolutionary *i
 **Grassroot Hopper**
 
 ### Domains
-- **grassroothopper.com** — owned
-- **grassroothopper.org** — owned
+- **grassroothopper.com** — owned (Namecheap, pending transfer to Infomaniak — 60-day lock)
+- **grassroothopper.org** — owned (Namecheap, pending transfer to Infomaniak — 60-day lock)
+- **grassroothopper.eu** — owned (Infomaniak)
+- **grassroothopper.be** — owned (Infomaniak)
 
 ### Why the name
 - **Grassroot** — bottom-up, citizen-driven, not corporate
@@ -511,7 +513,7 @@ The spec, the speeches, the one-pager — they're conversation tools. Material f
 - [ ] Rehearse the reader speech out loud (see LAUNCH-SPEECH.md)
 - [ ] Rehearse the creator speech out loud (see CREATOR-SPEECH.md)
 - [ ] One-pager: content ready (see above), Julien designs the layout
-- [x] ~~Buy grassroothopper.be + .com + .org~~ — **Owned: grassroothopper.com, grassroothopper.org**
+- [x] ~~Buy grassroothopper.be + .com + .org~~ — **Owned: grassroothopper.com, .org, .eu, .be**
 
 **Start the conversations:**
 - [ ] Contact Bonfire Networks — via Matrix chat or email (message above)
