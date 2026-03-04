@@ -90,9 +90,9 @@ A Grassroot Hopper is an enthusiast about why new technology is revolutionary *i
 - **Hopper** — movement from person to person, community to community, city to city. Also: a nod to Lindy Hop — the dance community where this idea was born.
 
 ### The three layers
-1. **The identity.** A Grassroot Hopper is a person — someone who uses technology in the service of real community life.
-2. **The movement.** A community of community builders, spreading city by city.
-3. **The products.** Tools and platforms built by Grassroot Hoppers — the cooperative social network being the first.
+1. **The verb.** Grassroot hopping is the act of hopping across open-source projects and repos to assemble community-owned tools. Not building everything from scratch — catching everything that's already being built.
+2. **The movement.** The Grassroot Hoppers are a community of community builders, spreading city by city. The skeleton builders.
+3. **The products.** The first product is a forkable local social network. The Brussels version is the first instance — its name will be decided by the cooperative members when the co-op is created. Any city can fork the code and start their own.
 
 ### Tone of voice
 - Warm, direct, slightly rebellious
