@@ -515,6 +515,67 @@
             font-size: 0.9rem;
         }
 
+        /* EU Projects Showcase */
+        .eu-projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .eu-category {
+            padding: 1.4rem 1.3rem;
+            border-radius: 8px;
+            background: rgba(26,23,20,0.03);
+            border: 1px solid rgba(26,23,20,0.08);
+        }
+
+        .eu-cat-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(26,23,20,0.06);
+        }
+
+        .eu-cat-label.green { color: var(--teal); }
+        .eu-cat-label.coop { color: var(--dark-accent); }
+        .eu-cat-label.civic { color: var(--light-accent); }
+
+        .eu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .eu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .eu-item-name {
+            font-family: var(--display);
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-optical-sizing: auto;
+            color: var(--light-fg);
+        }
+
+        .eu-item-desc {
+            font-size: 0.75rem;
+            color: var(--light-muted);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .eu-projects { grid-template-columns: 1fr; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             section {
@@ -553,9 +614,38 @@
     <section class="light">
         <div class="content-inner">
             <p class="slide-number">02 — WHAT HAPPENED</p>
-            <h2>The gap between having an idea and coding software has collapsed.</h2>
-            <p>This is the most revolutionary thing that happened this decade. AI-assisted development, open-source toolkits, and cooperative infrastructure converged — all at once. The era of depending on tech companies to build your tools is over.</p>
-            <p style="margin-top: 1rem;"><a href="https://wtfhappened2025.com/" target="_blank" rel="noopener" class="accent" style="font-family: var(--mono); font-size: 1rem;">WTF Happened in 2025? →</a></p>
+            <h2>The barrier to building software didn't lower. <span class="accent">It disappeared.</span></h2>
+            <p><strong>In late December 2025, the technical barrier to coding collapsed entirely. Not gradually &mdash; overnight.</strong> <a href="https://wtfhappened2025.com/" target="_blank" rel="noopener" class="accent" style="font-family: var(--mono); font-size: 1rem;">WTF Happened in 2025? &rarr;</a></p>
+            <p>The cost is gone. The barrier is gone. That changes everything &mdash; because now, anyone can contribute to open-source projects. As more people contribute, the projects get better. As the projects get better, more people use them to build their own. It's a spiral. And it puts open-source at the top of the most useful things humanity can build.</p>
+            <p>In the US, private capital builds AI for private returns. In China, the state builds infrastructure it controls. In Europe? Not much is happening. And that's exactly the point. No giant corporation owns the outcome. No state dictates how the tools get used. If we want it, we have to build it ourselves. That's what makes it genuinely grassroots.</p>
+            <p><strong>Europe is the best place on earth for this.</strong> Multicultural. Highly educated. Full of people who know how to do more with less. Open-source doesn't need the extraction machine &mdash; no vendor lock-in, no platform dependency, no surrendering control of your data. It needs maintenance, documentation, good people. When a well-maintained open-source tool matches your need, the choice becomes obvious. And the Grassroot Hoppers aren't going to wait for someone to fund it. They're going to build it.</p>
+        </div>
+        <div class="eu-projects">
+            <div class="eu-category">
+                <div class="eu-cat-label green">Green Infrastructure</div>
+                <div class="eu-items">
+                    <div class="eu-item"><span class="eu-item-name">Leafcloud</span><span class="eu-item-desc">Dutch &middot; servers heating apartment buildings</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Qarnot</span><span class="eu-item-desc">French &middot; processors as building heaters</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Blockheating</span><span class="eu-item-desc">Dutch &middot; waste heat to greenhouses</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Cloud&amp;Heat</span><span class="eu-item-desc">German &middot; waste heat to city grids</span></div>
+                </div>
+            </div>
+            <div class="eu-category">
+                <div class="eu-cat-label coop">Cooperative Models</div>
+                <div class="eu-items">
+                    <div class="eu-item"><span class="eu-item-name">CoopCycle</span><span class="eu-item-desc">57 cooperatives across Europe</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Decidim</span><span class="eu-item-desc">149K+ users &middot; participatory democracy</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Bonfire Networks</span><span class="eu-item-desc">EU-funded modular social toolkit</span></div>
+                </div>
+            </div>
+            <div class="eu-category">
+                <div class="eu-cat-label civic">Citizen-Led Thinktanks</div>
+                <div class="eu-items">
+                    <div class="eu-item"><span class="eu-item-name">Open Future</span><span class="eu-item-desc">Public AI policy advocacy</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Scivil / amai!</span><span class="eu-item-desc">Belgian citizen science</span></div>
+                    <div class="eu-item"><span class="eu-item-name">Social Good Accelerator</span><span class="eu-item-desc">Creative commons algorithms</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
