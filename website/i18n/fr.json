@@ -1,0 +1,5 @@
+{
+  "_comment": "French translations. Keys match data-i18n attributes in HTML.",
+  "index.hero.tagline": "Le mouvement de transition de <a href=\"https://www.robhopkins.net/about/\" target=\"_blank\" rel=\"noopener noreferrer\">Rob Hopkins</a>, mais pour le logiciel open-source.",
+  "index.hero.meta": "Un mouvement · Open source · Coopératif"
+}
