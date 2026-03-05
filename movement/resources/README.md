@@ -17,6 +17,15 @@ Research collected from projects that inform Grassroot Hopper's design, legal st
 ### What can we learn from creative platforms?
 - [Creative Platforms](creative-platforms/) — Resonate, Subvert, Ghost, 6AM City
 
+### Can the infrastructure itself be grassroots?
+- [Green Infrastructure](green-infrastructure/) — Leafcloud, Qarnot, Blockheating, waste-heat computing, community-embedded data centers
+
+### What open AI tools can communities own?
+- [Open Source AI](open-source-ai/) — Kyutai, LAION, Silo AI, OpenEuroLLM, sovereign European models
+
+### How do citizens participate in building AI for their communities?
+- [Civic AI](civic-ai/) — Open Future, Scivil, AI4Citizens, citizen science, Public AI, commons
+
 ---
 
 *This is a living collection. When you find something relevant, drop it in the right folder.*
