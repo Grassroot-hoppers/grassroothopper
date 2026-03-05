@@ -223,6 +223,82 @@
             margin-bottom: 0;
         }
 
+        /* Proof — people grid */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 860px;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
+        @media (min-width: 640px) {
+            .proof-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .proof-card {
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: rgba(26, 23, 20, 0.03);
+            border: 1px solid rgba(184, 67, 42, 0.12);
+        }
+
+        .proof-card-who {
+            font-family: var(--display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-optical-sizing: auto;
+            color: var(--light-accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .proof-card-where {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--light-muted);
+            margin-bottom: 1rem;
+        }
+
+        .proof-card p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            max-width: none;
+        }
+
+        .proof-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .proof-card-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--light-accent);
+            border-bottom: 1px solid rgba(184, 67, 42, 0.35);
+            padding-bottom: 1px;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .proof-card-link:hover { opacity: 0.7; border-bottom-color: var(--light-accent); }
+
+        /* julien card spans both columns on wider screens */
+        @media (min-width: 640px) {
+            .proof-card.julien { grid-column: 1 / -1; }
+        }
+
+        @media (max-width: 480px) {
+            .proof-card { padding: 1.2rem; }
+        }
+
         /* Name etymology */
         .name-grid {
             display: grid;
@@ -815,11 +891,44 @@
     <!-- 04: THE PROOF -->
     <section class="light" style="text-align: center;">
         <p class="slide-number">04 — THE PROOF</p>
-        <h2>Built between customers. On evenings. On whatever was in front of him.</h2>
-        <div class="anecdote">
-            <p>Julien runs a specialty food shop in Brussels. He started building all the software he needs &mdash; by himself. Between customers, on his phone. At the desk, on the shop computer. At home, on his personal laptop, late into the evening. No team. No funding. No technical background. Just stubbornness and tools that didn't exist a year ago.</p>
-            <p>The quality is astonishing. And this is just the beginning.</p>
-            <p style="margin-top: 1.5rem;"><strong>His prediction:</strong> the future is already here but not yet widely distributed. When it reaches normal people, it will enable them to have far more impact on their communities than ever before.</p>
+        <h2>Built between patients. Between customers. <span class="accent">On the road.</span></h2>
+        <div class="proof-grid">
+
+            <div class="proof-card julien">
+                <div class="proof-card-who">Julien</div>
+                <div class="proof-card-where">Specialty food shop &middot; Brussels</div>
+                <p>Between customers, on his phone. At the desk, on the shop computer. At home, on his personal laptop, late into the evening. No team. No funding. No technical background. Just stubbornness and tools that didn't exist a year ago.</p>
+                <p>The quality is astonishing. And this is just the beginning.</p>
+                <p><strong>His prediction:</strong> the future is already here but not yet widely distributed. When it reaches normal people, it will enable them to have far more impact on their communities than ever before.</p>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-card-who">Dr. Micha&#322; Nedoszytko</div>
+                <div class="proof-card-where">Interventional cardiologist &middot; Brussels</div>
+                <p>He'd watched patients leave appointments frightened and confused for ten years. Studies show they can only recall 49% of what a doctor tells them — and 15% of what they do remember is wrong.</p>
+                <p>He heard about the hackathon on his morning commute. He built PostVisit.ai in seven days — in the hospital between procedures, and in the air flying Brussels to San Francisco for the demo. No coding background.</p>
+                <p><strong>3rd place.</strong> 13,000 applicants. 500 selected. PostVisit.ai turns a patient's clinical record into a plain-language AI companion they can ask questions at 2am.</p>
+                <a href="https://postvisit.ai" target="_blank" rel="noopener" class="proof-card-link">postvisit.ai &rarr;</a>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-card-who">Kyeyune Kazibwe</div>
+                <div class="proof-card-where">Road technician &middot; Uganda</div>
+                <p>His job: drive roads, assess damage, decide where the money goes. There are far more roads to assess than there are people to cover them. Schools, markets, and clinics wait while the paperwork catches up.</p>
+                <p>He built TARA while driving actual roads near Kampala — dashcam footage in, full investment report out in five hours instead of weeks. Surface condition, repair costs, equity assessment for which communities benefit.</p>
+                <p><strong>"Keep Thinking" prize.</strong> Built on the road, tested on a real road under construction.</p>
+                <a href="https://x.com/claudeai/status/2024986304354599123" target="_blank" rel="noopener" class="proof-card-link">TARA demo &rarr;</a>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-card-who">Mike Brown</div>
+                <div class="proof-card-where">Attorney &middot; California</div>
+                <p>His friend builds backyard cottages to ease California's housing shortage. Every permit application comes back rejected — a wrong code citation, a local rule overriding a state rule. Months lost. In San Francisco, the median time for building approval is 627 days.</p>
+                <p>Mike built CrossBeam in six days while still taking cases. Upload a rejection letter and plans. Get a precise, code-referenced action plan in 20 minutes. A process that took months now takes a lunch break.</p>
+                <p><strong>1st place.</strong> The mayor of Buena Park testified: "I need 3,000 new homes permitted by 2029. We need this software."</p>
+                <a href="https://github.com/mikeOnBreeze/cc-crossbeam" target="_blank" rel="noopener" class="proof-card-link">CrossBeam on GitHub &rarr;</a>
+            </div>
+
         </div>
     </section>
 
