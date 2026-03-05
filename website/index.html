@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Transition Towns of digital infrastructure. A cooperative, open-source movement bringing ownership and autonomy back to technology.">
-    <meta name="keywords" content="cooperative technology, open-source movement, Transition Towns, digital infrastructure, fediverse">
+    <meta name="description" content="Rob Hopkins' Transition Towns movement, but for open-source software. A cooperative movement bringing ownership and autonomy back to technology, city by city.">
+    <meta name="keywords" content="cooperative technology, open-source movement, Transition Towns, digital infrastructure, fediverse, grassroot hoppers">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Grassroot Hopper — The Transition Towns of digital infrastructure">
-    <meta property="og:description" content="A movement. Open source. Cooperative. Join the digital infrastructure revolution.">
+    <meta property="og:title" content="Grassroot Hoppers — Rob Hopkins' transition movement, but for open-source software">
+    <meta property="og:description" content="The technical barrier to building software has collapsed. Regular people are about to start building. They need a movement. This is it.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://grassroothopper.com">
     <meta property="og:image" content="https://grassroothopper.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Grassroot Hopper — The Transition Towns of digital infrastructure">
-    <meta name="twitter:description" content="A movement. Open source. Cooperative.">
+    <meta name="twitter:title" content="Grassroot Hoppers — Rob Hopkins' transition movement, but for open-source software">
+    <meta name="twitter:description" content="The technical barrier to building software has collapsed. Regular people are about to start building.">
 
-    <title>Grassroot Hopper — The Transition Towns of digital infrastructure</title>
+    <title>Grassroot Hoppers — Rob Hopkins' transition movement, but for open-source software</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
@@ -56,9 +53,9 @@
             overflow-x: hidden;
         }
 
-        /* Section Base Styles */
         section {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -74,40 +71,27 @@
             transform: translateY(0);
         }
 
-        /* Dark Sections */
         .dark {
             background-color: var(--dark-bg);
             color: var(--dark-fg);
         }
 
-        .dark .accent {
-            color: var(--dark-accent);
-        }
+        .dark .accent { color: var(--dark-accent); }
+        .dark .muted { color: var(--dark-muted); }
 
-        .dark .muted {
-            color: var(--dark-muted);
-        }
-
-        /* Light Sections */
         .light {
             background-color: var(--light-bg);
             color: var(--light-fg);
         }
 
-        .light .accent {
-            color: var(--light-accent);
-        }
+        .light .accent { color: var(--light-accent); }
+        .light .muted { color: var(--light-muted); }
 
-        .light .muted {
-            color: var(--light-muted);
-        }
-
-        /* Typography */
         h1 {
             font-family: var(--display);
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(3rem, 9vw, 6rem);
             font-weight: 500;
-            line-height: 1.1;
+            line-height: 1.05;
             margin-bottom: 1.5rem;
             font-optical-sizing: auto;
             letter-spacing: -0.02em;
@@ -115,7 +99,7 @@
 
         h2 {
             font-family: var(--display);
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 2rem;
@@ -123,45 +107,46 @@
         }
 
         p {
-            font-size: 1.1rem;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            line-height: 1.75;
             margin-bottom: 1.5rem;
-            max-width: 50ch;
+            max-width: 52ch;
         }
 
         .slide-number {
             font-family: var(--mono);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             margin-bottom: 3rem;
             text-transform: uppercase;
         }
 
-        /* Hero Slide */
+        /* Hero */
         .hero {
             text-align: center;
             position: relative;
         }
 
         .hero h1 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .hero .tagline {
             font-family: var(--display);
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
+            max-width: 24ch;
         }
 
         .hero .meta {
             font-family: var(--mono);
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            margin-bottom: 8rem;
+            margin-bottom: 0;
         }
 
         .scroll-cue {
@@ -185,36 +170,183 @@
             50% { transform: translateX(-50%) translateY(8px); }
         }
 
-        /* Two-column layout for cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            width: 100%;
-            max-width: 900px;
+        /* Content sections — inner wrapper constrains width, section stays full-width */
+        .content-inner {
+            max-width: 52ch;
+            text-align: center;
         }
 
-        .card {
-            padding: 2.5rem;
+        .content-inner p {
+            text-align: left;
+        }
+
+        /* Analogy callout */
+        .analogy {
+            font-family: var(--display);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            max-width: 40ch;
+            text-align: center;
+            opacity: 0.92;
+        }
+
+        .analogy strong {
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* Anecdote card */
+        .anecdote {
+            max-width: 50ch;
+            padding: 3rem;
             border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
         }
 
-        .dark .card {
+        .dark .anecdote {
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(232, 168, 48, 0.15);
+        }
+
+        .light .anecdote {
+            background-color: rgba(26, 23, 20, 0.03);
+            border: 1px solid rgba(184, 67, 42, 0.12);
+        }
+
+        .anecdote p {
+            margin-bottom: 1rem;
+        }
+
+        .anecdote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Name etymology */
+        .name-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .name-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .name-item {
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .dark .name-item {
             background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(232, 168, 48, 0.2);
         }
 
-        .light .card {
+        .light .name-item {
             background-color: rgba(26, 23, 20, 0.03);
             border: 1px solid rgba(184, 67, 42, 0.15);
         }
 
-        .card:hover {
-            transform: translateY(-8px);
+        .name-item h3 {
+            font-family: var(--display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-optical-sizing: auto;
         }
 
-        .card h3 {
+        .name-item p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            max-width: none;
+        }
+
+        /* Three layers */
+        .layers {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .layers {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .layer {
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .dark .layer {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(232, 168, 48, 0.2);
+        }
+
+        .light .layer {
+            background-color: rgba(26, 23, 20, 0.03);
+            border: 1px solid rgba(184, 67, 42, 0.15);
+        }
+
+        .layer h3 {
+            font-family: var(--display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-optical-sizing: auto;
+        }
+
+        .layer p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            max-width: none;
+        }
+
+        /* Demos */
+        .demos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .demos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .demo-card {
+            padding: 2.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark .demo-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(232, 168, 48, 0.2);
+        }
+
+        .light .demo-card {
+            background-color: rgba(26, 23, 20, 0.03);
+            border: 1px solid rgba(184, 67, 42, 0.15);
+        }
+
+        .demo-card h3 {
             font-family: var(--display);
             font-size: 1.4rem;
             font-weight: 600;
@@ -222,141 +354,25 @@
             font-optical-sizing: auto;
         }
 
-        .card p {
-            margin-bottom: 0;
+        .demo-card p {
             font-size: 1rem;
+            margin-bottom: 1rem;
+            max-width: none;
         }
 
-        /* Links */
-        a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 2px solid currentColor;
-            transition: opacity 0.3s ease;
-            padding-bottom: 2px;
-        }
-
-        a:hover {
-            opacity: 0.7;
-        }
-
-        .dark a.accent {
-            color: var(--dark-accent);
-            border-bottom-color: var(--dark-accent);
-        }
-
-        .light a.accent {
-            color: var(--light-accent);
-            border-bottom-color: var(--light-accent);
-        }
-
-        /* Special Sections */
-        .thesis {
-            max-width: 45ch;
-            text-align: center;
-        }
-
-        .blueprint {
-            max-width: 45ch;
-            text-align: center;
-        }
-
-        .identity {
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .identity .cards {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .identity .cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .demos {
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .demos .cards {
-            grid-template-columns: 1fr;
-        }
-
-        @media (min-width: 768px) {
-            .demos .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .demo-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .demo-card p:last-child {
+        .demo-card .demo-link {
             margin-top: auto;
-        }
-
-        .demo-link {
             font-family: var(--mono);
             font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 1.5rem;
         }
 
-        /* Contributor Model */
-        .contributor {
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .rewards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            width: 100%;
-        }
-
-        .reward-item {
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .light .reward-item {
-            background-color: rgba(26, 23, 20, 0.05);
-        }
-
-        .dark .reward-item {
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        .reward-item h4 {
-            font-family: var(--display);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            font-optical-sizing: auto;
-        }
-
-        .reward-item p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        /* Domain Badges */
+        /* Domains */
         .domains {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
-            margin-top: 3rem;
-            width: 100%;
+            margin-top: 2.5rem;
         }
 
         .domain-badge {
@@ -368,62 +384,31 @@
             border: 2px solid currentColor;
         }
 
-        .light .domain-badge {
-            border-color: var(--light-accent);
-            color: var(--light-accent);
-            background-color: rgba(184, 67, 42, 0.05);
-        }
-
         .dark .domain-badge {
             border-color: var(--dark-accent);
             color: var(--dark-accent);
             background-color: rgba(232, 168, 48, 0.1);
         }
 
-        /* Funding Items */
-        .funding-items {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            width: 100%;
-            max-width: 700px;
+        .light .domain-badge {
+            border-color: var(--light-accent);
+            color: var(--light-accent);
+            background-color: rgba(184, 67, 42, 0.05);
         }
 
-        .funding-item {
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--teal);
-            text-align: left;
-        }
-
-        .light .funding-item {
-            background-color: rgba(58, 158, 143, 0.05);
-        }
-
-        .dark .funding-item {
-            background-color: rgba(58, 158, 143, 0.08);
-        }
-
-        .funding-item strong {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Quote Section */
+        /* Quote */
         .quote-section {
             text-align: center;
-            max-width: 60ch;
+            max-width: 55ch;
         }
 
         .quote-text {
             font-family: var(--display);
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
             font-weight: 400;
             font-style: italic;
             line-height: 1.4;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-optical-sizing: auto;
         }
 
@@ -436,29 +421,46 @@
         }
 
         .quote-message {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
             opacity: 0.85;
             font-style: italic;
+            max-width: 40ch;
         }
 
-        /* CTA Section */
-        .cta {
+        /* CTA */
+        .cta-inner {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .cta-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-top: 3rem;
             width: 100%;
+        }
+
+        @media (max-width: 640px) {
+            .cta-items {
+                grid-template-columns: 1fr;
+            }
         }
 
         .cta-item {
             padding: 2rem;
             border-radius: 8px;
+        }
+
+        .light .cta-item {
+            background-color: rgba(26, 23, 20, 0.05);
+            border: 1px solid rgba(26, 23, 20, 0.1);
+        }
+
+        .dark .cta-item {
+            background-color: rgba(232, 168, 48, 0.08);
+            border: 1px solid rgba(232, 168, 48, 0.2);
         }
 
         .cta-item h3 {
@@ -474,79 +476,56 @@
             font-weight: 500;
         }
 
-        .light .cta-item {
-            background-color: rgba(26, 23, 20, 0.05);
-            border: 1px solid rgba(26, 23, 20, 0.1);
+        /* Links */
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid currentColor;
+            transition: opacity 0.3s ease;
+            padding-bottom: 2px;
         }
 
-        .dark .cta-item {
-            background-color: rgba(232, 168, 48, 0.08);
-            border: 1px solid rgba(232, 168, 48, 0.2);
+        a:hover { opacity: 0.7; }
+
+        .dark a.accent {
+            color: var(--dark-accent);
+            border-bottom-color: var(--dark-accent);
         }
 
-        .cta-item a:hover {
-            text-decoration: underline;
+        .light a.accent {
+            color: var(--light-accent);
+            border-bottom-color: var(--light-accent);
         }
 
         /* Footer */
         footer {
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
             font-size: 0.9rem;
             font-family: var(--mono);
             letter-spacing: 0.05em;
-        }
-
-        .light footer {
             background-color: var(--light-bg);
             color: var(--light-fg);
             border-top: 1px solid rgba(26, 23, 20, 0.1);
         }
 
-        .dark footer {
-            background-color: var(--dark-bg);
-            color: var(--dark-fg);
-            border-top: 1px solid rgba(232, 168, 48, 0.2);
+        footer p {
+            max-width: none;
+            margin-bottom: 0;
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             section {
                 padding: 3rem 1.5rem;
-                min-height: auto;
             }
 
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.3rem;
-            }
-
-            .cards {
-                gap: 2rem;
-            }
-
-            .card {
+            .anecdote {
                 padding: 2rem;
-            }
-
-            .identity .cards,
-            .demos .cards {
-                grid-template-columns: 1fr;
             }
         }
 
-        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             section,
             .scroll-cue {
@@ -557,11 +536,12 @@
     </style>
 </head>
 <body>
-    <!-- SLIDE 01: HERO -->
+
+    <!-- 01: HERO -->
     <section class="dark hero">
-        <h1>Grassroot Hopper</h1>
-        <p class="tagline">The Transition Towns of digital infrastructure.</p>
-        <p class="meta">A movement · Open source · Cooperative</p>
+        <h1>Grassroot<br>Hoppers</h1>
+        <p class="tagline">Rob Hopkins' transition movement, but for open-source software.</p>
+        <p class="meta muted">A movement · Open source · Cooperative</p>
         <div class="scroll-cue">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -569,82 +549,134 @@
         </div>
     </section>
 
-    <!-- SLIDE 02: THE THESIS -->
-    <section class="light thesis">
-        <p class="slide-number">02 — THE THESIS</p>
-        <h2>The technical barrier is gone.</h2>
-        <p>AI-assisted development, open-source toolkits, and cooperative infrastructure are converging. Within the next few years, anyone who cares enough will be able to build real alternatives to the platforms they're stuck on. They'll search for a movement to join. Grassroot Hopper is that flag.</p>
+    <!-- 02: WHAT HAPPENED -->
+    <section class="light">
+        <div class="content-inner">
+            <p class="slide-number">02 — <a href="https://wtfhappened2025.com/" target="_blank" rel="noopener" style="border-bottom: none; letter-spacing: 0.15em;">WHAT HAPPENED</a></p>
+            <h2>The gap between having an idea and coding software has collapsed.</h2>
+            <p>This is the most revolutionary thing that happened this decade. AI-assisted development, open-source toolkits, and cooperative infrastructure converged — all at once. The era of depending on tech companies to build your tools is over.</p>
+        </div>
     </section>
 
-    <!-- SLIDE 03: THE BLUEPRINT -->
-    <section class="dark blueprint">
-        <p class="slide-number accent">03 — THE BLUEPRINT</p>
-        <h2>What Rob Hopkins did for energy, we do for technology.</h2>
-        <p>Transition Towns: 1,400+ communities in 50+ countries. No corporation. No central authority. Just a name, a handbook, and passionate local leaders. Grassroot Hopper follows the same playbook — for digital infrastructure. Your community can own its own tools.</p>
+    <!-- 03: THE ANALOGY -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">03 — THE ANALOGY</p>
+        <p class="analogy">Think about literacy. Imagine most people can't read. The few who can use the law as a shield. Then — all at once — <strong>everyone learns to read.</strong> Everything changes. The power structures crumble.</p>
+        <p style="margin-top: 2.5rem; max-width: 48ch; text-align: center; opacity: 0.85;">That is the same revolution we are living through right now — but with software. Until yesterday, you needed engineers. Today, you don't.</p>
     </section>
 
-    <!-- SLIDE 04: THE IDENTITY -->
-    <section class="light identity">
-        <p class="slide-number">04 — THE IDENTITY</p>
+    <!-- 04: THE PROOF -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">04 — THE PROOF</p>
+        <h2>Built during lunch hours. On a phone.</h2>
+        <div class="anecdote">
+            <p>Julien runs a specialty food shop in Brussels. Four months ago he started building all the software he needs — by himself, between customers, on his phone.</p>
+            <p>The technology he's using is four months old. The quality is astonishing. He considers himself a pioneer on this subject.</p>
+            <p style="margin-top: 1.5rem;"><strong>His prediction:</strong> the future is already here but not yet widely distributed. When it reaches normal people, it will enable them to have far more impact on their communities than ever before.</p>
+        </div>
+    </section>
+
+    <!-- 05: THE VISION -->
+    <section class="dark">
+        <div class="content-inner">
+            <p class="slide-number accent">05 — THE VISION</p>
+            <h2>Hobbyist coders will someday represent 10 to 15% of the population.</h2>
+        </div>
+        <div class="anecdote">
+            <p>One of these people walks into their favorite bakery.</p>
+            <p>"You don't have a system for demand prediction?"</p>
+            <p>The baker says: "No, that's reserved for the big chains."</p>
+            <p>The hobbyist coder says: <strong>"I can spend a weekend building one for you."</strong></p>
+            <p style="margin-top: 1.5rem; opacity: 0.85;">It only took a weekend. Today. Imagine what it looks like in one year, two years.</p>
+        </div>
+    </section>
+
+    <!-- 06: THE BLUEPRINT -->
+    <section class="light">
+        <div class="content-inner">
+            <p class="slide-number">06 — THE BLUEPRINT</p>
+            <h2>What Rob Hopkins did for energy and food, we do for software.</h2>
+            <p>Transition Towns: 1,400+ communities in 50+ countries. Rob Hopkins didn't build a platform. He named an identity, wrote a handbook, and let communities self-organize. No corporation controlled it. No central authority managed it.</p>
+            <p>Grassroot Hoppers follows the same playbook. Instead of "your town can grow its own food," it's <strong>"your community can build its own tools."</strong></p>
+        </div>
+    </section>
+
+    <!-- 07: THE NAME -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">07 — THE NAME</p>
+        <h2>Why Grassroot Hopper?</h2>
+        <div class="name-grid">
+            <div class="name-item">
+                <h3 class="accent">Grassroot</h3>
+                <p>Bottom-up, citizen-driven, not corporate.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">Grace Hopper</h3>
+                <p>The pioneering coder who democratized programming. She built the first compiler and championed human-readable code.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">Hopping</h3>
+                <p>Hopping from open-source project to open-source project, taking the pieces you need to assemble your own design.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">Hop</h3>
+                <p>A crop with deep roots in Belgium. But today, Belgian hop farming has shrunk to around 180 hectares. The rest... imported. Like our software.</p>
+            </div>
+        </div>
+        <p style="margin-top: 3rem; font-family: var(--display); font-size: 1.25rem; font-style: italic; opacity: 0.85; max-width: 40ch; text-align: center;">The movement is early, optimistic, and hopeful.</p>
+    </section>
+
+    <!-- 08: THE IDENTITY -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">08 — THE IDENTITY</p>
         <h2>A person. A movement. Products.</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>A Grassroot Hopper is a person</h3>
-                <p>Someone who blends technology with the actual pleasure of living a full life inside communities.</p>
+        <div class="layers">
+            <div class="layer">
+                <h3>The person</h3>
+                <p>A Grassroot Hopper is someone who blends technology with the actual pleasure of living a full life inside communities. Good people, for good people.</p>
             </div>
-            <div class="card">
-                <h3>The Grassroot Hoppers are a movement</h3>
-                <p>Community builders spreading city by city. The Transition Towns of the digital age.</p>
+            <div class="layer">
+                <h3>The movement</h3>
+                <p>The Grassroot Hoppers are community builders spreading city by city. The Transition Towns of the digital age.</p>
             </div>
-            <div class="card">
-                <h3>The products are what they make</h3>
-                <p>Open-source tools, cooperatively owned. Anyone in the movement can build anything.</p>
+            <div class="layer">
+                <h3>The products</h3>
+                <p>Open-source tools, cooperatively owned. Anyone in the movement can build anything. The movement catches all of it.</p>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 05: THE DEMOS -->
-    <section class="dark demos">
-        <p class="slide-number accent">05 — THE DEMOS</p>
-        <h2>Two proofs. Two faces of the movement.</h2>
-        <div class="cards">
-            <div class="card demo-card">
+    <!-- 09: THE DEMOS -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">09 — THE DEMOS</p>
+        <h2>Two proofs. Already being built.</h2>
+        <div class="demos-grid">
+            <div class="demo-card">
                 <h3>Social Media V2</h3>
-                <p>The community demo. A cooperative social network where you discover the hidden creative lives of people you already know. No likes. No comments. No algorithm. Feedback happens in real life.</p>
+                <p>A cooperative social network launching with the Lindy Hop community in Brussels. No likes. No comments. No algorithm. You see what the people around you are creating. If you want to tell them it's amazing, you tell them in person.</p>
                 <p class="demo-link"><a href="social-v2.html" class="accent">Read the spec →</a></p>
             </div>
-            <div class="card demo-card">
+            <div class="demo-card">
                 <h3>David Retail</h3>
-                <p>The economic empowerment demo. Prediction, inventory, and POS tools for independent shop owners. David vs. Goliath. The same edge big chains have — free, cooperative, owned by the people who use it.</p>
+                <p>Open-source tools for independent shop owners — prediction, inventory, point of sale. Built by a shop owner who got tired of paying for tools that don't fit. David vs. Goliath.</p>
                 <p class="demo-link"><a href="david-retail.html" class="accent">Read the spec →</a></p>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 06: THE CONTRIBUTOR MODEL -->
-    <section class="light contributor">
-        <p class="slide-number">06 — NO MONEY. OWNERSHIP.</p>
-        <h2>Contributors don't get paid. They get ownership.</h2>
-        <p>No freelance contracts. No bounties. No hourly rates. You write code for David Retail? You own a piece of David Retail. Every contribution is public, open-source, and attributed. The people who build are the people who own.</p>
-        <div class="rewards">
-            <div class="reward-item">
-                <h4>Co-op shares</h4>
-                <p>Own a piece of what you build</p>
-            </div>
-            <div class="reward-item">
-                <h4>Portfolio</h4>
-                <p>Live, real-world products in your name</p>
-            </div>
-            <div class="reward-item">
-                <h4>Network</h4>
-                <p>Builders, shop owners, artists across Europe</p>
-            </div>
+    <!-- 10: THE MODEL -->
+    <section class="light">
+        <div class="content-inner">
+            <p class="slide-number">10 — THE MODEL</p>
+            <h2>Contributors don't get paid. They get ownership.</h2>
+            <p>No freelance contracts. No bounties. The people who build are the people who own. You write code for David Retail? You own a piece of David Retail. Every contribution is public, open-source, and attributed.</p>
+            <p>Caring and being willing to spend time solving problems will become much more powerful than having a lot of money and a team of engineers.</p>
         </div>
     </section>
 
-    <!-- SLIDE 07: THE NET -->
-    <section class="dark">
-        <p class="slide-number accent">07 — THE NET</p>
+    <!-- 11: THE NET -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">11 — THE NET</p>
         <h2>Catch every enthusiast on the planet.</h2>
         <div class="domains">
             <div class="domain-badge">grassroothopper.com</div>
@@ -652,100 +684,59 @@
             <div class="domain-badge">.eu</div>
             <div class="domain-badge">.be</div>
         </div>
-        <p style="margin-top: 3rem; max-width: 50ch; text-align: center;">Someone hears 'Grassroot Hopper' at a talk, in a Matrix chat, from a friend, from an AI search result. They type it in. They land here. They find the movement.</p>
+        <p style="margin-top: 3rem; max-width: 48ch; text-align: center; opacity: 0.85;">Someone hears "Grassroot Hoppers" at a talk, in a Matrix chat, from an AI search result. They type it in. They land here. They find the movement.</p>
     </section>
 
-    <!-- SLIDE 08: EUROPEAN FUNDING -->
+    <!-- 12: THE QUOTE -->
     <section class="light">
-        <p class="slide-number">08 — WELL FUNDED</p>
-        <h2>Europe funds exactly this.</h2>
-        <p>Open-source social and environmental projects in Europe are well funded and subsidized. The EU, national governments, and regional bodies actively fund cooperative digital infrastructure. We don't need venture capital. We need to navigate the landscape.</p>
-        <div class="funding-items">
-            <div class="funding-item">
-                <strong>Innoviris PYSI</strong>
-                <span>€100K at 100% for social innovation</span>
-            </div>
-            <div class="funding-item">
-                <strong>NLnet / NGI0</strong>
-                <span>EU funding for open-source internet infrastructure</span>
-            </div>
-            <div class="funding-item">
-                <strong>Prime Digitalisation</strong>
-                <span>up to 70% of development costs</span>
-            </div>
-            <div class="funding-item">
-                <strong>Horizon Europe</strong>
-                <span>large-scale EU R&D funding</span>
+        <div class="quote-section">
+            <p class="slide-number">12 — THE SECRET</p>
+            <p class="quote-text">"I want to be with those who know secret things or else alone."</p>
+            <p class="quote-attribution">— Rainer Maria Rilke</p>
+            <p class="quote-message">A secret message to enter a community you deserve to be part of. That's the brand.</p>
+        </div>
+    </section>
+
+    <!-- 13: CTA -->
+    <section class="dark">
+        <div class="cta-inner">
+            <p class="slide-number accent">13 — JOIN</p>
+            <h2>If this made your eyes light up — you're one of us.</h2>
+            <div class="cta-items">
+                <div class="cta-item">
+                    <h3>Email Julien</h3>
+                    <a href="mailto:staycreative@julien.care" class="accent">staycreative@julien.care</a>
+                </div>
+                <div class="cta-item">
+                    <h3>Read the manifesto</h3>
+                    <a href="https://github.com/Grassroot-hoppers/grassroothopper/blob/main/movement/SPEC.md" class="accent">GitHub SPEC →</a>
+                </div>
+                <div class="cta-item">
+                    <h3>View on GitHub</h3>
+                    <a href="https://github.com/Grassroot-hoppers/grassroothopper" class="accent">GitHub repo →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 09: THE QUOTE -->
-    <section class="dark quote-section">
-        <p class="slide-number accent">09 — THE SECRET</p>
-        <p class="quote-text">"I want to be with those who know secret things or else alone."</p>
-        <p class="quote-attribution">— Rainer Maria Rilke</p>
-        <p class="quote-message">A secret message to enter a community you deserve to be part of. That's the brand.</p>
-    </section>
-
-    <!-- SLIDE 10: CTA -->
-    <section class="light cta">
-        <p class="slide-number">10 — JOIN</p>
-        <h2>If this made your eyes light up — you're one of us.</h2>
-        <div class="cta-items">
-            <div class="cta-item">
-                <h3>Email Julien</h3>
-                <a href="mailto:staycreative@julien.care">staycreative@julien.care</a>
-            </div>
-            <div class="cta-item">
-                <h3>Read the manifesto</h3>
-                <a href="https://github.com/Grassroot-hoppers/grassroothopper/blob/main/movement/SPEC.md">GitHub SPEC →</a>
-            </div>
-            <div class="cta-item">
-                <h3>View on GitHub</h3>
-                <a href="https://github.com/Grassroot-hoppers/grassroothopper">GitHub repo →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="light">
+    <footer>
         <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
     </footer>
 
     <script>
-        // Intersection Observer for scroll-triggered fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.querySelector('.hero').classList.add('visible');
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
+        document.querySelectorAll('section:not(.hero)').forEach(function(section) {
             observer.observe(section);
-        });
-
-        // Smooth scroll handling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
         });
     </script>
 </body>
