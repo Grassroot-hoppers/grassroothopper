@@ -497,66 +497,128 @@
             border-bottom-color: var(--light-accent);
         }
 
-        /* Top nav */
-        .top-nav {
+        /* Demo CTA bar */
+        .demo-cta {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
+            top: 2.2rem;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 0.6rem;
+            align-items: center;
+            gap: 0.7rem;
             z-index: 10;
         }
 
-        .top-nav-label {
+        .demo-cta-label {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--dark-muted);
-            margin-bottom: 0.1rem;
-        }
-
-        .top-nav-buttons {
             display: flex;
-            gap: 0.8rem;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .top-nav a {
+        .demo-cta-label .arrow {
+            display: inline-block;
+            animation: point-down 1.5s ease-in-out infinite;
+        }
+
+        @keyframes point-down {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+        }
+
+        .demo-cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .demo-cta a {
             font-family: var(--sans);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            padding: 0.7rem 1.6rem;
+            padding: 0.8rem 2rem;
             border-radius: 100px;
             background: var(--dark-accent);
             color: var(--dark-bg);
             border: none;
             border-bottom: none;
             text-decoration: none;
-            transition: background 0.2s ease, transform 0.15s ease;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
             letter-spacing: -0.01em;
+            box-shadow: 0 2px 12px rgba(232,168,48,0.25);
         }
 
-        .top-nav a:hover {
+        .demo-cta a:hover {
             background: #f0b840;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(232,168,48,0.4);
+            opacity: 1;
+        }
+
+        /* Bottom demo CTA (inside a section) */
+        .demo-cta-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .demo-cta-bottom .demo-cta-label {
+            color: var(--dark-muted);
+            font-size: 0.75rem;
+        }
+
+        .demo-cta-bottom .demo-cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .demo-cta-bottom a {
+            font-family: var(--sans);
+            font-size: 1.15rem;
+            font-weight: 600;
+            padding: 0.9rem 2.2rem;
+            border-radius: 100px;
+            background: var(--dark-accent);
+            color: var(--dark-bg);
+            border: none;
+            border-bottom: none;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 12px rgba(232,168,48,0.25);
+        }
+
+        .demo-cta-bottom a:hover {
+            background: #f0b840;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(232,168,48,0.4);
             opacity: 1;
         }
 
         @media (max-width: 640px) {
-            .top-nav {
-                top: 1rem;
-                right: 1rem;
+            .demo-cta {
+                top: 1.2rem;
             }
 
-            .top-nav-buttons {
-                gap: 0.5rem;
+            .demo-cta-buttons,
+            .demo-cta-bottom .demo-cta-buttons {
+                flex-direction: column;
+                gap: 0.6rem;
+                align-items: center;
             }
 
-            .top-nav a {
-                font-size: 0.82rem;
-                padding: 0.55rem 1.1rem;
+            .demo-cta a {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.4rem;
+            }
+
+            .demo-cta-bottom a {
+                font-size: 1rem;
+                padding: 0.75rem 1.8rem;
             }
         }
 
@@ -663,9 +725,9 @@
 
     <!-- 01: HERO -->
     <section class="dark hero">
-        <nav class="top-nav">
-            <span class="top-nav-label">Explore the demos</span>
-            <div class="top-nav-buttons">
+        <nav class="demo-cta">
+            <span class="demo-cta-label">Explore the demos <span class="arrow">&darr;</span></span>
+            <div class="demo-cta-buttons">
                 <a href="social-v2.html">Social Network V2</a>
                 <a href="david-retail.html">David Retail</a>
             </div>
@@ -876,6 +938,17 @@
                     <h3>View on GitHub</h3>
                     <a href="https://github.com/Grassroot-hoppers/grassroothopper" class="accent">GitHub repo →</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM DEMO CTA -->
+    <section class="dark" style="min-height: auto; padding: 4rem 2rem;">
+        <div class="demo-cta-bottom">
+            <span class="demo-cta-label">Explore the demos <span class="arrow">&darr;</span></span>
+            <div class="demo-cta-buttons">
+                <a href="social-v2.html">Social Network V2</a>
+                <a href="david-retail.html">David Retail</a>
             </div>
         </div>
     </section>
