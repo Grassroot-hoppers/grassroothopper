@@ -7,41 +7,68 @@ alwaysApply: true
 
 ## What this is
 
-Grassroot Hopper is a cooperative, open-source movement where any community on the planet can set up its own hub. You join through a community you already belong to (dance scene, art collective, dog park), scan a QR code, say a secret password spoken in person, and discover the hidden creative lives of the people you already know.
+Grassroot Hopper is the Transition Towns of digital infrastructure. The core thesis: the technical barrier to building software is collapsing, and regular people will soon be able to contribute to alternatives to the platforms they're stuck on. They'll need a movement to rally under. Grassroot Hopper is that movement.
 
-The founder is Julien, based in Brussels. The legal entity is GPFC srl. The first community is Lindy Hop Brussels.
+Three layers: a **Grassroot Hopper** is a person (someone who blends tech with community life). The **Grassroot Hoppers** are a movement (community builders, city by city). The **products** are what they make (open-source, cooperatively owned tools).
+
+The founder is Julien, based in Brussels. **GPFC srl** is the engine — Julien's open-source software company focused on social and environmental solutions. GPFC powers the movement, builds the first products, and funds early development. Individual cities create their own cooperatives.
+
+Two demos exist so far: a cooperative social network (Social Media V2) launching with the Lindy Hop community in Brussels, and open-source retail tools for independent shop owners (David Retail). Contributors are rewarded with co-op shares, not money.
 
 ## Repo structure
 
 ```
-SPEC.md              — the source of truth (vision, principles, features, strategy)
-ROADMAP.md           — technical & admin timeline, subsidies, legal structure
-STATUS.md            — current project phase and decisions
-CREATOR-SPEECH.md    — the creator pitch (café conversation format)
-LAUNCH-SPEECH.md     — the reader pitch (event speech format)
-website/index.html   — the live pitch deck site (static, no build tools)
-.github/workflows/   — GitHub Pages deployment
+movement/
+├── SPEC.md                      — the manifesto: thesis, identity, strategy, principles, contributor model
+└── resources/                   — research on reference models
+    ├── coopcycle/
+    ├── decidim/
+    ├── fediverse/
+    ├── creative-platforms/
+    └── transition-towns/
+
+products/
+├── social-v2/                   — the community demo
+│   ├── SPEC.md                  — product spec, MVP plan, tech decisions
+│   ├── ROADMAP.md               — timeline, subsidies, legal structure
+│   ├── STATUS.md                — current phase and decisions
+│   ├── CREATOR-SPEECH.md        — creator pitch (café conversation)
+│   ├── LAUNCH-SPEECH.md         — reader pitch (event speech)
+│   └── docs/plans/              — feedback and planning artifacts
+└── david-retail/                — the economic empowerment demo
+    └── SPEC.md                  — product vision, planned tools (concept stage)
+
+website/                         — pitch deck site (movement-level, for Rob Hopkins / CoopCycle / Fediverse audience)
+.github/workflows/               — GitHub Pages deployment
 ```
+
+## Sources of truth
+
+- **Movement identity, thesis, strategy, principles:** `movement/SPEC.md`
+- **Product spec, features, technical decisions:** `products/social-v2/SPEC.md`
+
+Always read the relevant SPEC before making significant changes.
 
 ## Non-negotiable constraints
 
-These are core principles. Never suggest changes that violate them:
+These are core principles of the movement. Never suggest changes that violate them:
 
 - **No comments, no likes, no DMs, no reactions. Ever.** Feedback happens in person.
 - **No payments on the platform.** Business happens between humans.
 - **Community-first entry.** QR code + secret password spoken in person. No browse, no discover page.
 - **Cooperative ownership.** Each city is a cooperative (SC). Members vote by role.
 - **Open source. Aggregate, don't build.** If someone built a great tool, integrate it.
-- **No money flow through the platform.** The cooperative advises on tools but doesn't handle transactions.
+- **Anyone can start one. Anyone can build one.** The technical barrier is gone.
 
 ## Tone of voice
 
 Warm, direct, slightly rebellious. Anti-corporate but not angry. "Your neighbor who has a crazy idea and you believe them." Never corporate jargon, never startup-speak.
 
-## Domains
+## Key context
 
-grassroothopper.com, .org, .eu, .be — all owned.
-
-## Key rule
-
-Always read SPEC.md before making significant changes. It's the source of truth.
+- **GPFC srl** is the permanent engine, not temporary scaffolding
+- **Transition Towns** is the direct blueprint — Rob Hopkins is the first strategic contact
+- **The website** is a movement pitch deck, not a product page
+- **The products are demos**, not the movement itself — each one proves a different face of what a Grassroot Hopper can build
+- **Contributors get co-op shares**, not money — no freelance contracts, no bounties
+- **Domains:** grassroothopper.com, .org, .eu, .be — the net that catches enthusiasts

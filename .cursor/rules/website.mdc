@@ -12,7 +12,10 @@ A single-page static site styled as a story scroll pitch deck. The audience is p
 
 ## Tech stack
 
-Vanilla HTML + CSS + JS. No build tools. No frameworks. No dependencies beyond Google Fonts. The entire site is one `index.html` file deployed to GitHub Pages.
+Vanilla HTML + CSS + JS. No build tools. No frameworks. No dependencies beyond Google Fonts. Three pitch deck pages deployed to GitHub Pages:
+- `index.html` — Movement pitch deck (the main site)
+- `social-v2.html` — Social Media V2 product pitch deck
+- `david-retail.html` — David Retail product pitch deck
 
 ## Design system
 
@@ -36,8 +39,13 @@ Light sections: `--light-bg: #f5f0e6`, `--light-fg: #1a1714`, `--light-accent: #
 ## CTAs
 
 - "Email Julien" → mailto:staycreative@julien.care
-- "View on GitHub" → https://github.com/raclettemeister/grassroothopper
+- "View on GitHub" → https://github.com/Grassroot-hoppers/grassroothopper
 
 ## Deployment
 
 Pushes to `main` auto-deploy `website/` to GitHub Pages via `.github/workflows/pages.yml`.
+
+## Domains
+
+- grassroothopper.com (primary, CNAME target)
+- grassroothopper.org / .eu / .be (redirect to .com)

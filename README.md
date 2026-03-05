@@ -1,72 +1,74 @@
 # Grassroot Hopper
 
-**The promise of social networks — finally delivered.**
+**The Transition Towns of digital infrastructure.**
 
-A cooperative, open-source movement where any community on the planet can set up its own hub. You join through a community you already belong to — your dance scene, your art class, your dog park — scan a QR code, say a secret password spoken in person, and discover the hidden creative lives of the people you already know.
+The technical barrier to building software is collapsing. Within the next few years, anyone who cares enough will be able to contribute to real alternatives to the platforms they're stuck on. They'll be looking for a movement to join. Grassroot Hopper is that movement.
 
-No comments. No likes. No DMs. No algorithm. Feedback happens in real life.
+A **Grassroot Hopper** is a person — someone who blends technology with the actual pleasure of living a full life inside communities. The **Grassroot Hoppers** are a movement of community builders, spreading city by city. The **products** are what they make — open-source tools and cooperative platforms that help communities own their own digital infrastructure.
 
----
-
-## What is a Grassroot Hopper?
-
-**A person.** Someone who blends technology with the actual pleasure of living a full life inside communities.
-
-**A movement.** A community of community builders, spreading city by city across Europe and beyond.
-
-**A set of products.** Open-source tools and cooperative platforms — starting with a social network for local creative communities.
+*"I want to be with those who know secret things or else alone."* — Rainer Maria Rilke
 
 ---
 
-## How it works
+## The Movement
 
-1. **Scan a QR code** at a community event
-2. **Say the secret password** — spoken in person, never written down
-3. **Choose: reader or creator** — readers discover, creators share their work
-4. **See only familiar faces** — every person is someone you already know
-5. **Walk up and say it** — "I love your last pictures." Real words, face to face.
+**[movement/SPEC.md](movement/SPEC.md)** — the full manifesto: the thesis, the identity, the strategy, the principles.
 
-Technically: blogs behind a gate with an event calendar. That's the entire product.
+The short version: Rob Hopkins named "Transition Towns," wrote a handbook, and 1,400+ communities self-organized around local resilience for energy and food. Grassroot Hopper does the same for technology. Your community can own its own tools.
 
----
+Powered by **GPFC srl** — an open-source software company focused on social and environmental solutions, based in Brussels.
 
-## Project structure
+### Research & reference models
 
-```
-SPEC.md                  — source of truth (vision, principles, features, strategy)
-ROADMAP.md               — technical & admin timeline, subsidies, legal structure
-STATUS.md                — current project phase and key decisions
-CREATOR-SPEECH.md        — the creator pitch (café conversation)
-LAUNCH-SPEECH.md         — the reader pitch (event speech)
-website/                 — pitch deck site (static HTML, deployed to GitHub Pages)
-resources/               — research & inspiration from reference projects
-.cursor/rules/           — project context for AI-assisted development
-```
-
-## Reference models
-
-| Project | What we learn |
+| Model | What we learn |
 |---------|--------------|
-| [CoopCycle](resources/coopcycle/) | Federated city-by-city co-op model, Coopyleft license |
-| [Fediverse / Bonfire](resources/fediverse/) | Modular social infrastructure, ActivityPub |
-| [Decidim](resources/decidim/) | Cooperative governance, forkable city software |
-| [Transition Towns](resources/transition-towns/) | Grassroots replication through handbooks |
-| [Creative Platforms](resources/creative-platforms/) | Resonate, Subvert, Ghost, 6AM City |
+| [Transition Towns](movement/resources/transition-towns/) | The direct blueprint — grassroots replication through handbooks |
+| [CoopCycle](movement/resources/coopcycle/) | Federated city-by-city co-op model, Coopyleft license |
+| [Decidim](movement/resources/decidim/) | Cooperative governance, forkable city software |
+| [Fediverse / Bonfire](movement/resources/fediverse/) | Modular social infrastructure, ActivityPub |
+| [Creative Platforms](movement/resources/creative-platforms/) | Resonate, Subvert, Ghost, 6AM City |
+
+---
+
+## Products — The Demos
+
+The Grassroot Hoppers build products. Each one is a demo — proof that the movement creates real, working things. Contributors aren't paid — they're rewarded with co-op shares in what they build, portfolio credit, and a network across Europe.
+
+### Social Media V2 — *the community demo*
+
+A cooperative, ultra-local social network. Join through a community you already belong to — scan a QR code, say a secret password spoken in person, discover the hidden creative lives of the people you already know. No comments, no likes, no DMs. Feedback happens in real life.
+
+**[products/social-v2/SPEC.md](products/social-v2/SPEC.md)** — product spec, MVP plan, technical decisions
+
+Also in `products/social-v2/`: [ROADMAP](products/social-v2/ROADMAP.md) · [STATUS](products/social-v2/STATUS.md) · [Creator Speech](products/social-v2/CREATOR-SPEECH.md) · [Launch Speech](products/social-v2/LAUNCH-SPEECH.md)
+
+### David Retail — *the economic empowerment demo*
+
+Open-source prediction, inventory, and point-of-sale tools for independent shop owners. The same edge that big distribution chains have — but free, cooperative, and owned by the people who use it. David vs. Goliath.
+
+**[products/david-retail/SPEC.md](products/david-retail/SPEC.md)** — product vision, planned tools, open questions
+
+---
+
+## The Net
+
+**grassroothopper.com** · **grassroothopper.org** · **grassroothopper.eu** · **grassroothopper.be**
+
+The domains catch everyone looking for this — at a talk, in a Matrix chat, from a friend, from an LLM search result. The website is a pitch deck for the movement, not a product page for end users.
 
 ## Where we are
 
-Launching with the **Lindy Hop community in Brussels** — a tight group of dancers who are also painters, singers, poets, and photographers. Building the community before building the technology.
-
-**Domains:** grassroothopper.com · grassroothopper.org · grassroothopper.eu · grassroothopper.be
+March 2026. Vision defined. No code yet. No users yet. Building the pitch, having conversations with creatives in Brussels, and connecting with adjacent open-source projects. The first strategic move: reach Rob Hopkins.
 
 ## Get involved
 
 If this made your eyes light up — you're one of us.
 
 - **Humans:** [staycreative@julien.care](mailto:staycreative@julien.care)
-- **Devs:** Open an issue or read the [SPEC](SPEC.md)
+- **Devs:** Open an issue or read a [product spec](products/social-v2/SPEC.md)
+- **Website:** [grassroothopper.com](https://grassroothopper.com)
 
 ---
 
-*A movement by [Julien](https://julien.care) · GPFC srl · Brussels, 2026*
+*Powered by [GPFC srl](https://julien.care) · Brussels, 2026*
 *Good people, for good people.*

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flywheel — The Co-op Cycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --light-bg: #f5f0e6;
+    --light-fg: #1a1714;
+    --light-muted: #8a8279;
+    --light-accent: #b8432a;
+    --dark-accent: #e8a830;
+    --teal: #3a9e8f;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--light-bg);
+    color: var(--light-fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem 4rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 72;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .accent { color: var(--light-accent); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--light-muted);
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.65;
+  }
+
+  /* ==== THE CYCLE — simple, clear, static ==== */
+  .cycle {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* Each step in the cycle */
+  .step {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  /* Left rail: number + connecting line */
+  .step-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .step-num.red {
+    background: var(--light-accent);
+    color: #fff;
+  }
+  .step-num.amber {
+    background: var(--dark-accent);
+    color: var(--light-fg);
+  }
+  .step-num.teal {
+    background: var(--teal);
+    color: #fff;
+  }
+
+  .step-line {
+    flex: 1;
+    width: 2px;
+    background: rgba(26,23,20,0.08);
+  }
+
+  /* Right: content */
+  .step-body {
+    padding: 0.3rem 0 2rem 1rem;
+    flex: 1;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+  }
+
+  .step-text {
+    font-size: 0.88rem;
+    color: var(--light-muted);
+    line-height: 1.6;
+  }
+
+  .step-text strong {
+    color: var(--light-fg);
+    font-weight: 500;
+  }
+
+  /* The "loop back" arrow at the bottom */
+  .loop-back {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: -0.5rem;
+    padding: 1rem 0 0 0;
+  }
+
+  .loop-arrow {
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .loop-arrow svg {
+    width: 28px;
+    height: 28px;
+    color: var(--light-accent);
+    opacity: 0.4;
+  }
+
+  .loop-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--light-muted);
+    font-style: italic;
+  }
+
+  /* ==== MEMBER CLASSES — simple horizontal ==== */
+  .classes-section {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto 2.5rem;
+  }
+
+  .classes-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    margin-bottom: 1.2rem;
+  }
+
+  .class-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(26,23,20,0.05);
+  }
+
+  .class-row:last-child { border-bottom: none; }
+
+  .class-bar {
+    height: 6px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+
+  .class-bar.creators { width: 120px; background: var(--light-accent); }
+  .class-bar.planners { width: 90px; background: var(--dark-accent); }
+  .class-bar.readers { width: 60px; background: var(--teal); }
+  .class-bar.devs { width: 30px; background: var(--light-muted); }
+
+  .class-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .class-name {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variation-settings: "opsz" 48;
+    white-space: nowrap;
+  }
+
+  .class-name.red { color: var(--light-accent); }
+  .class-name.amber { color: #b8860b; }
+  .class-name.teal { color: var(--teal); }
+  .class-name.gray { color: var(--light-muted); }
+
+  .class-meta {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--light-muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ==== THE SENTENCE ==== */
+  .sentence {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1.8rem;
+    border-radius: 14px;
+    background: rgba(184,67,42,0.04);
+    border: 1.5px solid rgba(184,67,42,0.12);
+  }
+
+  .sentence blockquote {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+    color: var(--light-fg);
+    text-align: center;
+  }
+
+  .sentence .sentence-sub {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--light-muted);
+    margin-top: 0.8rem;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  .tag-row { text-align: center; }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid rgba(26,23,20,0.1);
+    color: var(--light-muted);
+    margin-top: 2.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 640px) {
+    .step-rail { width: 44px; }
+    .step-num { width: 30px; height: 30px; font-size: 0.68rem; }
+    .step-body { padding-left: 0.7rem; }
+    .loop-arrow { width: 44px; }
+    .class-bar.creators { width: 80px; }
+    .class-bar.planners { width: 60px; }
+    .class-bar.readers { width: 40px; }
+    .class-bar.devs { width: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-num">FLYWHEEL 05</div>
+<h2>The <span class="accent">co-op</span> cycle.</h2>
+<p class="subtitle">You're not a user. You're a co-owner. The cooperative funds itself, governs itself, and improves itself. No investors. No ads. Just members.</p>
+
+<!-- ==== THE CYCLE ==== -->
+<div class="cycle">
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num red">1</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">Members join through their communities.</div>
+      <div class="step-text">Scan a QR code, say the password. Choose reader or creator. You're in &mdash; and you're a co-owner. Your name goes on the cooperative register.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num red">2</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">Creators pay &euro;5/month. Readers are free.</div>
+      <div class="step-text">200 creators = &euro;1,000/month. That covers hosting, domains, and dev bounties. <strong>The co-op is self-funding from day one</strong> if the community is real. No ads needed. No investors needed.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num amber">3</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">Members vote. Weighted by role.</div>
+      <div class="step-text">Creators, event planners, readers, devs &mdash; each class votes with different weight. Decisions are made through open-source governance tools. Not a board room. A cooperative.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num amber">4</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">The co-op improves the platform.</div>
+      <div class="step-text">Members decide what gets built, what gets integrated, what gets changed. Bounties are posted for developers. The platform gets better because the people who use it are the people who own it.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num teal">5</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">Better platform attracts more communities.</div>
+      <div class="step-text">Word spreads. More communities want in. More members means more revenue, more voices, better decisions. <strong>The cycle continues.</strong></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-rail">
+      <div class="step-num teal">6</div>
+      <div class="step-line"></div>
+    </div>
+    <div class="step-body">
+      <div class="step-title">Every improvement benefits every member.</div>
+      <div class="step-text">Because you co-own it, every feature built, every community added, every tool integrated &mdash; it all comes back to you. You share in the value. That's not a marketing line. It's a legal fact.</div>
+    </div>
+  </div>
+
+  <!-- Loop-back indicator -->
+  <div class="loop-back">
+    <div class="loop-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="1 4 1 10 7 10"></polyline>
+        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+      </svg>
+    </div>
+    <div class="loop-text">the cycle repeats &mdash; stronger each time</div>
+  </div>
+
+</div>
+
+<!-- ==== MEMBER CLASSES ==== -->
+<div class="classes-section">
+  <div class="classes-title">Voting power by class</div>
+
+  <div class="class-row">
+    <div class="class-bar creators"></div>
+    <div class="class-info">
+      <span class="class-name red">Creators</span>
+      <span class="class-meta">~40% &middot; &euro;5/mo &middot; the heart of the platform</span>
+    </div>
+  </div>
+
+  <div class="class-row">
+    <div class="class-bar planners"></div>
+    <div class="class-info">
+      <span class="class-name amber">Event Planners</span>
+      <span class="class-meta">~30% &middot; scaled fee &middot; they bring the gravity</span>
+    </div>
+  </div>
+
+  <div class="class-row">
+    <div class="class-bar readers"></div>
+    <div class="class-info">
+      <span class="class-name teal">Readers</span>
+      <span class="class-meta">~20% &middot; free &middot; the audience every creator needs</span>
+    </div>
+  </div>
+
+  <div class="class-row">
+    <div class="class-bar devs"></div>
+    <div class="class-info">
+      <span class="class-name gray">Devs</span>
+      <span class="class-meta">~10% &middot; free &middot; their contribution is the code</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==== THE SENTENCE ==== -->
+<div class="sentence">
+  <blockquote>"I'm a co-owner of the social network I use."</blockquote>
+  <div class="sentence-sub">That sentence doesn't exist anywhere else. It's a legal fact. Your name is on the register. You vote. You share in the value. CoopCycle proved this model works for delivery. This is the same model for creative communities.</div>
+</div>
+
+<div class="tag-row">
+  <span class="tag">Model: CoopCycle &middot; Coopyleft license &middot; soci&eacute;t&eacute; coop&eacute;rative</span>
+</div>
+
+</body>
+</html>

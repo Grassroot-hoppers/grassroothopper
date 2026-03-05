@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Retail — Grassroot Hopper</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark sections */
+            --dark-bg: #0f0e0c;
+            --dark-fg: #f5f0e6;
+            --dark-accent: #e8a830;
+            --dark-muted: #7a756c;
+
+            /* Light sections */
+            --light-bg: #f5f0e6;
+            --light-fg: #1a1714;
+            --light-accent: #b8432a;
+            --light-muted: #8a8279;
+
+            /* Accent */
+            --teal: #3a9e8f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            background: var(--dark-bg);
+            color: var(--dark-fg);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            font-variation-settings: "opsz" 72;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-weight: 400;
+            font-variation-settings: "opsz" 48;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: clamp(1rem, 1.2vw, 1.25rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* Section layout */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+        }
+
+        section.dark {
+            background: var(--dark-bg);
+            color: var(--dark-fg);
+        }
+
+        section.light {
+            background: var(--light-bg);
+            color: var(--light-fg);
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Slide number */
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.75rem, 1vw, 1rem);
+            margin-bottom: 3rem;
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+
+        section.dark .slide-number {
+            color: var(--dark-muted);
+        }
+
+        section.light .slide-number {
+            color: var(--light-muted);
+        }
+
+        /* Hero slide */
+        #hero {
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            font-variation-settings: "opsz" 48;
+            color: var(--dark-accent);
+            margin-bottom: 2rem;
+        }
+
+        .meta {
+            font-size: clamp(0.9rem, 1vw, 1.1rem);
+            color: var(--dark-muted);
+            margin-bottom: 3rem;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--dark-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dark-fg);
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--dark-muted);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-0.5rem); }
+        }
+
+        /* Problem & idea slides */
+        .slide-header {
+            margin-bottom: 3rem;
+        }
+
+        section.light .slide-header {
+            border-top: 3px solid var(--light-accent);
+            padding-top: 2rem;
+        }
+
+        section.dark .slide-header {
+            border-top: 3px solid var(--dark-accent);
+            padding-top: 2rem;
+        }
+
+        h2 {
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            padding: 2rem;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section.light .card {
+            background: rgba(27, 23, 20, 0.05);
+            border-left: 4px solid var(--light-accent);
+        }
+
+        section.dark .card {
+            background: rgba(245, 240, 230, 0.05);
+            border-left: 4px solid var(--dark-accent);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
+            font-weight: 400;
+            font-variation-settings: "opsz" 36;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        section.light .card h3 {
+            color: var(--light-accent);
+        }
+
+        section.dark .card h3 {
+            color: var(--dark-accent);
+        }
+
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Items */
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .item {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .item-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+            font-weight: 500;
+            font-variation-settings: "opsz" 36;
+            margin-bottom: 1rem;
+        }
+
+        section.light .item-title {
+            color: var(--light-accent);
+        }
+
+        section.dark .item-title {
+            color: var(--dark-accent);
+        }
+
+        .item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* CTA Slide */
+        .cta-container {
+            text-align: center;
+        }
+
+        .cta-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 2px solid;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+
+        section.light .cta-button {
+            border-color: var(--light-accent);
+            color: var(--light-accent);
+        }
+
+        section.light .cta-button:hover {
+            background: var(--light-accent);
+            color: var(--light-bg);
+        }
+
+        section.dark .cta-button {
+            border-color: var(--dark-accent);
+            color: var(--dark-accent);
+        }
+
+        section.dark .cta-button:hover {
+            background: var(--dark-accent);
+            color: var(--dark-bg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--dark-muted);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer .mono {
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .back-link {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cards, .items, .cta-links {
+                grid-template-columns: 1fr;
+            }
+
+            .card, .item {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Accent underlines */
+        .accent {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 0.2em;
+        }
+
+        section.light .accent {
+            text-decoration-color: var(--light-accent);
+        }
+
+        section.dark .accent {
+            text-decoration-color: var(--dark-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 01: HERO -->
+    <section id="hero" class="dark">
+        <a href="../index.html" class="back-link">← Back to Grassroot Hopper</a>
+
+        <div class="container hero-content">
+            <h1>David Retail</h1>
+            <div class="tagline">The tools to fight the Goliaths.</div>
+            <div class="meta">A Grassroot Hopper demo · Open source · Free</div>
+        </div>
+
+        <div class="scroll-cue">↓ Scroll to explore</div>
+    </section>
+
+    <!-- SLIDE 02: THE PROBLEM -->
+    <section class="light">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">02 — THE PROBLEM</div>
+                <h2>Your local bakery is flying blind.</h2>
+            </div>
+
+            <p>Carrefour has data teams. Colruyt has prediction algorithms. Amazon has inventory AI. Your neighborhood cheese shop, your local florist, your independent bookstore? They have a notebook and a gut feeling. The tools that big distribution uses to crush small shops don't exist for small shops. <span class="accent">Until now.</span></p>
+        </div>
+    </section>
+
+    <!-- SLIDE 03: THE IDEA -->
+    <section class="dark">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">03 — DAVID VS. GOLIATH</div>
+                <h2>The same edge. <span class="accent">Free. Cooperative. Yours.</span></h2>
+            </div>
+
+            <p>Open-source prediction, inventory, and point-of-sale tools — built by shop owners, developers, and anyone who wants their local bakery to survive. Not a SaaS subscription. Not a vendor lock-in. Tools you own, tools you control, tools the whole community maintains.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 04: THE TOOLS -->
+    <section class="light">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">04 — THE TOOLKIT</div>
+                <h2>Three tools. One mission.</h2>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Prediction</h3>
+                    <p>Demand forecasting, trend detection, seasonal planning. The stuff Carrefour's data teams do — accessible to a shop with one employee.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Inventory</h3>
+                    <p>Stock tracking, supplier management, waste reduction. Simple, visual, designed for people who think in products, not spreadsheets.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Point of Sale</h3>
+                    <p>A cooperative, open-source cash register system. No monthly SaaS fees. No vendor lock-in. Owned by the people who use it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 05: WHO BUILDS THIS -->
+    <section class="dark">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">05 — BUILT BY YOU</div>
+                <h2><span class="accent">Anyone who cares.</span></h2>
+            </div>
+
+            <p>Small shop owners who know exactly what they need. Developers who want their local bakery to survive. Designers who want enterprise-grade tools accessible to non-technical people. No one gets paid. Everyone gets ownership. Contributors receive co-op shares in David Retail.</p>
+
+            <div class="items">
+                <div class="item">
+                    <div class="item-title">Co-op shares</div>
+                    <p>You build it, you own a piece of it</p>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Portfolio</div>
+                    <p>Real tools used by real shops, in your name</p>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Impact</div>
+                    <p>Every independent shop that survives is a win</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 06: BORN FROM EXPERIENCE -->
+    <section class="light">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">06 — FROM THE COUNTER</div>
+                <h2>Built by a shop owner. <span class="accent">For shop owners.</span></h2>
+            </div>
+
+            <p>Julien runs Chez Julien — a specialty food shop in Brussels. He's not building this from a tech office. He's building it from behind the counter. He knows what's missing because he lives it every day. The features aren't imagined — they're needed.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 07: THE VISION -->
+    <section class="dark">
+        <div class="container">
+            <div class="slide-header">
+                <div class="slide-number mono">07 — ALL OF EUROPE</div>
+                <h2>Free tools for <span class="accent">every independent shop on the continent.</span></h2>
+            </div>
+
+            <p>Every bakery in Belgium. Every bookstore in France. Every florist in Germany. Every cheese shop in Italy. Open-source, free to use, cooperatively maintained. The big chains have their tools. Now the small shops have theirs.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 08: CTA -->
+    <section class="light">
+        <div class="container cta-container">
+            <div class="slide-header" style="text-align: center; border: none; padding-top: 0;">
+                <h2>Are you a shop owner? A developer? Someone who cares?</h2>
+            </div>
+
+            <div class="cta-links">
+                <a href="mailto:staycreative@julien.care" class="cta-button">Email Julien</a>
+                <a href="https://github.com/Grassroot-hoppers/grassroothopper/blob/main/products/david-retail/SPEC.md" class="cta-button">Read the spec</a>
+                <a href="../index.html" class="cta-button">Back to the movement</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="mono">A Grassroot Hopper demo · Powered by GPFC srl · Brussels, 2026</div>
+        <div>David vs. Goliath.</div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll-triggered fade-in
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add visible class to first section immediately
+        document.querySelector('section').classList.add('visible');
+    </script>
+</body>
+</html>

@@ -13,10 +13,10 @@ A cooperative, ultra-local platform connecting Brussels' creative people — art
 
 ## Where this lives
 
-- Vision essay: `Projects/Blog/blog-essay-draft.md`
-- Research & spec: `Projects/Blog/blog-essay-draft-SPEC.md`
-- Perplexity research results: `Projects/Blog/perplexity-research-results.md`
-- Perplexity prompt (vision deep-dive): `Projects/Grassroot Hopper/perplexity-prompt-vision-research.md`
+- Movement SPEC (identity, principles, strategy): `movement/SPEC.md`
+- Product SPEC (features, MVP, technical decisions): `products/social-v2/SPEC.md`
+- Research & reference models: `movement/resources/`
+- Perplexity prompt (vision deep-dive): `movement/resources/perplexity-prompt-vision-research.md`
 
 ## Current phase
 

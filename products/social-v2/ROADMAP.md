@@ -4,9 +4,9 @@
 
 ---
 
-## The Strategy: GPFC builds it, the cooperative owns it
+## The Strategy: GPFC is the engine, the cooperative is the destination
 
-GPFC srl (BE0545849385) is the development vehicle. It already exists, has revenue, has access to Brussels exemplarité labels, and can hire people. GPFC builds the platform with a small technical team. When the platform is ready and the community is validated, it spins off into its own SC (société coopérative), owned by the members.
+GPFC srl (BE0545849385) is the engine. It already exists, has revenue, has access to Brussels exemplarité labels, and can mobilize resources. GPFC builds the platform with contributors who own shares in what they build. When the platform is ready and the community is validated, it spins off into its own SC (société coopérative), owned by the members.
 
 **Why this is smart:**
 - No new legal entity needed to start building
@@ -124,56 +124,57 @@ All of these are available to GPFC srl as a Brussels-based SME. With exemplarit�
 - [ ] Register at hub.brussels for subsidy guidance
 - [ ] Research Innoviris PYSI call deadlines (usually 1-2 calls per year)
 
-### Phase 2 — First Bounties (June–September 2026)
+### Phase 2 — First Contributors (June–September 2026)
 
-**Goal:** Ship the MVP newsletter platform using bounties. No employees.
+**Goal:** Ship the MVP newsletter platform with builders who own shares in what they create. No employees.
 
-**The model:** Julien writes the specs. Freelancers build the components. AI (Claude Opus) accelerates their work. GPFC pays per deliverable, not per hour of employment.
+**The model:** Julien writes the specs. Contributors build the components. AI (Claude Opus) accelerates their work. Contributors receive co-op shares for their contributions — ownership stake, governance rights, and a share of future value.
 
 **How it works:**
-1. Break the MVP into small, well-defined bounties (e.g., "Ghost multi-author newsletter setup," "reader discovery page," "cross-reference system between newsletters")
-2. Post bounties on Upwork, Algora, or direct outreach in cooperative tech communities
-3. 15-minute alignment call with each developer before they start
-4. Developer builds using AI tools, delivers, Julien reviews
-5. Accept → pay. Reject → iterate or move on. No HR, no contracts, no ONSS.
+1. Break the MVP into well-defined contributions (e.g., "Ghost multi-author newsletter setup," "reader discovery page," "cross-reference system between newsletters")
+2. Reach out directly to builders in cooperative tech communities (CoopCycle, Decidim, Bonfire, BeCode alumni)
+3. 15-minute alignment call with each contributor to clarify scope and share allocation
+4. Contributor builds using AI tools, delivers, Julien reviews
+5. Accept → grant co-op shares. Reject → iterate or move on. No contracts, no ONSS, no freelance middlemen.
 
-**Platforms:**
-- **Upwork** — fastest way to find developers. Escrow protection.
-- **Algora** — bounty platform for open-source GitHub issues. Mission-aligned developers.
-- **Direct outreach** — CoopCycle/Decidim dev communities, BeCode alumni networks
+**Platforms for recruitment:**
+- **GitHub** — open-source visibility. "Own part of what you build."
+- **CoopCycle/Decidim communities** — mission-aligned builders
+- **BeCode alumni networks** — Brussels-based, socially motivated developers
+- **Direct outreach** — ask existing community for referrals
 
-**Budget estimate:** €500-2,000/month during active development. Scales to zero when nothing is being built. Compare to €3-5K/month minimum for one junior employee.
+**Budget estimate:** €0 in developer costs. GPFC covers hosting and domains. Contributors are compensated with co-op shares.
 
 **What gets built (June–December 2026):**
-- Bounty 1: Ghost instance configured for multi-author local newsletter network
-- Bounty 2: Reader-facing discovery page (browse newsletters, subscribe, see cross-references)
-- Bounty 3: Writer onboarding flow (easy publishing, profile setup)
-- Bounty 4: Cross-reference system (when writer A mentions something writer B covered, they're linked)
-- Bounty 5: Basic email delivery and subscriber management
+- Contribution 1: Ghost instance configured for multi-author local newsletter network
+- Contribution 2: Reader-facing discovery page (browse newsletters, subscribe, see cross-references)
+- Contribution 3: Writer onboarding flow (easy publishing, profile setup)
+- Contribution 4: Cross-reference system (when writer A mentions something writer B covered, they're linked)
+- Contribution 5: Basic email delivery and subscriber management
 
-**Subsidies still apply:** Prime Digitalisation covers up to 70% of external development costs (consultancy/freelance). Max €10,000/year. These bounties qualify.
+**Share allocation:** Each contribution's share is sized based on complexity and impact. Contributors vote on governance from day one.
 
 ### Phase 3 — Innoviris Application + Expansion (September 2026–March 2027)
 
-**Goal:** Apply for Innoviris PYSI. Scale the bounty pipeline.
+**Goal:** Apply for Innoviris PYSI. Scale the contributor pipeline.
 
 **The Innoviris PYSI application** is your biggest lever. €100,000 at up to 100% funding. The application should describe:
 - The social innovation: a cooperative, ultra-local creative community platform
 - The validation plan: Brussels pilot with X newsletter writers and Y readers
 - The technology: open-source platform, AI-assisted distribution and discovery
 - The cooperative model: democratic governance, member ownership
-- The build model: spec-driven bounties, global talent, AI-accelerated development
+- The build model: spec-driven contributions, global talent, co-op share equity, AI-accelerated development
 
 CoopCity can help you write this application. They're an Innoviris partner.
 
-**With PYSI funding, the bounty pipeline accelerates:**
+**With PYSI funding, the contributor pipeline accelerates:**
 - Artist portfolio system
 - Friend-of-friend discovery
 - Event organizer tools
 - Mobile PWA
-- All built via bounties, not employees
+- All built by contributors who own shares in what they create
 
-**The one role that might need a person (not a developer):** A community builder — someone in Brussels who goes to galleries, talks to artists, finds newsletter writers. This is the 70% human work. Could be a freelance mission, a Stage First internship, or even Julien himself in the early days.
+**The one role that might need a person (not a developer):** A community builder — someone in Brussels who goes to galleries, talks to artists, finds newsletter writers. This is the 70% human work. Could be a Stage First internship, a co-op contributor share, or Julien himself in the early days.
 
 ### Phase 4 — Platform Live + Spin-Off Preparation (2027)
 

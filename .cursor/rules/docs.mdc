@@ -6,20 +6,28 @@ alwaysApply: false
 
 # Documentation Rules
 
-## Source of truth
+## Sources of truth
 
-SPEC.md is the canonical document. All other docs derive from it. If there's a conflict, SPEC.md wins.
+Two SPECs, two scopes:
+
+- **`movement/SPEC.md`** — canonical for the movement identity, principles, strategy, and tone. If there's a conflict about what Grassroot Hopper *is*, this document wins.
+- **`products/social-v2/SPEC.md`** — canonical for the social network product: features, technical decisions, MVP plan, cooperative structure. If there's a conflict about what the product does, this document wins.
 
 ## Editing principles
 
 - These are living documents — updates are expected and welcome.
 - Never change the core principles (no comments/likes/DMs, cooperative ownership, community-first entry) without explicit user approval.
 - Keep the tone: warm, direct, slightly rebellious. Not corporate, not startup.
-- Speeches (CREATOR-SPEECH.md, LAUNCH-SPEECH.md) are written to be spoken aloud. Keep them conversational.
+- Speeches (products/social-v2/CREATOR-SPEECH.md, LAUNCH-SPEECH.md) are written to be spoken aloud. Keep them conversational.
 
 ## Structure
 
-- SPEC.md — vision, identity, features, strategy, open questions
-- ROADMAP.md — timelines, subsidies, legal, admin
-- STATUS.md — current phase, decisions made, action plan
-- Speeches — pitch materials for live delivery
+Movement level:
+- `movement/SPEC.md` — identity, principles, strategy, reference models
+- `movement/resources/` — research on reference projects
+
+Product level (social-v2):
+- `products/social-v2/SPEC.md` — product vision, features, technical decisions
+- `products/social-v2/ROADMAP.md` — timelines, subsidies, legal, admin
+- `products/social-v2/STATUS.md` — current phase, decisions made, action plan
+- `products/social-v2/CREATOR-SPEECH.md` and `LAUNCH-SPEECH.md` — pitch materials
