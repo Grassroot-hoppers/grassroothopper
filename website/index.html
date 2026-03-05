@@ -503,38 +503,60 @@
             top: 2rem;
             right: 2rem;
             display: flex;
-            gap: 0.8rem;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.6rem;
             z-index: 10;
+        }
+
+        .top-nav-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--dark-muted);
+            margin-bottom: 0.1rem;
+        }
+
+        .top-nav-buttons {
+            display: flex;
+            gap: 0.8rem;
         }
 
         .top-nav a {
             font-family: var(--sans);
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 600;
-            padding: 0.55rem 1.3rem;
+            padding: 0.7rem 1.6rem;
             border-radius: 100px;
             background: var(--dark-accent);
             color: var(--dark-bg);
             border: none;
             border-bottom: none;
             text-decoration: none;
-            transition: opacity 0.2s ease;
+            transition: background 0.2s ease, transform 0.15s ease;
+            letter-spacing: -0.01em;
         }
 
         .top-nav a:hover {
-            opacity: 0.8;
+            background: #f0b840;
+            transform: translateY(-1px);
+            opacity: 1;
         }
 
         @media (max-width: 640px) {
             .top-nav {
                 top: 1rem;
                 right: 1rem;
+            }
+
+            .top-nav-buttons {
                 gap: 0.5rem;
             }
 
             .top-nav a {
-                font-size: 0.75rem;
-                padding: 0.45rem 1rem;
+                font-size: 0.82rem;
+                padding: 0.55rem 1.1rem;
             }
         }
 
@@ -642,8 +664,11 @@
     <!-- 01: HERO -->
     <section class="dark hero">
         <nav class="top-nav">
-            <a href="social-v2.html">Social Network V2</a>
-            <a href="david-retail.html">David Retail</a>
+            <span class="top-nav-label">Explore the demos</span>
+            <div class="top-nav-buttons">
+                <a href="social-v2.html">Social Network V2</a>
+                <a href="david-retail.html">David Retail</a>
+            </div>
         </nav>
         <h1>Grassroot<br>Hoppers</h1>
         <p class="tagline">Rob Hopkins' transition movement, but for open-source software.</p>
