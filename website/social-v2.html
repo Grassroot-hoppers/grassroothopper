@@ -1160,6 +1160,14 @@
     .fo-bar.planners { width: 60px; }
     .fo-bar.readers { width: 40px; }
     .fo-bar.devs { width: 20px; }
+    /* Stack bar above name+meta so text doesn't get clipped */
+    .fo-class-row { flex-wrap: wrap; gap: 0.4rem 0.8rem; }
+    .fo-class-info { flex-direction: column; gap: 0.1rem; align-items: flex-start; }
+    .fo-class-meta { font-size: 0.62rem; white-space: normal; }
+    /* Calendar entries: tighten icon and reduce entry padding */
+    .fg-entry { padding: 0.55rem 0.65rem; gap: 0.6rem; }
+    .fg-entry-icon { width: 26px; height: 26px; font-size: 0.8rem; }
+    .fg-entry-title { font-size: 0.8rem; }
     .fr-journey::before { left: 18px; }
     .fr-stage { padding-left: 52px; }
     .fr-marker { left: 2px; width: 30px; height: 30px; font-size: 0.85rem; }
