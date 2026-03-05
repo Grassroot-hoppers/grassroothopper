@@ -253,6 +253,30 @@ This creates the most powerful viral loop imaginable: *"Dude, you're not on Gras
 
 ---
 
+## The Socializing Effect
+
+**This app will make you more social.** Not by connecting you to strangers — by showing you who the people you already know really are.
+
+When a community is small enough, seeing an event or a blog post from someone you know feels like a personal invitation. You don't have to be tagged. You don't have to be DMed. You just see it on your calendar — and you show up. For shy people, that's everything: no ice to break, no awkward "are you going?" conversation, just a natural pull. For newcomers in a new city, it's a socializing accelerator: within weeks, they're surrounded by people and have a hundred things to talk about.
+
+The app gives you ammunition for connection: things to say, reasons to walk up to someone, permission to explore parts of yourself you were afraid to try. It doesn't replace the human moment — it makes the human moment inevitable.
+
+**Arnaud — the shy one.** Electrical engineer. Has a girlfriend he met on a dating app. A few friends from university. Likes cycling and running. Recently made the biggest effort of his life: joining a running club. It's been months. He likes running with people. He feels more connected. But he never speaks to anyone. He believes he has nothing interesting to say. *They're all so cool.*
+
+One day, someone in the running club creates a community on the app. Everyone signs up — because that's where all the events will be. This same person writes a newsletter about the best running races in Brussels and across Europe. Arnaud signs up for the events and the newsletter. But then he starts scrolling. And he discovers who these people are — the ones he's been running next to in silence. One paints. One photographs. One organizes film screenings.
+
+Now he has things to say. At the next run, he walks up to someone: "I saw your paintings on the app. They're incredible." The ice was never really there — he just needed a reason to speak. Months later, Arnaud has real friends. And he's finally made the jump he never dared: he started painting. Art was a foreign concept in his family, in his friend circle. But now he's surrounded by people who do it. It feels normal. He starts.
+
+The app didn't just connect him to others. It connected him to a part of himself he was afraid to explore.
+
+**Valentina — the newcomer.** From South America. Just moved to Brussels. Loves biking, plays soccer, dances salsa. She goes to a salsa night, has a great time. Someone says: "You should be on the app." She goes home, creates an account — and can't stop scrolling. All these people she was dancing with tonight — a painter, a photographer, someone who organizes jazz nights. She had no idea.
+
+She spots a guy who looks like he's in a soccer team. She needs to ask him about it at the next salsa class — which is tomorrow, because the app has every event. She still has to earn those phone numbers the organic way. Dance a little more. Show up a few more times. It's not instant connection.
+
+But now she has so many things to say. So many reasons to walk up to someone. Three weeks in a new city — already surrounded by people. The app didn't connect her. It gave her reasons to connect herself.
+
+---
+
 ## The Speeches
 
 Two pitch formats exist for this product:
