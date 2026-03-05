@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grassroot Hopper — Social Network V2</title>
+<title>Grassroot Hoppers — Social Network V2</title>
 <meta name="description" content="An open idea for the social network we actually want. Open source. Community-owned. Looking for its first builders.">
-<meta property="og:title" content="Grassroot Hopper — Social Network V2">
+<meta property="og:title" content="Grassroot Hoppers — Social Network V2">
 <meta property="og:description" content="An open idea for the social network we actually want. Not a product launch — an invitation to dream it, challenge it, and build it together.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grassroothopper.com">
@@ -98,6 +98,19 @@
   .light .sub.strong { color: var(--light-fg); }
 
   /* ---------- HERO ---------- */
+  .back-link {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--dark-accent);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  .back-link:hover { opacity: 0.7; }
+
   .hero-wrap {
     text-align: center;
     display: flex;
@@ -1122,6 +1135,7 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 640px) {
+    .back-link { top: 1rem; left: 1rem; font-size: 0.85rem; }
     .slide { padding: 3.5rem 1.5rem; }
     .comm-step { flex-direction: column; gap: 0.3rem; }
     .comm-icon { font-size: 1.4rem; }
@@ -1158,6 +1172,7 @@
 
 <!-- HERO -->
 <section class="slide dark">
+  <a href="index.html" class="back-link">&#8592; Grassroot Hoppers</a>
   <div class="hero-wrap">
     <p class="hero-meta">Grassroot Hoppers present</p>
     <h1>Social<br>Network V2</h1>
@@ -1494,7 +1509,7 @@
       </div>
       <div class="fs-chain-step stagger">
         <div class="fs-chain-arrow">&#8594;</div>
-        <div class="fs-chain-text"><strong>Simple enough that a bounty developer can build a feature in a weekend.</strong> Simple enough that any city can run it. Simple enough that it's sustainable on &euro;5/month creator fees.</div>
+        <div class="fs-chain-text"><strong>Simple enough that a contributor can build a feature in a weekend.</strong> Simple enough that any city can run it. Simple enough that it's sustainable on &euro;5/month creator fees.</div>
       </div>
     </div>
 
@@ -1629,6 +1644,7 @@
       </div>
     </div>
 
+    <p class="sub" style="text-align:center;margin:2rem auto 0;font-style:italic;opacity:0.7;max-width:480px;">What it could look like — three possible scenarios.</p>
     <div class="fr-cities">
       <div class="fr-city stagger">
         <div class="fr-city-top"><div class="fr-city-flag">&#127463;&#127466;</div><div class="fr-city-name">Brussels</div></div>
@@ -1693,13 +1709,13 @@
     <p class="sub strong" style="margin:1.5rem auto 0;text-align:center;">This is not a finished product. It's a dream that needs builders, skeptics, and people who care about what social networks could have been.</p>
     <div class="cta-row">
       <a href="mailto:staycreative@julien.care" class="btn btn-fill">Become a Grassroot Hopper</a>
-      <a href="https://github.com/raclettemeister/grassroothopper" class="btn btn-outline">Fork the idea on GitHub</a>
+      <a href="https://github.com/Grassroot-hoppers/grassroothopper" class="btn btn-outline">Fork the idea on GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Grassroot Hopper &middot; Brussels, 2026 &middot; <a href="https://grassroothopper.com">grassroothopper.com</a></p>
+  <p>Grassroot Hoppers &middot; Brussels, 2026 &middot; <a href="https://grassroothopper.com">grassroothopper.com</a></p>
   <p style="margin-top:0.4rem;">A movement by <a href="https://julien.care">Julien</a> &middot; GPFC srl &middot; Good people, for good people.</p>
 </footer>
 
