@@ -1,74 +1,63 @@
-# Grassroot Hopper
+# Grassroot Hoppers
 
-**The Transition Towns of digital infrastructure.**
+Grassroot Hoppers is the movement shell: the public website, manifesto, product strategy, and companion artifacts that explain the operating model behind the products.
 
-The technical barrier to building software is collapsing. Within the next few years, anyone who cares enough will be able to contribute to real alternatives to the platforms they're stuck on. They'll be looking for a movement to join. Grassroot Hopper is that movement.
+This repository is intentionally not the place where product runtime code lives. Product code belongs in separate contributor-ready repositories with their own licenses, docs, issue trackers, and release cadence.
 
-A **Grassroot Hopper** is a person — someone who blends technology with the actual pleasure of living a full life inside communities. The **Grassroot Hoppers** are a movement of community builders, spreading city by city. The **products** are what they make — open-source tools and cooperative platforms that help communities own their own digital infrastructure.
+## What Lives Here
 
-*"I want to be with those who know secret things or else alone."* — Rainer Maria Rilke
+- `website/` contains the public site deployed to [grassroothopper.com](https://grassroothopper.com).
+- `movement/` contains the manifesto, research references, and strategic framing.
+- `products/` contains product concept specs and positioning docs.
+- `website/chez-julien-workflow-map.html` is the strategic companion artifact for David Toolkit: an ideal future-state workflow map for Chez Julien.
+- `docs/` contains the March 9 to March 13, 2026 hackathon plan, devlog templates, and launch guidance.
 
----
+## Product Repositories
 
-## The Movement
+The first real product now has its own repo:
 
-**[movement/SPEC.md](movement/SPEC.md)** — the full manifesto: the thesis, the identity, the strategy, the principles.
+| Product | Purpose | Repo | License |
+| --- | --- | --- | --- |
+| David Toolkit | Browser-first retail intelligence demo for small shop owners | [Grassroot-hoppers/david-toolkit](https://github.com/Grassroot-hoppers/david-toolkit) | `AGPL-3.0-only` |
 
-The short version: Rob Hopkins named "Transition Towns," wrote a handbook, and 1,400+ communities self-organized around local resilience for energy and food. Grassroot Hopper does the same for technology. Your community can own its own tools.
+This umbrella repository is licensed under `CC BY-SA 4.0` for docs, narrative, and website content unless a subdirectory states otherwise.
 
-Powered by **GPFC srl** — an open-source software company focused on social and environmental solutions, based in Brussels.
+## March 2026 Status
 
-### Research & reference models
+Grassroot Hoppers is no longer just a thesis repo.
 
-| Model | What we learn |
-|---------|--------------|
-| [Transition Towns](movement/resources/transition-towns/) | The direct blueprint — grassroots replication through handbooks |
-| [CoopCycle](movement/resources/coopcycle/) | Federated city-by-city co-op model, Coopyleft license |
-| [Decidim](movement/resources/decidim/) | Cooperative governance, forkable city software |
-| [Fediverse / Bonfire](movement/resources/fediverse/) | Modular social infrastructure, ActivityPub |
-| [Creative Platforms](movement/resources/creative-platforms/) | Resonate, Subvert, Ghost, 6AM City |
+- The movement site is live.
+- David Toolkit is moving into a five-day public hackathon from March 9 to March 13, 2026.
+- The product runtime now lives in a separate repo.
+- The workflow map in this repo shows the operating model David Toolkit is meant to support.
 
----
+## Open-Source Posture
 
-## Products — The Demos
+The standard is explicit:
 
-The Grassroot Hoppers build products. Each one is a demo — proof that the movement creates real, working things. Contributors aren't paid — they're rewarded with co-op shares in what they build, portfolio credit, and a network across Europe.
+- no custom “source-available” license during the hackathon
+- no hiding the runnable code inside the movement repo
+- no vague “open” claims without docs, setup, and contribution paths
 
-### Social Media V2 — *the community demo*
+The movement repo explains the why. The product repo carries the real OSS burden: runnable demo, issues, contribution docs, security policy, and roadmap.
 
-A cooperative, ultra-local social network. Join through a community you already belong to — scan a QR code, say a secret password spoken in person, discover the hidden creative lives of the people you already know. No comments, no likes, no DMs. Feedback happens in real life.
+## Build In Public
 
-**[products/social-v2/SPEC.md](products/social-v2/SPEC.md)** — product spec, MVP plan, technical decisions
+The hackathon reporting structure lives in [`docs/devlog/README.md`](docs/devlog/README.md).
 
-Also in `products/social-v2/`: [ROADMAP](products/social-v2/ROADMAP.md) · [STATUS](products/social-v2/STATUS.md) · [Creator Speech](products/social-v2/CREATOR-SPEECH.md) · [Launch Speech](products/social-v2/LAUNCH-SPEECH.md)
+- Long-form home: [julien.care](https://julien.care)
+- Code home: GitHub
+- Social amplification: Fosstodon
 
-### David Retail — *the economic empowerment demo*
+Launch sequencing for the sprint is documented in [`docs/LAUNCH-PLAYBOOK.md`](docs/LAUNCH-PLAYBOOK.md).
 
-Open-source prediction, inventory, and point-of-sale tools for independent shop owners. The same edge that big distribution chains have — but free, cooperative, and owned by the people who use it. David vs. Goliath.
+## Website Deployment
 
-**[products/david-retail/SPEC.md](products/david-retail/SPEC.md)** — product vision, planned tools, open questions
+GitHub Pages deploys from `website/` through the workflow in `.github/workflows/pages.yml`.
 
----
+## Contact
 
-## The Net
+- Human: [staycreative@julien.care](mailto:staycreative@julien.care)
+- Website: [grassroothopper.com](https://grassroothopper.com)
 
-**grassroothopper.com** · **grassroothopper.org** · **grassroothopper.eu** · **grassroothopper.be**
-
-The domains catch everyone looking for this — at a talk, in a Matrix chat, from a friend, from an LLM search result. The website is a pitch deck for the movement, not a product page for end users.
-
-## Where we are
-
-March 2026. Vision defined. No code yet. No users yet. Building the pitch, having conversations with creatives in Brussels, and connecting with adjacent open-source projects. The first strategic move: reach Rob Hopkins.
-
-## Get involved
-
-If this made your eyes light up — you're one of us.
-
-- **Humans:** [staycreative@julien.care](mailto:staycreative@julien.care)
-- **Devs:** Open an issue or read a [product spec](products/social-v2/SPEC.md)
-- **Website:** [grassroothopper.com](https://grassroothopper.com)
-
----
-
-*Powered by [GPFC srl](https://julien.care) · Brussels, 2026*
-*Good people, for good people.*
+Good people, for good people.

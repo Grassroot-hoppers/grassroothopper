@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ideal future-state workflow map for Chez Julien, showing where David Toolkit supports the weekly operating rhythm.">
+  <title>Chez Julien Workflow Map — Grassroot Hoppers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #151412;
+      --paper: #f3ecdf;
+      --cream: #faf4e9;
+      --muted: #8f8679;
+      --gold: #d8a33a;
+      --brick: #b94e33;
+      --green: #2f7c67;
+      --charcoal: #27231f;
+      --line: rgba(21, 20, 18, 0.12);
+      --panel: rgba(250, 244, 233, 0.84);
+      --shadow: 0 24px 80px rgba(21, 20, 18, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(216, 163, 58, 0.18), transparent 32%),
+        radial-gradient(circle at 80% 0%, rgba(47, 124, 103, 0.14), transparent 30%),
+        linear-gradient(180deg, #efe5d5 0%, #f6f0e6 45%, #efe6d8 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1380px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .topbar a {
+      text-decoration: none;
+      padding: 0.8rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(21, 20, 18, 0.12);
+      background: rgba(255, 255, 255, 0.38);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-card,
+    .side-card,
+    .detail-panel,
+    .principles {
+      background: var(--panel);
+      border: 1px solid rgba(21, 20, 18, 0.1);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card {
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -5% -35% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216, 163, 58, 0.2), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow,
+    .mini-title {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Fraunces", serif;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      margin-top: 0.85rem;
+      max-width: 11ch;
+    }
+
+    .hero-card p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-meta span,
+    .legend span {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(21, 20, 18, 0.08);
+      font-size: 0.92rem;
+    }
+
+    .side-card {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .pulse-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .pulse {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(21, 20, 18, 0.05);
+      min-height: 118px;
+    }
+
+    .pulse strong {
+      display: block;
+      margin-top: 0.55rem;
+      font-size: 1.15rem;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .legend .human {
+      border-color: rgba(185, 78, 51, 0.2);
+      color: var(--brick);
+    }
+
+    .legend .assist {
+      border-color: rgba(47, 124, 103, 0.2);
+      color: var(--green);
+    }
+
+    .legend .future {
+      border-color: rgba(216, 163, 58, 0.25);
+      color: #8b6420;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.75fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .board-shell {
+      background: rgba(255, 255, 255, 0.36);
+      border: 1px solid rgba(21, 20, 18, 0.08);
+      border-radius: 28px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .map-board {
+      min-width: 980px;
+      display: grid;
+      grid-template-columns: 140px repeat(7, minmax(115px, 1fr));
+      grid-template-rows: 56px repeat(4, 150px);
+      gap: 0.8rem;
+    }
+
+    .day-header,
+    .lane-label,
+    .lane-slot {
+      border-radius: 22px;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(21, 20, 18, 0.08);
+    }
+
+    .lane-label {
+      padding: 1rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .lane-label strong {
+      font-size: 1rem;
+    }
+
+    .lane-label span {
+      font-size: 0.82rem;
+      opacity: 0.78;
+    }
+
+    .lane-slot {
+      background: rgba(255, 255, 255, 0.44);
+      border: 1px dashed rgba(21, 20, 18, 0.08);
+    }
+
+    .flow-card,
+    .support-card {
+      position: relative;
+      z-index: 2;
+      border: none;
+      text-align: left;
+      border-radius: 24px;
+      padding: 1rem 1rem 1rem 1.05rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      box-shadow: 0 14px 36px rgba(21, 20, 18, 0.16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease;
+    }
+
+    .flow-card:hover,
+    .support-card:hover,
+    .flow-card:focus-visible,
+    .support-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(21, 20, 18, 0.2);
+      outline: 2px solid rgba(21, 20, 18, 0.18);
+      outline-offset: 2px;
+    }
+
+    .flow-card.active {
+      outline: 2px solid rgba(21, 20, 18, 0.18);
+      outline-offset: 2px;
+    }
+
+    .tone-brick {
+      background: linear-gradient(180deg, #fff2ec 0%, #ffe1d5 100%);
+      color: #4d1d14;
+    }
+
+    .tone-green {
+      background: linear-gradient(180deg, #e7f5f0 0%, #d5eee5 100%);
+      color: #163f34;
+    }
+
+    .tone-gold {
+      background: linear-gradient(180deg, #fff7de 0%, #f5e5ae 100%);
+      color: #5f4711;
+    }
+
+    .flow-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .flow-meta span {
+      padding: 0.28rem 0.48rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .flow-card h3,
+    .support-card h3 {
+      font-size: 1.18rem;
+    }
+
+    .flow-card p,
+    .support-card p {
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .support-card {
+      z-index: 1;
+      cursor: default;
+      box-shadow: none;
+      padding: 0.85rem 0.9rem;
+      border: 1px dashed rgba(21, 20, 18, 0.12);
+    }
+
+    .detail-panel {
+      position: sticky;
+      top: 1.5rem;
+      padding: 1.5rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .detail-panel h2 {
+      font-size: 2rem;
+    }
+
+    .detail-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .detail-top span {
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(21, 20, 18, 0.05);
+      font-size: 0.88rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .detail-block {
+      padding: 1rem 1rem 1.05rem;
+      border-radius: 20px;
+      background: rgba(21, 20, 18, 0.04);
+    }
+
+    .detail-block ul {
+      margin: 0.65rem 0 0;
+      padding-left: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .principles {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .principle {
+      padding: 1.2rem;
+      border-radius: 22px;
+      background: rgba(21, 20, 18, 0.04);
+    }
+
+    .principle p {
+      margin: 0.65rem 0 0;
+      line-height: 1.6;
+    }
+
+    .footer-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .footer-cta a {
+      text-decoration: none;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .workspace,
+      .principles {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 1rem, 1380px);
+        padding-top: 1rem;
+      }
+
+      .hero-card,
+      .side-card,
+      .detail-panel,
+      .principles,
+      .board-shell {
+        border-radius: 24px;
+      }
+
+      .pulse-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a href="./david-retail.html">Back to David Toolkit</a>
+      <a href="./index.html">Back to the movement</a>
+    </div>
+
+    <section class="hero">
+      <article class="hero-card">
+        <div class="eyebrow">Strategic companion artifact</div>
+        <h1>Chez Julien workflow map.</h1>
+        <p>
+          This page is not a mirror of today’s Notion workspace. It is the ideal future-state operating map David Toolkit is meant to support: one weekly rhythm, seven core workflows, explicit owners, explicit handoffs, and explicit failure points.
+        </p>
+        <div class="hero-meta">
+          <span>Audience: contributors, operators, press</span>
+          <span>Context: March 9 to March 13, 2026 hackathon</span>
+          <span>Goal: human work clearer, software help visible</span>
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <div>
+          <div class="mini-title">What this map proves</div>
+          <h2>Autonomy is a workflow problem before it is a software problem.</h2>
+        </div>
+        <div class="pulse-grid">
+          <div class="pulse">
+            <div class="mini-title">7 workflows</div>
+            <strong>One weekly operating model</strong>
+          </div>
+          <div class="pulse">
+            <div class="mini-title">4 lanes</div>
+            <strong>Julien, Henry, team, systems</strong>
+          </div>
+          <div class="pulse">
+            <div class="mini-title">Decision wedge</div>
+            <strong>Morning ordering cockpit first</strong>
+          </div>
+          <div class="pulse">
+            <div class="mini-title">Important note</div>
+            <strong>Future state, not current practice</strong>
+          </div>
+        </div>
+        <div class="legend">
+          <span class="human">Human-owned workflow</span>
+          <span class="assist">System assist</span>
+          <span class="future">Future autonomy signal</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="workspace">
+      <div class="board-shell">
+        <div class="map-board" id="map-board"></div>
+      </div>
+
+      <aside class="detail-panel" id="detail-panel" aria-live="polite"></aside>
+    </section>
+
+    <section class="principles">
+      <article class="principle">
+        <div class="mini-title">Human work</div>
+        <h3>Keep the judgment visible.</h3>
+        <p>The point is not to pretend the shop is automated. The point is to make recurring judgment legible, transferable, and coachable.</p>
+      </article>
+      <article class="principle">
+        <div class="mini-title">System help</div>
+        <h3>Compress the admin load.</h3>
+        <p>Weather overlays, supplier deadlines, checklists, and dashboards should remove memory burden and turn vague intuition into explicit evidence.</p>
+      </article>
+      <article class="principle">
+        <div class="mini-title">Future autonomy</div>
+        <h3>Train Henry, reduce Julien dependency.</h3>
+        <p>Every workflow should answer the same question: what must the founder still do, what can Henry own, and what can software prepare ahead of time?</p>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const lanes = [
+      { id: "julien", label: "Julien", note: "Founder and weekly review owner" },
+      { id: "henry", label: "Henry", note: "Operating lead in training" },
+      { id: "team", label: "Team", note: "Front-of-house execution" },
+      { id: "systems", label: "Systems", note: "Dashboards, reminders, context" }
+    ];
+
+    const workflows = [
+      {
+        id: "supplier-review",
+        lane: "julien",
+        start: 0,
+        end: 0,
+        tone: "gold",
+        title: "Weekly supplier review",
+        owner: "Julien",
+        timing: "Monday · 14:00 to 15:00",
+        cadence: "Weekly",
+        summary: "Review margin pressure, dead stock, supplier cadence, and decide what Henry should change this week.",
+        inputs: ["Previous week sell-through", "Supplier cutoffs and delivery rhythm", "Margin hotspots", "Upcoming weather and holiday notes"],
+        outputs: ["Priority list for Henry", "Supplier watchlist", "Assortment or ordering changes"],
+        dependencies: ["Reliable export import", "Margin view", "Weather and calendar context"],
+        failures: ["Founder keeps judgment in his head", "Supplier issues get noticed too late", "Henry gets tasks without the why"],
+        systemHelp: "David Toolkit assembles the weekly evidence pack and flags anomalies before the review.",
+        futureAutonomy: "Julien shifts from manual review to exception-only signoff."
+      },
+      {
+        id: "staffing-admin",
+        lane: "julien",
+        start: 3,
+        end: 3,
+        tone: "brick",
+        title: "Staffing and admin cycle",
+        owner: "Julien",
+        timing: "Thursday · 15:00 to 16:00",
+        cadence: "Weekly",
+        summary: "Check staffing gaps, upcoming leave, payroll hygiene, and make sure the shop is not depending on heroic improvisation.",
+        inputs: ["Planning board", "Leave requests", "Hours summary", "Known events next week"],
+        outputs: ["Next staffing adjustments", "Follow-ups with Henry and Lucas", "Admin to-do list"],
+        dependencies: ["Structured staffing data", "Current leave records", "Hours tracking discipline"],
+        failures: ["Planning slips into WhatsApp memory", "Payroll/admin gets delayed", "Founder stress rises because the week is opaque"],
+        systemHelp: "Staffing reminders and summaries surface missing data before the admin block starts.",
+        futureAutonomy: "Henry owns the first staffing draft; Julien only approves exceptions."
+      },
+      {
+        id: "opening",
+        lane: "henry",
+        start: 0,
+        end: 5,
+        tone: "green",
+        title: "Opening routine",
+        owner: "Henry",
+        timing: "Monday to Saturday · 08:30 to 09:00",
+        cadence: "Daily",
+        summary: "Open the shop, scan critical freshness and merchandising points, and start the day with the right priorities visible.",
+        inputs: ["Closing notes", "Freshness alerts", "Delivery expectations", "Morning dashboard"],
+        outputs: ["Open-ready shop", "Immediate corrective tasks", "Shared team priorities"],
+        dependencies: ["Closing discipline", "Freshness checklist", "A visible daily command surface"],
+        failures: ["Yesterday’s problems repeat", "Low-stock items go unnoticed", "The team opens reactively instead of intentionally"],
+        systemHelp: "The morning cockpit surfaces supplier deadlines, fragile SKUs, and context before the door opens.",
+        futureAutonomy: "Opening becomes a trained sequence Henry can coach and audit."
+      },
+      {
+        id: "ordering",
+        lane: "henry",
+        start: 0,
+        end: 4,
+        tone: "brick",
+        title: "Morning ordering",
+        owner: "Henry",
+        timing: "Monday to Friday · 09:00 to 10:30",
+        cadence: "Daily",
+        summary: "Use the dashboard to translate exports, supplier deadlines, and local context into clear order-now, watch, or skip decisions.",
+        inputs: ["Microconcept exports", "Supplier cadence", "Weather and holiday overlay", "Recent sales velocity"],
+        outputs: ["Supplier-specific orders", "Watchlist for fragile items", "Daily action notes"],
+        dependencies: ["Reliable CSV imports", "Curated supplier mapping", "Clear explanation of every recommendation"],
+        failures: ["Founder becomes the only person who knows what to order", "Orders are late", "The team distrusts the dashboard"],
+        systemHelp: "David Toolkit groups decisions by supplier and keeps raw evidence visible beside every inference.",
+        futureAutonomy: "Henry owns routine orders; Julien only reviews anomalies or major assortment shifts."
+      },
+      {
+        id: "receiving",
+        lane: "team",
+        start: 1,
+        end: 4,
+        tone: "gold",
+        title: "Receiving deliveries",
+        owner: "Team",
+        timing: "Tuesday to Friday · 10:00 to 11:30",
+        cadence: "As deliveries arrive",
+        summary: "Receive, check, and route goods fast enough that stock integrity improves instead of getting noisier.",
+        inputs: ["Expected delivery list", "Purchase decisions from the morning", "Storage rules", "Problem escalation path"],
+        outputs: ["Checked deliveries", "Recorded discrepancies", "Stock ready for shelves or cold room"],
+        dependencies: ["Clear ownership", "Expected-vs-arrived view", "Short discrepancy SOP"],
+        failures: ["Misreceipts pollute the stock picture", "Discrepancies disappear into memory", "Shelf availability becomes guesswork"],
+        systemHelp: "Delivery checklists and expected line items make exceptions visible the moment goods arrive.",
+        futureAutonomy: "Receiving becomes a teachable checklist with auditable exceptions."
+      },
+      {
+        id: "freshness",
+        lane: "team",
+        start: 0,
+        end: 5,
+        tone: "green",
+        title: "Shelf and freshness control",
+        owner: "Team",
+        timing: "Monday to Saturday · 11:30 and 16:30",
+        cadence: "Twice daily",
+        summary: "Walk the shop, catch poor presentation or expiry risk early, and convert shelf reality into structured signals.",
+        inputs: ["Freshness checklist", "Slow mover list", "Known overstock", "Seasonal display priorities"],
+        outputs: ["Rotated shelves", "Waste prevention actions", "Escalations on dead stock or stockouts"],
+        dependencies: ["Shelf discipline", "Slow mover visibility", "A clear escalation route to Henry"],
+        failures: ["Waste hides in plain sight", "Displays drift", "The shop looks fine until the wrong customer sees the wrong shelf"],
+        systemHelp: "Slow-mover and overstock warnings tell the team where to look first.",
+        futureAutonomy: "Freshness checks become measurable instead of founder taste and instinct only."
+      },
+      {
+        id: "closing",
+        lane: "henry",
+        start: 0,
+        end: 5,
+        tone: "gold",
+        title: "Closing and cash",
+        owner: "Henry",
+        timing: "Monday to Saturday · 18:30 to 19:00",
+        cadence: "Daily",
+        summary: "Close the loop: cash, notes, exceptions, and handoff material for the next morning.",
+        inputs: ["Till totals", "Problems from the day", "Delivery anomalies", "Urgent low-stock notes"],
+        outputs: ["Clean cash close", "Next-day notes", "Escalations for Julien if needed"],
+        dependencies: ["Closing checklist", "One shared place for notes", "Fast anomaly capture"],
+        failures: ["Cash issues appear too late", "The next day starts blind", "Recurring problems never turn into systems"],
+        systemHelp: "The closing summary creates tomorrow’s opening context instead of leaving it in private memory.",
+        futureAutonomy: "Henry owns clean handoff quality and can coach the team against it."
+      }
+    ];
+
+    const supports = [
+      {
+        id: "support-dashboard",
+        lane: "systems",
+        start: 0,
+        end: 4,
+        tone: "green",
+        title: "Dashboard refresh",
+        summary: "Imports exports, applies corrections, and rebuilds the morning cockpit before ordering."
+      },
+      {
+        id: "support-delivery",
+        lane: "systems",
+        start: 1,
+        end: 4,
+        tone: "gold",
+        title: "Delivery checklist layer",
+        summary: "Expected arrivals, discrepancy prompts, and quick notes for receiving."
+      },
+      {
+        id: "support-weekly",
+        lane: "systems",
+        start: 3,
+        end: 3,
+        tone: "brick",
+        title: "Staffing digest",
+        summary: "Weekly summary for staffing/admin so the founder is not reconstructing the week from memory."
+      }
+    ];
+
+    const board = document.getElementById("map-board");
+    const detailPanel = document.getElementById("detail-panel");
+
+    function renderDetail(flow) {
+      detailPanel.innerHTML = `
+        <div>
+          <div class="mini-title">Selected workflow</div>
+          <h2>${flow.title}</h2>
+        </div>
+        <div class="detail-top">
+          <span>${flow.owner}</span>
+          <span>${flow.timing}</span>
+          <span>${flow.cadence}</span>
+        </div>
+        <p>${flow.summary}</p>
+        <div class="detail-list">
+          <section class="detail-block">
+            <div class="mini-title">Inputs</div>
+            <ul>${flow.inputs.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </section>
+          <section class="detail-block">
+            <div class="mini-title">Outputs</div>
+            <ul>${flow.outputs.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </section>
+          <section class="detail-block">
+            <div class="mini-title">Dependencies</div>
+            <ul>${flow.dependencies.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </section>
+          <section class="detail-block">
+            <div class="mini-title">Failure points</div>
+            <ul>${flow.failures.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </section>
+          <section class="detail-block">
+            <div class="mini-title">System help</div>
+            <p>${flow.systemHelp}</p>
+          </section>
+          <section class="detail-block">
+            <div class="mini-title">Future autonomy</div>
+            <p>${flow.futureAutonomy}</p>
+          </section>
+        </div>
+        <div class="footer-cta">
+          <a href="https://github.com/Grassroot-hoppers/david-toolkit">Open the toolkit repo</a>
+          <a href="./david-retail.html">Back to David Toolkit</a>
+        </div>
+      `;
+    }
+
+    days.forEach((day, index) => {
+      const header = document.createElement("div");
+      header.className = "day-header";
+      header.style.gridColumn = String(index + 2);
+      header.style.gridRow = "1";
+      header.textContent = day;
+      board.appendChild(header);
+    });
+
+    lanes.forEach((lane, rowIndex) => {
+      const label = document.createElement("div");
+      label.className = "lane-label";
+      label.style.gridColumn = "1";
+      label.style.gridRow = String(rowIndex + 2);
+      label.innerHTML = `<strong>${lane.label}</strong><span>${lane.note}</span>`;
+      board.appendChild(label);
+
+      days.forEach((_, colIndex) => {
+        const slot = document.createElement("div");
+        slot.className = "lane-slot";
+        slot.style.gridColumn = String(colIndex + 2);
+        slot.style.gridRow = String(rowIndex + 2);
+        board.appendChild(slot);
+      });
+    });
+
+    workflows.forEach((flow, index) => {
+      const laneIndex = lanes.findIndex((lane) => lane.id === flow.lane);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `flow-card tone-${flow.tone}`;
+      button.style.gridColumn = `${flow.start + 2} / ${flow.end + 3}`;
+      button.style.gridRow = String(laneIndex + 2);
+      button.innerHTML = `
+        <div class="flow-meta">
+          <span>${flow.owner}</span>
+          <span>${flow.timing.split("·")[0].trim()}</span>
+        </div>
+        <h3>${flow.title}</h3>
+        <p>${flow.summary}</p>
+      `;
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".flow-card").forEach((card) => card.classList.remove("active"));
+        button.classList.add("active");
+        renderDetail(flow);
+      });
+      if (index === 0) {
+        button.classList.add("active");
+      }
+      board.appendChild(button);
+    });
+
+    supports.forEach((support) => {
+      const laneIndex = lanes.findIndex((lane) => lane.id === support.lane);
+      const card = document.createElement("div");
+      card.className = `support-card tone-${support.tone}`;
+      card.style.gridColumn = `${support.start + 2} / ${support.end + 3}`;
+      card.style.gridRow = String(laneIndex + 2);
+      card.innerHTML = `
+        <div class="flow-meta"><span>System assist</span></div>
+        <h3>${support.title}</h3>
+        <p>${support.summary}</p>
+      `;
+      board.appendChild(card);
+    });
+
+    renderDetail(workflows[0]);
+  </script>
+</body>
+</html>
