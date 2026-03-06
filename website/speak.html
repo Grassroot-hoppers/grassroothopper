@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Julien Thibaut for a talk or workshop on community-owned software, citizen coding, and the cooperative tech movement.">
+    <meta property="og:title" content="Book Julien — Grassroots Hoppers">
+    <meta property="og:description" content="Talks and workshops on what changed in 2025: why non-technical people can now build civic and local economic tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grassroothopper.com/speak.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Book Julien — Grassroots Hoppers">
+    <title>Book Julien — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f0e0c; --light-bg: #f5f0e6;
+            --dark-fg: #f5f0e6; --light-fg: #1a1714;
+            --dark-accent: #e8a830; --light-accent: #b8432a;
+            --dark-muted: #7a756c; --light-muted: #8a8279;
+            --teal: #3a9e8f;
+            --sans: 'DM Sans', sans-serif; --display: 'Fraunces', serif; --mono: 'JetBrains Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); overflow-x: hidden; }
+
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 0.9rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+            font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .site-nav a { color: var(--dark-fg); text-decoration: none; border-bottom: none; transition: opacity 0.2s; }
+        .site-nav a:hover { opacity: 0.7; }
+        .site-nav .logo { font-family: var(--display); font-size: 1rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links .active { color: var(--dark-accent); }
+        .nav-hackathon { color: var(--teal) !important; }
+
+        section {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 4rem 2rem;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+        .dark { background-color: var(--dark-bg); color: var(--dark-fg); }
+        .dark .accent { color: var(--dark-accent); }
+        .dark .muted { color: var(--dark-muted); }
+        .light { background-color: var(--light-bg); color: var(--light-fg); }
+        .light .accent { color: var(--light-accent); }
+        .light .muted { color: var(--light-muted); }
+
+        h1 { font-family: var(--display); font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 500; line-height: 1.1; margin-bottom: 1.5rem; font-optical-sizing: auto; letter-spacing: -0.02em; }
+        h2 { font-family: var(--display); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 600; line-height: 1.2; margin-bottom: 2rem; font-optical-sizing: auto; }
+        h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; font-optical-sizing: auto; }
+        p { font-size: 1.15rem; line-height: 1.75; margin-bottom: 1.5rem; max-width: 52ch; }
+        .slide-number { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.15em; margin-bottom: 3rem; text-transform: uppercase; }
+
+        a { color: inherit; text-decoration: none; border-bottom: 2px solid currentColor; transition: opacity 0.3s ease; padding-bottom: 2px; }
+        a:hover { opacity: 0.7; }
+        .dark a.accent { color: var(--dark-accent); border-bottom-color: var(--dark-accent); }
+        .light a.accent { color: var(--light-accent); border-bottom-color: var(--light-accent); }
+
+        /* Talk cards */
+        .talk-grid {
+            display: grid; grid-template-columns: 1fr; gap: 2.5rem;
+            width: 100%; max-width: 800px; margin-top: 2rem;
+        }
+        .talk-card {
+            padding: 2.5rem; border-radius: 8px; text-align: left;
+        }
+        .dark .talk-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(232,168,48,0.2); }
+        .light .talk-card { background: rgba(26,23,20,0.03); border: 1px solid rgba(184,67,42,0.12); }
+        .talk-card .tag {
+            font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 1rem; opacity: 0.7;
+        }
+        .talk-card h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+        .talk-card p { font-size: 1rem; max-width: none; margin-bottom: 1rem; }
+        .talk-card .outcomes { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(232,168,48,0.1); }
+        .light .talk-card .outcomes { border-top-color: rgba(184,67,42,0.1); }
+        .outcomes-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.5rem; }
+        .outcomes-list { font-size: 0.95rem; line-height: 1.7; }
+
+        .badge {
+            display: inline-block; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 100px;
+            margin-right: 0.4rem; margin-bottom: 0.4rem;
+        }
+        .dark .badge { background: rgba(232,168,48,0.15); color: var(--dark-accent); }
+        .light .badge { background: rgba(184,67,42,0.1); color: var(--light-accent); }
+        .badge.teal { background: rgba(58,158,143,0.15); color: var(--teal); }
+
+        /* Details grid */
+        .details-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+            width: 100%; max-width: 600px; margin-top: 2rem;
+        }
+        @media (max-width: 480px) { .details-grid { grid-template-columns: 1fr; } }
+        .detail-card { padding: 1.5rem; border-radius: 8px; }
+        .light .detail-card { background: rgba(26,23,20,0.03); border: 1px solid rgba(184,67,42,0.1); }
+        .detail-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.4rem; }
+        .detail-value { font-size: 1rem; line-height: 1.5; }
+
+        footer {
+            padding: 2.5rem 2rem; text-align: center; font-size: 0.9rem;
+            font-family: var(--mono); letter-spacing: 0.05em;
+            background-color: var(--light-bg); color: var(--light-fg);
+            border-top: 1px solid rgba(26,23,20,0.1);
+        }
+        footer p { max-width: none; margin-bottom: 0; font-size: 0.9rem; }
+
+        @media (max-width: 768px) { section { padding: 3rem 1.5rem; } .site-nav { padding: 0.8rem 1.2rem; } .talk-card { padding: 1.5rem; } }
+        @media (prefers-reduced-motion: reduce) { section { transition: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="learn.html">Learn</a>
+            <a href="hackathon.html" class="nav-hackathon">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; min-height: 100vh; min-height: 100dvh;">
+        <p class="slide-number accent">SPEAKING</p>
+        <h1>Book <span class="accent">Julien</span></h1>
+        <p style="text-align: center; max-width: 40ch; opacity: 0.85;">Talks and workshops on what changed in 2025 — why non-technical people can now build civic and local economic tools, and what that means for communities.</p>
+        <p style="margin-top: 1rem;"><a href="mailto:staycreative@julien.care?subject=Speaking%20inquiry" class="accent" style="font-family: var(--mono); font-size: 1rem;">staycreative@julien.care</a></p>
+    </section>
+
+    <!-- TALKS -->
+    <section class="dark" style="text-align: center; min-height: auto; padding-top: 0;">
+        <div class="talk-grid">
+            <div class="talk-card">
+                <span class="tag">Keynote · 30–45 min</span>
+                <h3>"What Changed in 2025"</h3>
+                <p>The cost of building software hit zero. Non-technical people — doctors, road engineers, shop owners, lawyers — started building real tools between patients, between customers, on the road. This talk shows what that looks like, why it matters, and what happens next when communities start owning their own digital infrastructure.</p>
+                <span class="badge">Social innovation</span>
+                <span class="badge teal">Civic tech</span>
+                <span class="badge">Open source</span>
+                <div class="outcomes">
+                    <div class="outcomes-label">Audience leaves with</div>
+                    <div class="outcomes-list">A concrete understanding of the AI-assisted development shift. Real examples of non-technical builders. A framework for how communities can start building their own tools.</div>
+                </div>
+            </div>
+
+            <div class="talk-card">
+                <span class="tag">Talk · 20–30 min</span>
+                <h3>"Transition Towns for Software"</h3>
+                <p>Rob Hopkins created a model where communities self-organize around food and energy. Grassroots Hoppers applies the same logic to software: build it, document it, replicate it city by city. This talk maps the Transition model onto community-owned digital tools and shows why the pattern works.</p>
+                <span class="badge">Cooperative economy</span>
+                <span class="badge teal">Transition network</span>
+                <span class="badge">Movement building</span>
+                <div class="outcomes">
+                    <div class="outcomes-label">Audience leaves with</div>
+                    <div class="outcomes-list">The parallel between Transition Towns and community software. A replicable model: Build → Document → Replicate. Clarity on why open-source cooperatives are viable now.</div>
+                </div>
+            </div>
+
+            <div class="talk-card">
+                <span class="tag">Talk · 20 min</span>
+                <h3>"5 Days, 2 Tools, 1 Shop"</h3>
+                <p>A solo founder with no technical background is building two retail intelligence tools in a 5-day public hackathon — a sales prediction engine and an interactive workflow map. This talk is the honest story in progress: what is working, what is breaking, and what this already proves about the future of small-business software.</p>
+                <span class="badge">Entrepreneurship</span>
+                <span class="badge teal">Building in public</span>
+                <span class="badge">Retail tech</span>
+                <div class="outcomes">
+                    <div class="outcomes-label">Audience leaves with</div>
+                    <div class="outcomes-list">A live-build case study. Concrete lessons on AI-assisted development for non-developers. An honest take on what one person can ship in 5 days.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOP -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">WORKSHOP</p>
+        <h2>Build Your Own Tool</h2>
+        <div class="talk-grid">
+            <div class="talk-card">
+                <span class="tag">Workshop · 3 hours</span>
+                <h3>From Idea to Working Prototype</h3>
+                <p>A hands-on session where participants go from a community need to a working software prototype in 3 hours. No coding experience required. Using no-code and AI-assisted development tools, each participant or team builds a real tool they can take home and deploy.</p>
+                <p><strong>Best for:</strong> Community organizations, social innovation events, local government workshops, cooperative networks, Transition Town groups.</p>
+                <p><strong>Group size:</strong> 8–30 participants. Each participant needs a laptop.</p>
+                <div class="outcomes">
+                    <div class="outcomes-label">Participants leave with</div>
+                    <div class="outcomes-list">A working software prototype for their specific community need. Hands-on experience with AI-assisted development. A framework for governance and maintenance of community-owned tools.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="light" style="text-align: center; min-height: auto; padding-top: 0;">
+        <h2 style="margin-bottom: 1rem;">Practical details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-label">Languages</div>
+                <div class="detail-value">French, English, Dutch (conversational)</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Based in</div>
+                <div class="detail-value">Brussels. Available across Europe.</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Formats</div>
+                <div class="detail-value">Keynote, talk, panel, workshop</div>
+            </div>
+            <div class="detail-card">
+                <div class="detail-label">Audience fit</div>
+                <div class="detail-value">Social innovation, civic tech, cooperatives, open source, local economic development</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark" style="text-align: center; min-height: auto; padding: 5rem 2rem;">
+        <h2>Interested?</h2>
+        <p style="text-align: center; max-width: 36ch; opacity: 0.85;">Send a note with your event name, date, format, and expected audience.</p>
+        <p style="margin-top: 1rem;"><a href="mailto:staycreative@julien.care?subject=Speaking%20inquiry" class="accent" style="font-family: var(--mono); font-size: 1.05rem;">staycreative@julien.care</a></p>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelector('section').classList.add('visible');
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
+        document.querySelectorAll('section:not(:first-of-type)').forEach(function(s) { obs.observe(s); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Owner Hackathon #001 — Five days, two open-source tools, built live for Chez Julien. Sales prediction engine + interactive workflow map. Follow daily.">
+    <meta property="og:title" content="Shop Owner Hackathon #001 — Grassroots Hoppers">
+    <meta property="og:description" content="Five days, two open-source tools, built live. Sales prediction engine + interactive workflow map for Chez Julien. March 10–14, 2026.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grassroothopper.com/hackathon/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shop Owner Hackathon #001 — Grassroots Hoppers">
+    <title>Shop Owner Hackathon #001 — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="../index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="../about.html">About</a>
+            <a href="../learn.html">Learn</a>
+            <a href="index.html" class="nav-hackathon active">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark full" style="text-align: center; padding-top: 6rem;">
+        <div id="status-container">
+            <span class="status-badge upcoming" id="status-badge">
+                <span class="status-dot"></span>
+                <span id="status-text">Upcoming</span>
+            </span>
+        </div>
+        <p class="slide-number accent">HACKATHON #001</p>
+        <h1>Shop Owner<br><span class="accent">Hackathon</span></h1>
+        <p style="max-width: 40ch; text-align: center; opacity: 0.85;">Five days. Two tools. One shop. Built live and documented in the open — so any shop owner can replicate it.</p>
+        <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7;">March 10–14, 2026 · 10:00–17:00 CET</p>
+
+        <div class="countdown-container">
+            <div class="countdown-label" id="countdown-label">Starts in</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-unit">
+                    <span class="countdown-value" id="cd-days">--</span>
+                    <span class="countdown-name">Days</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" id="cd-hours">--</span>
+                    <span class="countdown-name">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" id="cd-mins">--</span>
+                    <span class="countdown-name">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" id="cd-secs">--</span>
+                    <span class="countdown-name">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        {{latest_card}}
+    </section>
+
+    <!-- THE TOOLS -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">THE TOOLS</p>
+        <h2>Two tools for <span class="accent">Chez Julien.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 1rem; opacity: 0.85;">Real retail problems, solved with open-source code, documented as playbooks for any shop to replicate.</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <span class="tag">Tool 01</span>
+                <h3>Sales Prediction Engine</h3>
+                <p>Three years of POS data meets weather forecast correlation. Sunny day? More mozzarella. Rainy Tuesday? Blue cheese and comfort food. The tool big retail chains have — built open-source for the corner shop.</p>
+                <span class="badge">Python</span><span class="badge teal">Weather API</span><span class="badge">POS Data</span>
+            </div>
+            <div class="project-card">
+                <span class="tag">Tool 02</span>
+                <h3>Interactive Workflow Map</h3>
+                <p>An HTML-based visual map of every workflow in the shop — opening, closing, receiving deliveries, preparing orders. Click a station, see the checklist. New employee? Hand them this.</p>
+                <span class="badge">HTML</span><span class="badge teal">Interactive</span><span class="badge">Visual</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEV LOG TIMELINE -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">DEV LOG</p>
+        <h2>Daily progress. <span class="accent">No fluff.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 1rem; opacity: 0.85;">Every day's decisions, breakthroughs, and dead ends — logged as they happen.</p>
+
+        <div class="progress-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: {{progress}}%;"></div>
+            </div>
+            <div class="progress-labels">
+                <span>Day 1</span>
+                <span>Day 5</span>
+            </div>
+        </div>
+
+        <div class="devlog">
+            {{timeline}}
+        </div>
+
+        {{retrospective_link}}
+    </section>
+
+    <!-- WHY -->
+    <section class="light" style="text-align: center;">
+        <div style="max-width: 52ch; text-align: center;">
+            <p class="slide-number">WHY THIS MATTERS</p>
+            <h2>This is <span class="accent">Build → Document → Replicate</span> in action.</h2>
+            <p style="text-align: left;">Big retail chains have demand prediction, staff workflow systems, inventory optimization. Small shops don't — because the tools were never built for them.</p>
+            <p style="text-align: left;">This hackathon builds two of those tools, documents every step, and publishes everything so the next shop owner doesn't start from zero.</p>
+            <p style="text-align: left; opacity: 0.8;">Both tools will be released under AGPL-3.0 on <a href="https://github.com/Grassroot-hoppers" class="accent" target="_blank" rel="noopener">GitHub</a>.</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark" style="text-align: center; min-height: auto; padding: 5rem 2rem;">
+        <h2>Got a shop? <span class="accent">Get in touch.</span></h2>
+        <p style="text-align: center; max-width: 40ch; opacity: 0.85;">Whether you want to replicate these tools or just follow along — the door is open.</p>
+        <p style="margin-top: 1rem;"><a href="mailto:staycreative@julien.care" class="accent" style="font-family: var(--mono); font-size: 1rem;">staycreative@julien.care →</a></p>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        // Countdown
+        var START = new Date('2026-03-10T10:00:00+01:00');
+        var END = new Date('2026-03-14T17:00:00+01:00');
+        function updateCountdown() {
+            var now = new Date();
+            var badge = document.getElementById('status-badge');
+            var statusText = document.getElementById('status-text');
+            var label = document.getElementById('countdown-label');
+            var target;
+            if (now < START) {
+                badge.className = 'status-badge upcoming'; statusText.textContent = 'Upcoming';
+                label.textContent = 'Starts in'; target = START;
+            } else if (now <= END) {
+                badge.className = 'status-badge live'; statusText.textContent = 'Live now';
+                label.textContent = 'Ends in'; target = END;
+            } else {
+                badge.className = 'status-badge done'; statusText.textContent = 'Completed';
+                label.textContent = 'Hackathon ended';
+                document.getElementById('cd-days').textContent = '0';
+                document.getElementById('cd-hours').textContent = '0';
+                document.getElementById('cd-mins').textContent = '0';
+                document.getElementById('cd-secs').textContent = '0';
+                return;
+            }
+            var diff = Math.max(0, target - now);
+            document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        }
+        updateCountdown(); setInterval(updateCountdown, 1000);
+
+        // Visibility
+        document.querySelector('section').classList.add('visible');
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
+        document.querySelectorAll('section:not(:first-of-type)').forEach(function(s) { obs.observe(s); });
+    </script>
+</body>
+</html>

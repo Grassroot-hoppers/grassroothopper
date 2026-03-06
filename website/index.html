@@ -815,6 +815,61 @@
             }
         }
 
+        /* Site nav */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 0.9rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+            font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .site-nav a { color: var(--dark-fg); text-decoration: none; border-bottom: none; transition: opacity 0.2s; }
+        .site-nav a:hover { opacity: 0.7; }
+        .site-nav .logo { font-family: var(--display); font-size: 1rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+        .site-nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .site-nav .nav-hackathon { color: var(--teal) !important; }
+
+        /* Proof strip */
+        .proof-strip {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2rem;
+            padding: 1.2rem 2rem; font-family: var(--mono); font-size: 0.78rem;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            background: rgba(232,168,48,0.06); border-top: 1px solid rgba(232,168,48,0.1);
+            border-bottom: 1px solid rgba(232,168,48,0.1);
+            color: var(--dark-muted); max-width: 100%; width: 100%; text-align: center;
+            margin-top: 2rem;
+        }
+        .proof-strip span { white-space: nowrap; }
+
+        /* Audience cards */
+        .audience-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+            width: 100%; max-width: 800px; margin-top: 2rem;
+        }
+        @media (max-width: 640px) { .audience-grid { grid-template-columns: 1fr; } }
+        .audience-card {
+            padding: 1.3rem; border-radius: 8px; text-align: left; text-decoration: none;
+            border: 1px solid rgba(232,168,48,0.12); background: rgba(255,255,255,0.03);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .audience-card:hover { background: rgba(232,168,48,0.06); border-color: rgba(232,168,48,0.25); opacity: 1; }
+        .audience-card-who { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-muted); margin-bottom: 0.4rem; }
+        .audience-card-label { font-family: var(--display); font-size: 1.05rem; font-weight: 600; color: var(--dark-fg); }
+
+        /* Roadmap */
+        .roadmap { width: 100%; max-width: 700px; margin-top: 2rem; }
+        .roadmap-phase { position: relative; padding-left: 2.5rem; padding-bottom: 2.5rem; border-left: 2px solid rgba(184,67,42,0.15); }
+        .roadmap-phase:last-child { border-left-color: transparent; padding-bottom: 0; }
+        .roadmap-dot { position: absolute; left: -7px; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--light-bg); }
+        .roadmap-phase.done .roadmap-dot { background: var(--teal); }
+        .roadmap-phase.current .roadmap-dot { background: var(--light-accent); box-shadow: 0 0 8px rgba(184,67,42,0.3); }
+        .roadmap-phase.planned .roadmap-dot { background: var(--light-muted); }
+        .roadmap-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .roadmap-phase.done .roadmap-label { color: var(--teal); }
+        .roadmap-phase.current .roadmap-label { color: var(--light-accent); }
+        .roadmap-phase.planned .roadmap-label { color: var(--light-muted); }
+        .roadmap-items { font-size: 0.95rem; line-height: 1.65; color: var(--light-fg); }
+        .roadmap-items p { font-size: 0.95rem; margin-bottom: 0.3rem; max-width: none; }
+
         @media (prefers-reduced-motion: reduce) {
             section,
             .scroll-cue {
@@ -826,21 +881,60 @@
 </head>
 <body>
 
+    <!-- SITE NAV -->
+    <nav class="site-nav">
+        <a href="index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="speak.html">Speak</a>
+            <a href="learn.html">Learn</a>
+            <a href="hackathon.html" class="nav-hackathon">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
     <!-- 01: HERO -->
-    <section class="dark hero">
-        <nav class="demo-cta">
-            <span class="demo-cta-label" data-i18n="index.hero.democta">Explore <span class="arrow">&darr;</span></span>
-            <div class="demo-cta-buttons">
-                <a href="social-v2.html" data-i18n="index.hero.btn.social">Social Network V2</a>
-                <a href="david-retail.html" data-i18n="index.hero.btn.david">David Toolkit</a>
-                <a href="learn.html">Learn</a>
-                <a href="hackathon.html" style="background: var(--teal); box-shadow: 0 2px 12px rgba(58,158,143,0.3);">Hackathon</a>
-            </div>
-        </nav>
+    <section class="dark hero" style="padding-top: 5rem;">
         <h1>Grassroots<br>Hoppers</h1>
-        <p class="tagline" data-i18n="index.hero.tagline">We help communities create and govern their own software.</p>
-        <p style="font-size: 1.05rem; max-width: 38ch; opacity: 0.8; margin-bottom: 2rem; line-height: 1.6;" data-i18n="index.hero.sub">Open-source projects, documented as roadmaps and workshops, made easy to replicate with no-code and AI-assisted development.</p>
-        <p class="meta muted" data-i18n="index.hero.meta">Brussels · Open source · Cooperative · Est. 2025</p>
+        <p class="tagline">Community-owned software,<br>built in the open.</p>
+        <p style="font-size: 1.05rem; max-width: 42ch; opacity: 0.8; margin-bottom: 2rem; line-height: 1.6; text-align: center;">We're building open-source tools for small businesses and local communities — starting with a specialty food shop in Brussels. First public build: March 10–14.</p>
+        <p class="meta muted">Brussels · Open source · AGPL-3.0 · Est. 2025</p>
+
+        <div class="proof-strip">
+            <span>1 shop (Chez Julien, Brussels)</span>
+            <span>2 tools in development</span>
+            <span>5-day public build starting March 10</span>
+            <span>All code AGPL-3.0 on GitHub</span>
+        </div>
+
+        <p style="font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2.5rem; margin-bottom: 1rem; opacity: 0.5;">What brings you here?</p>
+        <div class="audience-grid">
+            <a href="speak.html" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Event organizer</div>
+                <div class="audience-card-label">Book a talk or workshop</div>
+            </a>
+            <a href="mailto:staycreative@julien.care?subject=Partnership%20inquiry" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Incubator / Grant partner</div>
+                <div class="audience-card-label">Help fund a community software pilot</div>
+            </a>
+            <a href="#s06" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Movement builder</div>
+                <div class="audience-card-label">Transition Towns for software</div>
+            </a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Developer</div>
+                <div class="audience-card-label">Fork a project. Ship a PR.</div>
+            </a>
+            <a href="mailto:staycreative@julien.care?subject=I%20run%20a%20shop" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Shop owner</div>
+                <div class="audience-card-label">Get a tool built for your shop</div>
+            </a>
+            <a href="learn.html" class="audience-card" style="border-bottom: 1px solid rgba(232,168,48,0.12);">
+                <div class="audience-card-who">Community leader</div>
+                <div class="audience-card-label">Run a workshop in your city</div>
+            </a>
+        </div>
+
         <div class="scroll-cue">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -953,12 +1047,12 @@
     </section>
 
     <!-- 06: THE BLUEPRINT -->
-    <section class="light">
+    <section class="light" id="s06">
         <div class="content-inner">
             <p class="slide-number" data-i18n="index.s06.num">06 — THE BLUEPRINT</p>
             <h2 data-i18n="index.s06.heading">What <a href="https://transitionnetwork.org" target="_blank" rel="noopener noreferrer">Rob Hopkins</a> did for energy and food, we do for software.</h2>
             <p data-i18n="index.s06.p1"><a href="https://en.wikipedia.org/wiki/Transition_town" target="_blank" rel="noopener noreferrer">Transition Towns</a>: 1,400+ communities in 50+ countries. Rob Hopkins didn't build a platform. He named an identity, wrote a handbook, and let communities self-organize. No corporation controlled it. No central authority managed it.</p>
-            <p data-i18n="index.s06.p2">Grassroots Hoppers follows the same playbook. Instead of "your town can grow its own food," it's <strong>"your community can build its own tools."</strong></p>
+            <p data-i18n="index.s06.p2">Grassroots Hoppers follows the same playbook. Instead of "your town can grow its own food," it's <strong>"your community can build its own tools."</strong> We're not replacing Transition Towns. We're adding the digital layer — community-owned software as infrastructure, the same way Transition added community-owned food and energy.</p>
             <p data-i18n="index.s06.p3">The method: we build a practical open-source project for a real community need. We document the entire process as a roadmap and a workshop. Then we publish everything — code, governance template, deployment guide — so other communities can replicate it without starting from zero.</p>
         </div>
     </section>
@@ -973,19 +1067,11 @@
                 <p data-i18n="index.s07.grassroot.p">Bottom-up, citizen-driven, not corporate.</p>
             </div>
             <div class="name-item">
-                <h3 class="accent">Grace Hopper</h3>
-                <p data-i18n="index.s07.grace.p">The pioneering coder who democratized programming. She built the first compiler and championed human-readable code.</p>
-            </div>
-            <div class="name-item">
-                <h3 class="accent" data-i18n="index.s07.hopping.title">Hopping</h3>
-                <p data-i18n="index.s07.hopping.p">Hopping from open-source project to open-source project, taking the pieces you need to assemble your own design.</p>
-            </div>
-            <div class="name-item">
-                <h3 class="accent" data-i18n="index.s07.hop.title">Hop</h3>
-                <p data-i18n="index.s07.hop.p">A crop with deep roots in Belgium. But today, Belgian hop farming has shrunk to around 180 hectares. The rest... imported. Like our software.</p>
+                <h3 class="accent">Hopper</h3>
+                <p data-i18n="index.s07.grace.p">Movement from person to person, community to community, city to city. Also: a nod to Lindy Hop, the dance community where this idea was born.</p>
             </div>
         </div>
-        <p style="margin-top: 3rem; font-family: var(--display); font-size: 1.25rem; font-style: italic; opacity: 0.85; max-width: 40ch; text-align: center;" data-i18n="index.s07.closing">A name that carries its own identity. No branding agency needed.</p>
+        <p style="margin-top: 3rem; font-family: var(--display); font-size: 1.25rem; font-style: italic; opacity: 0.85; max-width: 40ch; text-align: center;" data-i18n="index.s07.closing">A movement name, not a brand exercise.</p>
     </section>
 
     <!-- 08: THE IDENTITY -->
@@ -996,14 +1082,17 @@
             <div class="layer">
                 <h3 data-i18n="index.s08.person.title">Build</h3>
                 <p data-i18n="index.s08.person.p">We create practical open-source tools for real community needs — retail intelligence, cooperative social networks, civic workflows. Each project is AGPL-licensed and community-owned from day one.</p>
+                <p style="font-family: var(--mono); font-size: 0.75rem; opacity: 0.5; margin-bottom: 0;">IN PROGRESS — HACKATHON MARCH 10–14</p>
             </div>
             <div class="layer">
                 <h3 data-i18n="index.s08.movement.title">Document</h3>
                 <p data-i18n="index.s08.movement.p">Every project becomes a roadmap: the decisions, the architecture, the governance model. Plus workshops that teach communities how to deploy and maintain the tool themselves.</p>
+                <p style="font-family: var(--mono); font-size: 0.75rem; opacity: 0.5; margin-bottom: 0;">STARTING — DEVLOG GOES LIVE MARCH 10</p>
             </div>
             <div class="layer">
                 <h3 data-i18n="index.s08.products.title">Replicate</h3>
                 <p data-i18n="index.s08.products.p">Other communities fork the project, adapt it to their context, and run it independently. City by city, the same pattern spreads — without central control.</p>
+                <p style="font-family: var(--mono); font-size: 0.75rem; opacity: 0.5; margin-bottom: 0;">PLANNED — PLAYBOOKS PUBLISH AFTER HACKATHON</p>
             </div>
         </div>
     </section>
@@ -1011,17 +1100,19 @@
     <!-- 09: THE DEMOS -->
     <section class="dark" style="text-align: center;">
         <p class="slide-number accent" data-i18n="index.s09.num">09 — FIRST PROJECTS</p>
-        <h2 data-i18n="index.s09.heading">Two projects. Both open source. Both designed to replicate.</h2>
+        <h2 data-i18n="index.s09.heading">The first proof. <span class="accent">One shop, two tools, built in public.</span></h2>
         <div class="demos-grid">
             <div class="demo-card">
                 <h3>Social Media V2</h3>
                 <p data-i18n="index.s09.social.p">A cooperative social network for local communities. No likes. No comments. No algorithm. You see what the people around you are creating. If you want to tell them it's amazing, you tell them in person. Designed to be forked city by city.</p>
+                <p style="font-family: var(--mono); font-size: 0.75rem; opacity: 0.4; margin-bottom: 1rem;">STATUS: SPEC PUBLISHED · DEVELOPMENT STARTS AFTER DAVID TOOLKIT SHIPS</p>
                 <p class="demo-link"><a href="social-v2.html" class="accent" data-i18n="index.s09.social.link">Read the spec →</a></p>
             </div>
             <div class="demo-card">
                 <h3>David Toolkit</h3>
-                <p data-i18n="index.s09.david.p">Retail intelligence for small shops — the tools big chains have, built open-source and cooperatively owned. Browser-first dashboard: old POS exports in, clear operating judgment out. Built for <a href="chez-julien-workflow-map.html" class="accent">Chez Julien</a> in Brussels, documented so any shop can deploy it.</p>
-                <p class="demo-link"><a href="https://github.com/Grassroot-hoppers/david-toolkit" class="accent">GitHub repo (AGPL-3.0) →</a></p>
+                <p data-i18n="index.s09.david.p">Retail intelligence for a specialty food shop in Brussels. The tools big chains have — demand prediction, workflow management, ordering support — built open-source for <a href="chez-julien-workflow-map.html" class="accent">Chez Julien</a>. Starting narrow: one shop, two tools, documented so any shop can deploy them.</p>
+                <p style="font-family: var(--mono); font-size: 0.75rem; opacity: 0.4; margin-bottom: 1rem;">STATUS: BUILDING · HACKATHON MARCH 10–14 · FOLLOW THE DEVLOG</p>
+                <p class="demo-link"><a href="hackathon.html" class="accent">See the hackathon page →</a></p>
             </div>
         </div>
     </section>
@@ -1030,53 +1121,80 @@
     <section class="light">
         <div class="content-inner">
             <p class="slide-number" data-i18n="index.s10.num">10 — THE MODEL</p>
-            <h2 data-i18n="index.s10.heading">Contributors don't get paid. <span class="accent">They get ownership.</span></h2>
-            <p data-i18n="index.s10.p1">The people who build are the people who own. You contribute to David Toolkit? You own a piece of David Toolkit. Every contribution is public, open-source, and attributed. All code is AGPL-3.0 licensed — free to use, required to stay open.</p>
-            <p data-i18n="index.s10.p2">Each city-level instance can incorporate as a cooperative (SC — société coopérative under Belgian law). The roadmap includes governance templates, contribution tracking, and a legal structure that communities can adopt without reinventing it.</p>
-            <p data-i18n="index.s10.p3" style="opacity: 0.85;">Grassroots Hoppers is built by <strong>GPFC srl</strong>, a registered Belgian company (BCE BE0545849385). The initiative is real, the entity is real, and the first products are shipping.</p>
+            <h2 data-i18n="index.s10.heading">Open source today. <span class="accent">Cooperative governance next.</span></h2>
+            <p data-i18n="index.s10.p1">Grassroots Hoppers is built by <strong>GPFC srl</strong>, a registered Belgian company (BCE BE0545849385). All code is AGPL-3.0 — free to use, required to stay open. Every contribution is public and attributed.</p>
+            <p data-i18n="index.s10.p2">The roadmap includes cooperative governance: a legal structure (SC — société coopérative under Belgian law) where contributors become co-owners. That structure is being designed now. Until it's filed, the commitment is simple: everything is open-source, everything is documented, and the governance templates will be published for any community to adopt.</p>
+            <p data-i18n="index.s10.p3" style="opacity: 0.75;">We'd rather be honest about what's real than promise what isn't.</p>
         </div>
     </section>
 
-    <!-- 11: THE ECOSYSTEM -->
-    <section class="dark" style="text-align: center;">
-        <p class="slide-number accent" data-i18n="index.s11.num">11 — THE ECOSYSTEM</p>
-        <h2 data-i18n="index.s11.heading">Open source. Open knowledge. <span class="accent">Open doors.</span></h2>
-        <p style="max-width: 48ch; text-align: center; opacity: 0.85;" data-i18n="index.s11.p1">Every project, every roadmap, every workshop is published openly. The code lives on <a href="https://github.com/Grassroot-hoppers" class="accent" target="_blank" rel="noopener">GitHub</a>. The governance templates are Creative Commons. The initiative is findable at grassroothopper.com, .org, .eu, and .be — because when someone hears the name at a talk, in a chat, or from an AI search, they should land here in one click.</p>
-        <p style="margin-top: 2rem; font-family: var(--display); font-size: 1.15rem; font-style: italic; opacity: 0.7; max-width: 36ch; text-align: center;">"I want to be with those who know secret things or else alone." — Rilke</p>
+    <!-- 11: WHERE WE ARE -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">11 — WHERE WE ARE</p>
+        <h2>Honest roadmap. <span class="accent">No vapor.</span></h2>
+        <div class="roadmap">
+            <div class="roadmap-phase done">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-label">Done</div>
+                <div class="roadmap-items">
+                    <p>GPFC srl registered (BCE BE0545849385)</p>
+                    <p>Initiative SPEC published</p>
+                    <p>Social Media V2 SPEC published</p>
+                    <p>David Toolkit repo live on GitHub</p>
+                    <p>Workflow map prototype built</p>
+                    <p>Website + hackathon infrastructure ready</p>
+                </div>
+            </div>
+            <div class="roadmap-phase current">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-label">March 10–14 · Hackathon</div>
+                <div class="roadmap-items">
+                    <p>Sales prediction engine (3 years POS data + weather)</p>
+                    <p>Interactive workflow map for Chez Julien</p>
+                    <p>5-day public devlog</p>
+                </div>
+            </div>
+            <div class="roadmap-phase planned">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-label">Q2 2026</div>
+                <div class="roadmap-items">
+                    <p>David Toolkit playbook published</p>
+                    <p>First "Fork &amp; Deploy" workshop template</p>
+                    <p>Cooperative governance design (SC statutes draft)</p>
+                </div>
+            </div>
+            <div class="roadmap-phase planned">
+                <div class="roadmap-dot"></div>
+                <div class="roadmap-label">Q3–Q4 2026</div>
+                <div class="roadmap-items">
+                    <p>Social Media V2 development begins</p>
+                    <p>First community replication pilot</p>
+                    <p>SC cooperative filing</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- 12: CTA -->
-    <section class="light">
+    <section class="dark">
         <div class="cta-inner">
-            <p class="slide-number accent" data-i18n="index.s13.num">12 — GET INVOLVED</p>
-            <h2 data-i18n="index.s13.heading">If this made your eyes light up — <span class="accent">you're one of us.</span></h2>
+            <p class="slide-number accent">12 — GET INVOLVED</p>
+            <h2>What's your next step?</h2>
             <div class="cta-items">
                 <div class="cta-item">
-                    <h3 data-i18n="index.s13.email.title">Talk to the founder</h3>
-                    <a href="mailto:staycreative@julien.care" class="accent">staycreative@julien.care</a>
+                    <h3>Book a talk</h3>
+                    <a href="speak.html" class="accent">Speaking & workshops →</a>
                 </div>
                 <div class="cta-item">
-                    <h3 data-i18n="index.s13.manifesto.title">Read the full SPEC</h3>
-                    <a href="https://github.com/Grassroot-hoppers/grassroothopper/blob/main/movement/SPEC.md" class="accent" data-i18n="index.s13.manifesto.link">Initiative SPEC →</a>
+                    <h3>Back a pilot</h3>
+                    <a href="mailto:staycreative@julien.care?subject=Partnership%20inquiry" class="accent">Partner with us →</a>
                 </div>
                 <div class="cta-item">
-                    <h3 data-i18n="index.s13.github.title">Fork & contribute</h3>
-                    <a href="https://github.com/Grassroot-hoppers/grassroothopper" class="accent" data-i18n="index.s13.github.link">GitHub →</a>
+                    <h3>Fork & contribute</h3>
+                    <a href="https://github.com/Grassroot-hoppers/grassroothopper" class="accent" target="_blank" rel="noopener">GitHub →</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- BOTTOM DEMO CTA -->
-    <section class="dark" style="min-height: auto; padding: 4rem 2rem;">
-        <div class="demo-cta-bottom">
-            <span class="demo-cta-label" data-i18n="index.hero.democta">Explore <span class="arrow">&darr;</span></span>
-            <div class="demo-cta-buttons">
-                <a href="social-v2.html" data-i18n="index.hero.btn.social">Social Network V2</a>
-                <a href="david-retail.html" data-i18n="index.hero.btn.david">David Toolkit</a>
-                <a href="learn.html">Learn</a>
-                <a href="hackathon.html" style="background: var(--teal); box-shadow: 0 2px 12px rgba(58,158,143,0.3);">Hackathon</a>
-            </div>
+            <p style="margin-top: 2.5rem; font-family: var(--mono); font-size: 0.85rem; opacity: 0.6;">Or follow the launch: <a href="hackathon.html" class="accent">hackathon preview page</a></p>
         </div>
     </section>
 

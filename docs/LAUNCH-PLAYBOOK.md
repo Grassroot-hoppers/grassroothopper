@@ -1,6 +1,6 @@
 # Launch Playbook
 
-This is the release order for the March 9 to March 13, 2026 hackathon.
+This is the release order for the March 10 to March 14, 2026 hackathon.
 
 ## Before Posting Anywhere
 

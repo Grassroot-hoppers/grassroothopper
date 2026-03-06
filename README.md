@@ -12,7 +12,7 @@ This repository is intentionally not the place where product runtime code lives.
 - `movement/` contains the manifesto, research references, and strategic framing.
 - `products/` contains product concept specs and positioning docs.
 - `website/chez-julien-workflow-map.html` is the strategic companion artifact for David Toolkit: an ideal future-state workflow map for Chez Julien.
-- `docs/` contains the March 9 to March 13, 2026 hackathon plan, devlog templates, and launch guidance.
+- `docs/` contains the March 10 to March 14, 2026 hackathon plan, devlog templates, and launch guidance.
 
 ## Product Repositories
 
@@ -29,7 +29,7 @@ This umbrella repository is licensed under `CC BY-SA 4.0` for docs, narrative, a
 Grassroots Hoppers is no longer just a thesis repo.
 
 - The initiative site is live.
-- David Toolkit is moving into a five-day public hackathon from March 9 to March 13, 2026.
+- David Toolkit is moving into a five-day public hackathon from March 10 to March 14, 2026.
 - The product runtime now lives in a separate repo.
 - The workflow map in this repo shows the operating model David Toolkit is meant to support.
 

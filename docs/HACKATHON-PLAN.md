@@ -1,6 +1,6 @@
 # David Toolkit Hackathon Plan
 
-Dates: March 9 to March 13, 2026
+Dates: March 10 to March 14, 2026
 
 This sprint has three tracks. The point is not only to ship a demo. The point is to ship a demo that reads like a serious open-source project.
 

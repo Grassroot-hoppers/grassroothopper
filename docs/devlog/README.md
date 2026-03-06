@@ -1,6 +1,6 @@
 # Hackathon Devlog
 
-This folder is the reporting spine for the David Toolkit hackathon running from March 9 to March 13, 2026.
+This folder is the reporting spine for the David Toolkit hackathon running from March 10 to March 14, 2026.
 
 ## Format
 
@@ -18,14 +18,23 @@ The sprint ends with one retrospective.
 - GitHub: canonical code/project home
 - Fosstodon: short social amplification
 
-## File Map
+## Source Files
 
-- [`2026-03-09-day-1.md`](2026-03-09-day-1.md)
-- [`2026-03-10-day-2.md`](2026-03-10-day-2.md)
-- [`2026-03-11-day-3.md`](2026-03-11-day-3.md)
-- [`2026-03-12-day-4.md`](2026-03-12-day-4.md)
-- [`2026-03-13-day-5.md`](2026-03-13-day-5.md)
-- [`2026-03-13-retrospective.md`](2026-03-13-retrospective.md)
+The generator reads these markdown files directly:
+
+- [`day-1.md`](day-1.md)
+- [`day-2.md`](day-2.md)
+- [`day-3.md`](day-3.md)
+- [`day-4.md`](day-4.md)
+- [`day-5.md`](day-5.md)
+- [`retrospective.md`](retrospective.md)
+
+## Publishing Rules
+
+- `status: draft` keeps a page in markdown only. It is not linked or published to `website/hackathon/`.
+- `status: live` publishes the page and marks it as the current public entry.
+- `status: done` publishes the page as completed.
+- GitHub Pages installs `requirements.txt` and runs `python scripts/build-hackathon.py` on every push to `main`.
 
 ## Posting Discipline
 

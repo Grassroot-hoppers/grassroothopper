@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Grassroots Hoppers — founded by Julien Thibaut, a Brussels shop owner building open-source tools for small businesses and communities.">
+    <meta property="og:title" content="About — Grassroots Hoppers">
+    <meta property="og:description" content="One shop owner. One question: if I can build real tools with no technical background, what happens when communities do it together?">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grassroothopper.com/about.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About — Grassroots Hoppers">
+    <title>About — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f0e0c; --light-bg: #f5f0e6;
+            --dark-fg: #f5f0e6; --light-fg: #1a1714;
+            --dark-accent: #e8a830; --light-accent: #b8432a;
+            --dark-muted: #7a756c; --light-muted: #8a8279;
+            --teal: #3a9e8f;
+            --sans: 'DM Sans', sans-serif; --display: 'Fraunces', serif; --mono: 'JetBrains Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); overflow-x: hidden; }
+
+        /* --- Nav --- */
+        .site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 0.9rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15,14,12,0.92); backdrop-filter: blur(8px);
+            font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .site-nav a { color: var(--dark-fg); text-decoration: none; border-bottom: none; transition: opacity 0.2s; }
+        .site-nav a:hover { opacity: 0.7; }
+        .site-nav .logo { font-family: var(--display); font-size: 1rem; font-weight: 600; letter-spacing: 0; text-transform: none; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-links .active { color: var(--dark-accent); }
+        .nav-hackathon { color: var(--teal) !important; }
+
+        section {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 4rem 2rem;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+        .dark { background-color: var(--dark-bg); color: var(--dark-fg); }
+        .dark .accent { color: var(--dark-accent); }
+        .dark .muted { color: var(--dark-muted); }
+        .light { background-color: var(--light-bg); color: var(--light-fg); }
+        .light .accent { color: var(--light-accent); }
+        .light .muted { color: var(--light-muted); }
+
+        h1 { font-family: var(--display); font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 500; line-height: 1.1; margin-bottom: 1.5rem; font-optical-sizing: auto; letter-spacing: -0.02em; }
+        h2 { font-family: var(--display); font-size: clamp(1.8rem, 4.5vw, 3rem); font-weight: 600; line-height: 1.2; margin-bottom: 2rem; font-optical-sizing: auto; }
+        h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; font-optical-sizing: auto; }
+        p { font-size: 1.15rem; line-height: 1.75; margin-bottom: 1.5rem; max-width: 52ch; }
+        .slide-number { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.15em; margin-bottom: 3rem; text-transform: uppercase; }
+
+        a { color: inherit; text-decoration: none; border-bottom: 2px solid currentColor; transition: opacity 0.3s ease; padding-bottom: 2px; }
+        a:hover { opacity: 0.7; }
+        .dark a.accent { color: var(--dark-accent); border-bottom-color: var(--dark-accent); }
+        .light a.accent { color: var(--light-accent); border-bottom-color: var(--light-accent); }
+
+        .content-inner { max-width: 52ch; text-align: center; }
+        .content-inner p { text-align: left; }
+
+        /* Photo placeholder */
+        .photo-placeholder {
+            width: 160px; height: 160px; border-radius: 50%;
+            background: rgba(232,168,48,0.1); border: 2px solid rgba(232,168,48,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--mono); font-size: 0.75rem; color: var(--dark-muted);
+            margin-bottom: 2rem; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .light .photo-placeholder {
+            background: rgba(184,67,42,0.05); border-color: rgba(184,67,42,0.15);
+            color: var(--light-muted);
+        }
+
+        /* Fact grid */
+        .fact-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+            width: 100%; max-width: 600px; margin-top: 2rem;
+        }
+        @media (max-width: 480px) { .fact-grid { grid-template-columns: 1fr; } }
+        .fact-card {
+            padding: 1.5rem; border-radius: 8px;
+        }
+        .dark .fact-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(232,168,48,0.12); }
+        .light .fact-card { background: rgba(26,23,20,0.03); border: 1px solid rgba(184,67,42,0.1); }
+        .fact-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.4rem; }
+        .fact-value { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+
+        /* Name cards */
+        .name-grid {
+            display: grid; grid-template-columns: 1fr; gap: 2rem;
+            width: 100%; max-width: 600px; margin-top: 2rem;
+        }
+        @media (min-width: 640px) { .name-grid { grid-template-columns: repeat(2, 1fr); } }
+        .name-item { padding: 2rem; border-radius: 8px; }
+        .dark .name-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(232,168,48,0.2); }
+        .name-item h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+        .name-item p { font-size: 0.95rem; margin-bottom: 0; max-width: none; }
+
+        footer {
+            padding: 2.5rem 2rem; text-align: center; font-size: 0.9rem;
+            font-family: var(--mono); letter-spacing: 0.05em;
+            background-color: var(--light-bg); color: var(--light-fg);
+            border-top: 1px solid rgba(26,23,20,0.1);
+        }
+        footer p { max-width: none; margin-bottom: 0; font-size: 0.9rem; }
+
+        @media (max-width: 768px) { section { padding: 3rem 1.5rem; } .site-nav { padding: 0.8rem 1.2rem; } }
+        @media (prefers-reduced-motion: reduce) { section { transition: none; } }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="about.html" class="active">About</a>
+            <a href="learn.html">Learn</a>
+            <a href="hackathon.html" class="nav-hackathon">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- FOUNDER -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; min-height: 100vh; min-height: 100dvh;">
+        <p class="slide-number accent">ABOUT</p>
+        <div class="photo-placeholder">Photo</div>
+        <h1>Julien Thibaut</h1>
+        <p style="text-align: center; max-width: 38ch; font-family: var(--display); font-size: 1.25rem; opacity: 0.85; margin-bottom: 3rem;">Shop owner. Self-taught developer. Brussels.</p>
+        <div class="content-inner">
+            <p>Julien runs <strong>Chez Julien</strong>, a specialty food shop in Brussels. In 2025, he started building software tools for his own shop using AI-assisted development — no technical background, no team, no funding.</p>
+            <p>The quality of what one non-technical person could build surprised him. A demand prediction engine. An interactive workflow map. A cooperative social network spec. Real tools, not toy apps.</p>
+            <p><strong>Grassroots Hoppers</strong> is the question that followed: if one shop owner can build this, what happens when communities do it together — and what if every tool came with a playbook so the next person doesn't start from zero?</p>
+        </div>
+    </section>
+
+    <!-- THE ENTITY -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">THE ENTITY</p>
+        <h2>GPFC srl</h2>
+        <div class="content-inner">
+            <p>Grassroots Hoppers is built by <strong>GPFC srl</strong>, a registered Belgian company. The entity is real. The code is open. The first products are being built in public.</p>
+            <p style="opacity: 0.8;">The roadmap includes cooperative governance — a legal structure (SC — société coopérative under Belgian law) where contributors become co-owners. That structure is being designed now. Until it's filed, the commitment is simple: everything is open-source, everything is documented, and the governance templates will be published for any community to adopt.</p>
+            <p style="opacity: 0.75;">We'd rather be honest about what's real than promise what isn't.</p>
+        </div>
+        <div class="fact-grid">
+            <div class="fact-card">
+                <div class="fact-label">Company</div>
+                <div class="fact-value">GPFC srl</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-label">BCE Number</div>
+                <div class="fact-value">BE0545849385</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-label">License</div>
+                <div class="fact-value">AGPL-3.0</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-label">Location</div>
+                <div class="fact-value">Brussels, Belgium</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THE NAME -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">THE NAME</p>
+        <h2>Why Grassroots Hopper?</h2>
+        <div class="name-grid">
+            <div class="name-item">
+                <h3 class="accent">Grassroots</h3>
+                <p>Bottom-up, citizen-driven, not corporate.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">Hopper</h3>
+                <p>Movement from person to person, community to community, city to city. Also: a nod to Lindy Hop, the dance community where this idea was born.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">Hopping</h3>
+                <p>Hopping from open-source project to open-source project, taking the pieces you need to assemble your own design.</p>
+            </div>
+            <div class="name-item">
+                <h3 class="accent">The initiative</h3>
+                <p>The Grassroots Hoppers are a community of community builders spreading city by city, like Transition Towns for digital infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="light" style="text-align: center; min-height: auto; padding: 5rem 2rem;">
+        <h2>Get in touch</h2>
+        <p style="text-align: center; max-width: 40ch; margin-bottom: 2rem;">Whether you want to partner, contribute, book a talk, or just say hello.</p>
+        <p><a href="mailto:staycreative@julien.care" class="accent" style="font-family: var(--mono); font-size: 1.05rem;">staycreative@julien.care</a></p>
+        <p style="margin-top: 1rem;"><a href="https://github.com/Grassroot-hoppers" class="accent" style="font-family: var(--mono); font-size: 0.9rem;" target="_blank" rel="noopener">github.com/Grassroot-hoppers</a></p>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelector('section').classList.add('visible');
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
+        document.querySelectorAll('section:not(:first-of-type)').forEach(function(s) { obs.observe(s); });
+    </script>
+</body>
+</html>

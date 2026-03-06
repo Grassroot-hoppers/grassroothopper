@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Owner Hackathon #001 — Day {{day}}: {{title}}">
+    <meta property="og:title" content="Day {{day}}: {{title}} — Shop Owner Hackathon">
+    <meta property="og:description" content="{{title}} — Day {{day}} of the Grassroots Hoppers Shop Owner Hackathon. {{date}}.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://grassroothopper.com/hackathon/day-{{day}}.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Day {{day}}: {{title}} — Shop Owner Hackathon">
+    <title>Day {{day}}: {{title}} — Shop Owner Hackathon — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="../index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="../about.html">About</a>
+            <a href="../learn.html">Learn</a>
+            <a href="index.html" class="nav-hackathon active">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; padding-bottom: 2rem; min-height: auto;">
+        <span class="status-badge {{status_class}}">
+            <span class="status-dot"></span>
+            {{status_label}}
+        </span>
+        <p class="slide-number accent" style="margin-bottom: 1rem;">DAY {{day}} OF 5</p>
+        <h1>{{title}}</h1>
+        <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">{{date}}</p>
+        <div class="day-dots">
+            {{dots}}
+        </div>
+    </section>
+
+    {{hero_html}}
+
+    {{shipped_html}}
+
+    <!-- CONTENT -->
+    <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
+        <div class="content-area">
+            {{content}}
+        </div>
+    </section>
+
+    <!-- NAV -->
+    <section class="dark" style="min-height: auto; padding: 3rem 2rem;">
+        <div class="day-nav">
+            {{prev_link}}
+            {{next_link}}
+        </div>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('section').forEach(function(s) { s.classList.add('visible'); });
+    </script>
+</body>
+</html>

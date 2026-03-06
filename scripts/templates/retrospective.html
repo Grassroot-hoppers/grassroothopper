@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Owner Hackathon #001 — Retrospective. What worked, what failed, what surprised, and what this taught about open source and small-shop software.">
+    <meta property="og:title" content="Retrospective — Shop Owner Hackathon — Grassroots Hoppers">
+    <meta property="og:description" content="Five days, two tools, one retrospective. What worked, what failed, what this taught about building open-source tools for small shops.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://grassroothopper.com/hackathon/retrospective.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Retrospective — Shop Owner Hackathon">
+    <title>Retrospective — Shop Owner Hackathon — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="../index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="../about.html">About</a>
+            <a href="../learn.html">Learn</a>
+            <a href="index.html" class="nav-hackathon active">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; padding-bottom: 2rem; min-height: auto;">
+        <span class="status-badge {{status_class}}">
+            <span class="status-dot"></span>
+            {{status_label}}
+        </span>
+        <p class="slide-number accent" style="margin-bottom: 1rem;">RETROSPECTIVE</p>
+        <h1>What I Learned<br><span class="accent">in Five Days</span></h1>
+        <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">Shop Owner Hackathon #001 — March 10–14, 2026</p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
+        <div class="content-area">
+            {{content}}
+        </div>
+    </section>
+
+    <!-- NAV -->
+    <section class="dark" style="min-height: auto; padding: 3rem 2rem;">
+        <div class="day-nav">
+            <a href="day-5.html" class="nav-arrow">&larr; Day 5</a>
+            <a href="index.html" class="nav-arrow">Back to hackathon →</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('section').forEach(function(s) { s.classList.add('visible'); });
+    </script>
+</body>
+</html>
