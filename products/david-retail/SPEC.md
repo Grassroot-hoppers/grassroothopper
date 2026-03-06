@@ -1,9 +1,9 @@
 # David Retail — Product SPEC
 
-*The second demo of the Grassroot Hopper movement.*
+*The second demo of the Grassroots Hopper initiative.*
 *Living document — March 5, 2026. Concept stage.*
 
-**What is Grassroot Hopper?** The Transition Towns of digital infrastructure — a movement of community builders creating open-source alternatives to extractive platforms. David Retail is the second demo: proof that the movement empowers real people with real economic problems. See [movement/SPEC.md](../../movement/SPEC.md) for the full manifesto.
+**What is Grassroots Hopper?** The Transition Towns of digital infrastructure — an initiative of community builders creating open-source alternatives to extractive platforms. David Retail is the second demo: proof that the initiative empowers real people with real economic problems. See [movement/SPEC.md](../../movement/SPEC.md) for the full manifesto.
 
 ---
 
@@ -15,11 +15,11 @@ David vs. Goliath. The name says it all.
 
 ---
 
-## Why This Matters for the Movement
+## Why This Matters for the Initiative
 
-The social network demo (Social Media V2) shows the community side of Grassroot Hopper — people discovering each other's creative lives. David Retail shows the economic empowerment side — small shop owners fighting the Goliaths with tools they built together.
+The social network demo (Social Media V2) shows the community side of Grassroots Hopper — people discovering each other's creative lives. David Retail shows the economic empowerment side — small shop owners fighting the Goliaths with tools they built together.
 
-Together, these two demos prove that Grassroot Hopper isn't about one idea. It's about anyone identifying a problem in their world and building the open-source cooperative solution.
+Together, these two demos prove that Grassroots Hopper isn't about one idea. It's about anyone identifying a problem in their world and building the open-source cooperative solution.
 
 David Retail is also deeply personal. Julien runs Chez Julien — a specialty food shop in Brussels. He *is* the small shop owner. He's building the tools he needs himself.
 
@@ -37,7 +37,7 @@ David Retail is also deeply personal. Julien runs Chez Julien — a specialty fo
 
 Anyone who cares. Small shop owners who know exactly what they need. Developers who want their local bakery to survive. Designers who want to make enterprise-grade tools accessible to non-technical people. Passionate coders who want a real-world project with real impact in their portfolio.
 
-**No one gets paid. Everyone gets ownership.** Contributors receive co-op shares in David Retail. They build their portfolio on a live, real-world product used by real shops. They become part of the Grassroot Hopper network.
+**No one gets paid. Everyone gets ownership.** Contributors receive co-op shares in David Retail. They build their portfolio on a live, real-world product used by real shops. They become part of the Grassroots Hopper network.
 
 ---
 

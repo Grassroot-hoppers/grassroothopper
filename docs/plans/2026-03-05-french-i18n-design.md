@@ -6,7 +6,7 @@
 
 ## Context
 
-The website is 8 vanilla HTML pages deployed to GitHub Pages. All content is hardcoded in English. No build step, no framework. The movement is based in Brussels, so a significant chunk of visitors speak French.
+The website is 8 vanilla HTML pages deployed to GitHub Pages. All content is hardcoded in English. No build step, no framework. The initiative is based in Brussels, so a significant chunk of visitors speak French.
 
 ## Goal
 
@@ -17,7 +17,7 @@ Add French translation without changing the English-first writing workflow. Fren
 - No build tools, no framework, no new dependencies
 - English remains the natural content in HTML — not extracted to JSON
 - French is derived, not co-authored — if a French key is missing, English stays
-- No SEO requirement for French (audience finds the site through the movement, not Google)
+- No SEO requirement for French (audience finds the site through the initiative, not Google)
 
 ## Design
 
@@ -26,7 +26,7 @@ Add French translation without changing the English-first writing workflow. Fren
 Every translatable text element gets a `data-i18n` attribute with a namespaced key.
 
 ```html
-<h1 data-i18n="index.hero.title">Grassroot Hoppers</h1>
+<h1 data-i18n="index.hero.title">Grassroots Hoppers</h1>
 <p data-i18n="index.hero.subtitle">The Transition Towns of digital infrastructure</p>
 ```
 
@@ -42,7 +42,7 @@ Flat key-value map:
 
 ```json
 {
-  "index.hero.title": "Grassroot Hoppers",
+  "index.hero.title": "Grassroots Hoppers",
   "index.hero.subtitle": "Le Transition Towns de l'infrastructure numérique",
   "index.slide02.heading": "La barrière technique s'effondre"
 }

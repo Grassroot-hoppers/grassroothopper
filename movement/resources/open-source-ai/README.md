@@ -4,11 +4,11 @@
 
 A wave of European organizations building open-source AI models, datasets, and infrastructure outside the control of Big Tech. Some are research labs releasing state-of-the-art models for the common good. Others are volunteer-driven communities creating the open datasets that make independent AI possible. Together they're building European AI sovereignty from the ground up.
 
-## What Grassroot Hopper learns from it
+## What Grassroots Hopper learns from it
 
-**The "anyone can build" thesis applies to AI too.** The technical barrier isn't just collapsing for web apps — it's collapsing for AI. Open models from Kyutai, Silo AI, and OpenEuroLLM mean a small cooperative can run sophisticated AI tools without paying rent to OpenAI or Google. This is directly relevant to Grassroot Hopper products that might use AI features.
+**The "anyone can build" thesis applies to AI too.** The technical barrier isn't just collapsing for web apps — it's collapsing for AI. Open models from Kyutai, Silo AI, and OpenEuroLLM mean a small cooperative can run sophisticated AI tools without paying rent to OpenAI or Google. This is directly relevant to Grassroots Hopper products that might use AI features.
 
-**Multilingual, culturally sovereign models matter.** OpenEuroLLM and Silo AI's Poro are specifically designed for European languages and cultural contexts. If Grassroot Hopper operates city-by-city across Europe, having AI tools that actually understand Dutch, French, Finnish, or Greek — not just English — is a real advantage.
+**Multilingual, culturally sovereign models matter.** OpenEuroLLM and Silo AI's Poro are specifically designed for European languages and cultural contexts. If Grassroots Hopper operates city-by-city across Europe, having AI tools that actually understand Dutch, French, Finnish, or Greek — not just English — is a real advantage.
 
 **The volunteer-and-commons model works.** LAION built one of the world's largest open datasets with volunteers and donated compute. GFOSS advocates for open-source AI as public infrastructure. These are proof points that the cooperative/commons model can produce world-class technical output.
 
@@ -40,6 +40,6 @@ Greek Free and Open Source Software Society. Advocates for low-cost, green, open
 
 - Which open models are actually production-ready for a small cooperative to deploy today?
 - What's the realistic compute cost for running an open model locally vs. using a hosted API?
-- Could LAION's volunteer model inspire how Grassroot Hopper coordinates open-source contributions?
-- Is GFOSS a potential strategic partner for a Greek or Mediterranean Grassroot Hopper chapter?
+- Could LAION's volunteer model inspire how Grassroots Hopper coordinates open-source contributions?
+- Is GFOSS a potential strategic partner for a Greek or Mediterranean Grassroots Hopper chapter?
 - How does Silo AI's relationship with LUMI work — could cooperatives access EU supercomputing for specific tasks?

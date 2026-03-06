@@ -6,7 +6,7 @@
 
 Don't spend time on social media. Spend time on social activities.
 
-As you do social activities — dancing, workshops, creative workshops, an art class, a reading club, a running club — you create relationships in groups. Real ones. At some point, you mention it: "Hey, we could launch our own Grassroot Hopper community. I can set it up for you. I'll give you a QR code, and we're on this new social network. It's only for us."
+As you do social activities — dancing, workshops, creative workshops, an art class, a reading club, a running club — you create relationships in groups. Real ones. At some point, you mention it: "Hey, we could launch our own Grassroots Hopper community. I can set it up for you. I'll give you a QR code, and we're on this new social network. It's only for us."
 
 That's how it starts. Not an app download. Not a sign-up form. A conversation at an event.
 

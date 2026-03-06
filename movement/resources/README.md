@@ -1,6 +1,6 @@
 # Resources & Inspiration
 
-Research collected from projects that inform Grassroot Hopper's design, legal structure, governance, and replication model. Each folder contains notes on what the project is, what we learn from it, and key links.
+Research collected from projects that inform Grassroots Hopper's design, legal structure, governance, and replication model. Each folder contains notes on what the project is, what we learn from it, and key links.
 
 ## By theme
 

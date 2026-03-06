@@ -1,30 +1,34 @@
 # Cutting Education — Project Brief
 
-*Internal project under Grassroot Hopper · GPFC srl · March 2026*
+*Internal project under Grassroots Hopper · GPFC srl · March 2026*
 
 ---
 
 ## The Idea
 
-The technical barrier to building software is collapsing — that's the Grassroot Hopper thesis. But knowing the barrier is collapsing and actually walking through it are two different things. Most people still don't believe they can build software. They've never seen it happen. They've never done it themselves.
+The technical barrier to building software is collapsing — that's the Grassroots Hopper thesis. But knowing the barrier is collapsing and actually walking through it are two different things. Most people still don't believe they can build software. They've never seen it happen. They've never done it themselves.
 
 **Cutting Education is the bridge.** It's a teaching initiative that takes normal people — not developers, not engineers — and walks them through building real, working apps using AI-assisted tools. Not tutorials. Not theory. Building things together, live, from scratch.
 
-The name is deliberate: we're cutting through the mystique of software creation. We're cutting the education gap between "I have an idea" and "I shipped it." And we're doing it as a visible, public part of the Grassroot Hopper movement — proof that this works, that the thesis is real, that anyone can do this.
+The name is deliberate: we're cutting through the mystique of software creation. We're cutting the education gap between "I have an idea" and "I shipped it." And we're doing it as a visible, public part of the Grassroots Hopper initiative — proof that this works, that the thesis is real, that anyone can do this.
+
+Content for the initiative will be generated through workshops, recordings, and documentation.
 
 ---
 
-## Why This Matters for Grassroot Hopper
+## Why This Matters for Grassroots Hopper
 
-The movement needs believers. Not people who nod at the thesis, but people who've experienced it firsthand — who've gone from zero to a working app and felt what that unlocks. Every person who builds something through Cutting Education becomes a natural evangelist for the movement. They don't need convincing anymore. They've lived it.
+The initiative needs believers. Not people who nod at the thesis, but people who've experienced it firsthand — who've gone from zero to a working app and felt what that unlocks. Every person who builds something through Cutting Education becomes a natural evangelist for the initiative. They don't need convincing anymore. They've lived it.
 
 Cutting Education serves three purposes simultaneously:
 
-1. **Recruitment.** Every workshop participant is a potential Grassroot Hopper. They arrive curious; they leave capable. The best ones stick around and start building real products for the movement.
+1. **Recruitment.** Every workshop participant is a potential Grassroots Hopper. They arrive curious; they leave capable. The best ones stick around and start building real products for the initiative.
 
 2. **Proof of concept.** Every app built in a workshop is tangible evidence that the thesis works. These aren't demos built by Julien — they're apps built by regular people in real time. That story is compelling for press, for funding applications, for community talks.
 
-3. **Content engine.** Every live session, every workshop, every app built together generates material — recordings, write-ups, open-source repos, social posts. This feeds the movement's visibility without requiring a separate content strategy.
+3. **Content engine.** Every live session, every workshop, every app built together generates material — recordings, write-ups, open-source repos, social posts. This feeds the initiative's visibility without requiring a separate content strategy.
+
+**Initiative conversion** metrics will track how many workshop participants eventually contribute to Grassroots Hopper products.
 
 ---
 
@@ -32,7 +36,7 @@ Cutting Education serves three purposes simultaneously:
 
 ### Workshops
 
-In-person or hybrid sessions (2–4 hours) where a small group builds an app together from start to finish. One facilitator (Julien or a trained Grassroot Hopper), one shared screen, one project. Participants follow along on their own machines, ask questions, make decisions together.
+In-person or hybrid sessions (2–4 hours) where a small group builds an app together from start to finish. One facilitator (Julien or a trained Grassroots Hopper), one shared screen, one project. Participants follow along on their own machines, ask questions, make decisions together.
 
 The workshop is structured around a real person's real idea — not a contrived exercise. Someone in the room (or on the call) has a problem they want solved, and the group builds the solution together. This is what makes it compelling: the stakes are real, the outcome is useful, and the person whose idea it is walks away with something that actually works.
 
@@ -42,7 +46,7 @@ Target group size: 5–15 people. Small enough for real interaction, large enoug
 
 Shorter, more casual formats — 1–2 hours, streamed or recorded. These could be:
 
-- **Build-alongs:** Julien or a Grassroot Hopper builds something live, narrating the process, taking audience suggestions.
+- **Build-alongs:** Julien or a Grassroots Hopper builds something live, narrating the process, taking audience suggestions.
 - **Idea-to-app sprints:** Someone submits an idea beforehand, and the session is dedicated to building it from scratch.
 - **Debug parties:** Bring your half-finished project, and the group helps you get unstuck.
 
@@ -132,14 +136,14 @@ This is achievable in a 3–4 hour workshop with AI-assisted development, and it
 ### Phase 3 — First Game Jam (Summer 2026)
 
 - Organize a themed weekend game jam (in-person in Brussels, remote participants welcome)
-- Theme tied to Grassroot Hopper values — community, local, cooperative
+- Theme tied to Grassroots Hopper values — community, local, cooperative
 - Outcome: 3–5 playable browser games, content for the movement, energy and visibility
 
 ### Phase 4 — Repeatable Format (Autumn 2026)
 
 - Monthly workshops (alternating in-person and online)
 - Quarterly game jams
-- Begin training other Grassroot Hoppers to facilitate
+- Begin training other Grassroots Hoppers to facilitate
 - Outcome: Cutting Education runs without Julien being in every room
 
 ---
@@ -163,15 +167,17 @@ This is achievable in a 3–4 hour workshop with AI-assisted development, and it
 - **Apps built:** Number of working apps produced through workshops and jams
 - **Participants:** Number of people who've attended at least one session
 - **Repeat participants:** People who come back for a second session (the real signal)
-- **Movement conversion:** Participants who go on to contribute to Grassroot Hopper products
+- **Initiative conversion:** Participants who go on to contribute to Grassroots Hopper products
 - **Content generated:** Workshop recordings, write-ups, repos published
 - **Press and visibility:** Mentions, invitations to speak, partnership inquiries
 
 ---
 
-## Relationship to the Movement
+## Relationship to the Initiative
 
-Cutting Education is not a product — it's an arm of the movement. It sits alongside the products (Social V2, David Retail) as one of the ways the Grassroot Hopper movement grows and proves its thesis.
+Cutting Education is not a product — it's an arm of the initiative. It sits alongside the products (Social V2, David Retail) as one of the ways the Grassroots Hopper initiative grows and proves its thesis.
+
+Content for the initiative will be generated through these workshops and sessions.
 
 The products prove that communities can own their own tools.
 Cutting Education proves that anyone can build them.

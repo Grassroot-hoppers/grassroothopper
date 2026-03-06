@@ -2,7 +2,7 @@
 
 ## What The Sprint Was Actually About
 
-Turn Grassroot Hoppers from a thesis-heavy movement repo into a movement plus one real open-source product.
+Turn Grassroots Hoppers from a thesis-heavy initiative repo into an initiative plus one real open-source product.
 
 ## What Shipped
 

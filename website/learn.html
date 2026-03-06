@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grassroots Hoppers learning hub — playbooks, manuals, templates, workshops, and events for communities building their own software.">
+    <meta property="og:title" content="Learn — Grassroots Hoppers">
+    <meta property="og:description" content="Playbooks, manuals, templates, workshops, and events. Everything you need to build, govern, and replicate community-owned software.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grassroothopper.com/learn">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learn — Grassroots Hoppers">
+    <meta name="twitter:description" content="Playbooks, manuals, templates, workshops, and events. Everything you need to build, govern, and replicate community-owned software.">
+    <title>Learn — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f0e0c;
+            --light-bg: #f5f0e6;
+            --dark-fg: #f5f0e6;
+            --light-fg: #1a1714;
+            --dark-accent: #e8a830;
+            --light-accent: #b8432a;
+            --dark-muted: #7a756c;
+            --light-muted: #8a8279;
+            --teal: #3a9e8f;
+            --sans: 'DM Sans', sans-serif;
+            --display: 'Fraunces', serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); overflow-x: hidden; }
+
+        section {
+            min-height: 100vh; min-height: 100dvh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 4rem 2rem;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+        section.auto-height { min-height: auto; }
+
+        .dark { background-color: var(--dark-bg); color: var(--dark-fg); }
+        .dark .accent { color: var(--dark-accent); }
+        .dark .muted { color: var(--dark-muted); }
+        .light { background-color: var(--light-bg); color: var(--light-fg); }
+        .light .accent { color: var(--light-accent); }
+        .light .muted { color: var(--light-muted); }
+
+        h1 { font-family: var(--display); font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 500; line-height: 1.1; margin-bottom: 1.5rem; font-optical-sizing: auto; letter-spacing: -0.02em; }
+        h2 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 2rem; font-optical-sizing: auto; }
+        h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; font-optical-sizing: auto; }
+        p { font-size: 1.15rem; line-height: 1.75; margin-bottom: 1.5rem; max-width: 52ch; }
+
+        .slide-number { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.15em; margin-bottom: 3rem; text-transform: uppercase; }
+
+        a { color: inherit; text-decoration: none; border-bottom: 2px solid currentColor; transition: opacity 0.3s ease; padding-bottom: 2px; }
+        a:hover { opacity: 0.7; }
+        .dark a.accent { color: var(--dark-accent); border-bottom-color: var(--dark-accent); }
+        .light a.accent { color: var(--light-accent); border-bottom-color: var(--light-accent); }
+        a.no-border { border-bottom: none; }
+
+        .content-inner { max-width: 52ch; text-align: center; }
+        .content-inner p { text-align: left; }
+
+        /* Back nav */
+        .back-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1rem 2rem;
+            font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+            background: rgba(15, 14, 12, 0.92); backdrop-filter: blur(8px);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .back-nav a { border-bottom: none; color: var(--dark-fg); }
+        .back-nav a:hover { opacity: 0.7; }
+        .nav-links { display: flex; gap: 1.5rem; }
+
+        /* Resource cards */
+        .resource-grid {
+            display: grid; grid-template-columns: 1fr; gap: 2rem;
+            width: 100%; max-width: 900px; margin-top: 2rem;
+        }
+        @media (min-width: 640px) { .resource-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 960px) { .resource-grid.triple { grid-template-columns: repeat(3, 1fr); } }
+
+        .resource-card {
+            padding: 2.5rem; border-radius: 8px; display: flex; flex-direction: column;
+        }
+        .dark .resource-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(232,168,48,0.2); }
+        .light .resource-card { background: rgba(26,23,20,0.03); border: 1px solid rgba(184,67,42,0.12); }
+
+        .resource-card .tag {
+            font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 1rem; opacity: 0.7;
+        }
+        .resource-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .resource-card p { font-size: 0.95rem; line-height: 1.6; max-width: none; margin-bottom: 1rem; }
+        .resource-card .card-link { margin-top: auto; font-family: var(--mono); font-size: 0.85rem; }
+
+        .badge {
+            display: inline-block; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 100px;
+            margin-right: 0.5rem; margin-bottom: 0.5rem;
+        }
+        .dark .badge { background: rgba(232,168,48,0.15); color: var(--dark-accent); }
+        .light .badge { background: rgba(184,67,42,0.1); color: var(--light-accent); }
+        .badge.teal { background: rgba(58,158,143,0.15); color: var(--teal); }
+
+        /* Event card — featured */
+        .event-card {
+            padding: 2.5rem; border-radius: 8px; width: 100%; max-width: 900px; margin-top: 2rem;
+        }
+        .dark .event-card { background: rgba(232,168,48,0.08); border: 2px solid rgba(232,168,48,0.3); }
+        .light .event-card { background: rgba(184,67,42,0.05); border: 2px solid rgba(184,67,42,0.2); }
+        .event-card h3 { font-size: 1.4rem; }
+        .event-card p { max-width: none; font-size: 1rem; }
+        .event-card .event-meta {
+            font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+            margin-bottom: 1.5rem; opacity: 0.8;
+        }
+
+        footer {
+            padding: 2.5rem 2rem; text-align: center; font-size: 0.9rem;
+            font-family: var(--mono); letter-spacing: 0.05em;
+            background-color: var(--light-bg); color: var(--light-fg);
+            border-top: 1px solid rgba(26,23,20,0.1);
+        }
+        footer p { max-width: none; margin-bottom: 0; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            section { padding: 3rem 1.5rem; }
+            .resource-card { padding: 1.5rem; }
+            .back-nav { padding: 0.8rem 1.2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            section { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="back-nav">
+        <a href="index.html">&larr; Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="hackathon.html" class="accent" style="color: var(--dark-accent);">Hackathon</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem;">
+        <p class="slide-number accent">LEARN</p>
+        <h1>Build it. Document it. <span class="accent">Share it.</span></h1>
+        <p style="max-width: 44ch; text-align: center; opacity: 0.85;">Everything we build gets turned into something you can learn from, adapt, and replicate. Playbooks, templates, workshops, and live events — all open, all free.</p>
+        <p style="font-family: var(--mono); font-size: 0.85rem; opacity: 0.6; margin-top: 1rem;">Inspired by the <a href="https://transitionnetwork.org" target="_blank" rel="noopener" class="accent">Transition Towns</a> model of open knowledge sharing.</p>
+    </section>
+
+    <!-- PLAYBOOKS & MANUALS -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">PLAYBOOKS & MANUALS</p>
+        <h2>Step-by-step guides for <span class="accent">building and governing</span> community software.</h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 2.5rem; opacity: 0.85;">Each playbook documents a real project from start to finish — not theory, but the actual decisions, mistakes, and patterns that worked.</p>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <span class="tag">Playbook</span>
+                <h3>The David Toolkit Playbook</h3>
+                <p>How we built retail intelligence for a specialty food shop — from POS data export to demand prediction dashboard. Every architecture decision, every pivot, documented.</p>
+                <span class="badge">Retail</span><span class="badge teal">AI-assisted</span>
+                <p class="card-link"><a href="david-retail.html" class="accent">Read the playbook &rarr;</a></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Playbook</span>
+                <h3>Social Media V2 Playbook</h3>
+                <p>Building a cooperative social network from scratch — ActivityPub federation, no-algorithm design, city-by-city deployment model. The full SPEC and every design decision.</p>
+                <span class="badge">Social</span><span class="badge teal">Federation</span>
+                <p class="card-link"><a href="social-v2.html" class="accent">Read the SPEC &rarr;</a></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Manual</span>
+                <h3>Governance Starter Kit</h3>
+                <p>How to set up a cooperative (SC) under Belgian law for your community software project. Templates for statutes, contribution tracking, and decision-making processes.</p>
+                <span class="badge">Governance</span><span class="badge">Legal</span>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Coming soon</span></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Manual</span>
+                <h3>Fork & Deploy Guide</h3>
+                <p>Take any Grassroots Hoppers project and run it for your own community. Step-by-step: fork the repo, configure for your context, deploy, and maintain.</p>
+                <span class="badge">Technical</span><span class="badge teal">No-code friendly</span>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Coming soon</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">FREE TEMPLATES</p>
+        <h2>Download, adapt, <span class="accent">make it yours.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 2.5rem; opacity: 0.85;">Ready-to-use documents, configs, and frameworks. All CC BY-SA 4.0 — use them freely, just share your improvements back.</p>
+        <div class="resource-grid triple">
+            <div class="resource-card">
+                <span class="tag">Template</span>
+                <h3>Project SPEC Template</h3>
+                <p>The template we use to write every project specification. Identity, architecture, governance, replication strategy — all in one document.</p>
+                <p class="card-link"><a href="https://github.com/Grassroot-hoppers/grassroothopper/blob/main/movement/SPEC.md" class="accent" target="_blank" rel="noopener">View on GitHub &rarr;</a></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Template</span>
+                <h3>Cooperative Statutes</h3>
+                <p>Model statutes for a Belgian SC (société coopérative) adapted for community software projects. Fill in the blanks, file with the notary.</p>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Coming soon</span></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Template</span>
+                <h3>Workshop Facilitator Kit</h3>
+                <p>Run a "Build Your Own Tool" workshop for your community. Slide deck, facilitator notes, participant handouts, and a 3-hour session plan.</p>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Coming soon</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOPS -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">WORKSHOPS</p>
+        <h2>Learn by doing, <span class="accent">together.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 2.5rem; opacity: 0.85;">Hands-on sessions where communities go from idea to working prototype. Each workshop produces a real, deployable tool — not a slide deck.</p>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <span class="tag">Workshop format</span>
+                <h3>"Build Your Own Tool" — Half Day</h3>
+                <p>3 hours. One community need. Walk out with a working prototype. Designed for non-technical participants using no-code and AI-assisted development tools.</p>
+                <span class="badge teal">Beginner-friendly</span>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Launching Q2 2026</span></p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Workshop format</span>
+                <h3>"Fork & Own It" — Full Day</h3>
+                <p>Take an existing Grassroots Hoppers project, fork it, adapt it to your community's context, deploy it, and set up governance. You leave with a running tool and an ownership structure.</p>
+                <span class="badge">Intermediate</span>
+                <p class="card-link"><span class="muted" style="font-family: var(--mono); font-size: 0.85rem;">Launching Q3 2026</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="dark" style="text-align: center;">
+        <p class="slide-number accent">EVENTS</p>
+        <h2>Where the building <span class="accent">happens live.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 2.5rem; opacity: 0.85;">Hackathons, build sprints, and community meetups. Real tools built in real time, documented as they happen.</p>
+
+        <!-- Featured event -->
+        <div class="event-card">
+            <div class="event-meta">Next event &middot; March 10–14, 2026</div>
+            <h3>Shop Owner Hackathon <span class="accent">#001</span></h3>
+            <p>Five days. Two tools. One shop. Julien builds two open-source tools for Chez Julien live — a <strong>sales prediction engine</strong> (3 years of POS data + weather forecast correlation) and an <strong>interactive workflow map</strong> for employees. Every day documented. Every decision logged.</p>
+            <p style="opacity: 0.8;">This is what Grassroots Hoppers looks like in practice: real tools for real needs, built in the open, documented so any shop owner can replicate them.</p>
+            <p class="card-link"><a href="hackathon.html" class="accent">Follow the hackathon live &rarr;</a></p>
+        </div>
+    </section>
+
+    <!-- WIKI / KNOWLEDGE BASE -->
+    <section class="light" style="text-align: center;">
+        <p class="slide-number">WIKI</p>
+        <h2>The open knowledge <span class="accent">base.</span></h2>
+        <p style="max-width: 46ch; text-align: center; margin-bottom: 2.5rem; opacity: 0.85;">Concepts, patterns, and reference material for community-owned software. Growing as we build.</p>
+        <div class="resource-grid triple">
+            <div class="resource-card">
+                <span class="tag">Concept</span>
+                <h3>Build &rarr; Document &rarr; Replicate</h3>
+                <p>The core flywheel. How every project feeds the next community. The operating method explained.</p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Pattern</span>
+                <h3>City-by-City Deployment</h3>
+                <p>Why each city runs its own instance. How federation works. When to fork vs. contribute upstream.</p>
+            </div>
+            <div class="resource-card">
+                <span class="tag">Reference</span>
+                <h3>The Transition Towns Parallel</h3>
+                <p>How Rob Hopkins built a movement from a handbook. What we borrow, what we change, and why software is different from food and energy.</p>
+            </div>
+        </div>
+        <p style="margin-top: 2.5rem; font-family: var(--mono); font-size: 0.85rem; opacity: 0.6;">Full wiki launching with the GitHub org. All content CC BY-SA 4.0.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark" style="text-align: center; min-height: auto; padding: 5rem 2rem;">
+        <h2>Want to contribute a playbook, run a workshop, or host an event?</h2>
+        <p style="text-align: center; max-width: 40ch; opacity: 0.85;">The whole point is that this grows beyond one person. If you've built something for your community, we want to help you document it and share it.</p>
+        <p style="margin-top: 1rem;"><a href="mailto:staycreative@julien.care" class="accent" style="font-family: var(--mono); font-size: 1rem;">staycreative@julien.care &rarr;</a></p>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl &middot; Brussels, 2026 &middot; Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelector('section').classList.add('visible');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
+        document.querySelectorAll('section:not(:first-of-type)').forEach(function(s) { observer.observe(s); });
+    </script>
+</body>
+</html>

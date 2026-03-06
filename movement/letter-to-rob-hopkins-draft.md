@@ -40,11 +40,11 @@ Rob, I can tell you — it only took me a weekend. Today. Imagine what it will l
 
 ---
 
-I am starting a movement. I call it **Grassroot Hopper**.
+I am starting a movement. I call it **Grassroots Hopper**.
 
 The name is a blend of everything I care about:
 
-- **Grassroot** — bottom-up, citizen-driven, not corporate.
+- **Grassroots** — bottom-up, citizen-driven, not corporate.
 - **Grace Hopper** — the first coder who tried to democratize programming.
 - **Hopping** — the architecture of what I do: hopping from open-source project to open-source project, taking the pieces you need to assemble your own design.
 - **Hop** — the crop native to Belgium. We used it to brew beer that is now vastly imported from the US. It reflects exactly what happened with our social media and software: built elsewhere, imported to us, designed for someone else's profit. It's now time to custom-build them in our own towns and cities.
@@ -65,7 +65,7 @@ A social network and retail tools are only the humble beginning. I believe the c
 
 I recognize something in what you built with Transition Towns. You didn't build a platform. You named an identity, wrote a handbook, and let 1,400+ communities self-organize around it. That's exactly what I want to do — but for digital infrastructure instead of energy and food.
 
-My goal is to federalize and name a movement, instead of having millions of people trying to do their own thing in their own way without coordination. The Grassroot Hopper movement is about providing documentation, guidance, and community to everybody in the world who wakes up tomorrow wanting to create software that solves problems and improves the lives of their own communities.
+My goal is to federalize and name a movement, instead of having millions of people trying to do their own thing in their own way without coordination. The Grassroots Hopper initiative is about providing documentation, guidance, and community to everybody in the world who wakes up tomorrow wanting to create software that solves problems and improves the lives of their own communities.
 
 ---
 

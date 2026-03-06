@@ -1,4 +1,4 @@
-# Grassroot Hopper — Harsh Feedback
+# Grassroots Hopper — Harsh Feedback
 
 *Stress test using the Mom Test, New Business Road Test, Lean Startup, and cooperative school frameworks. March 4, 2026.*
 
@@ -24,13 +24,13 @@ The spec describes the solution in 500+ lines and the problem in 3. That's the c
 
 But do they? Maybe people compartmentalize on purpose. The dancer who paints might not want her running club to see her art. The poet might not want his coworking space to know he writes poetry. **The assumption is that people want their communities to overlap. That's not obviously true.**
 
-And the ones who *do* want to share — they already have Instagram, a WhatsApp group, a Substack. The friction of joining Grassroot Hopper (show up in person, learn a spoken password, type it in) is immense compared to "follow me on Instagram." The *benefit* of switching needs to outweigh this friction. Right now that benefit is: "no likes, no comments, no DMs, no way to contact anyone." That's not a benefit to most humans. That's a punishment.
+And the ones who *do* want to share — they already have Instagram, a WhatsApp group, a Substack. The friction of joining Grassroots Hopper (show up in person, learn a spoken password, type it in) is immense compared to "follow me on Instagram." The *benefit* of switching needs to outweigh this friction. Right now that benefit is: "no likes, no comments, no DMs, no way to contact anyone." That's not a benefit to most humans. That's a punishment.
 
 **The hard question:** Is "no engagement features" what *users* want, or what *Julien* wants? The spec frames it as philosophy. The Mom Test would say: ask 20 creators if they'd prefer a platform where nobody can comment on or share their work. Watch their faces.
 
 ### Industry Attractiveness (Competition & alternatives)
 
-Everything Grassroot Hopper describes is already done by:
+Everything Grassroots Hopper describes is already done by:
 
 - **Private Instagram account + WhatsApp group + Google Calendar** = community, content, events
 - **Ghost/Substack** = blogging with newsletter, but reaching the whole internet, not 50 people behind a gate
@@ -43,7 +43,7 @@ The switching cost is enormous. The incremental benefit is unclear to anyone who
 
 The founder is a food shop owner who can write specs. That's genuinely valuable. But the spec says: bounties, not employees. No CTO. No community manager (yet). The plan is: Julien writes specs, freelancers on Upwork build them, AI fills the gaps.
 
-This is a plan for building a simple SaaS tool. It is not a plan for building a cooperative movement that becomes "the fastest growing movement in Europe." Movements need full-time passionate people on the ground, not bounty-hunting freelancers.
+This is a plan for building a simple SaaS tool. It is not a plan for building a cooperative initiative that becomes "the fastest growing initiative in Europe." Initiatives need full-time passionate people on the ground, not bounty-hunting freelancers.
 
 ---
 
@@ -56,9 +56,9 @@ Ordered roughly by how fatal they are if wrong:
 3. **Creators will keep posting to a platform with zero engagement feedback (no likes, no comments, no view counts, no shares).** (This contradicts everything known about creator psychology. Even the most intrinsically motivated artists check their stats.)
 4. **"Events are the gravity" — people will use this as their primary event calendar.** (They'd have to abandon Facebook Events, WhatsApp, Google Calendar. Why would they?)
 5. **People will pay €5/month to blog to an audience of 50–200 people when Substack and Ghost give them the whole internet for free or cheaper.** (Why?)
-6. **The cooperative structure will motivate members.** (CoopCycle members are bike couriers whose livelihood depends on the co-op. Grassroot Hopper members are blog readers. The stakes are not comparable.)
+6. **The cooperative structure will motivate members.** (CoopCycle members are bike couriers whose livelihood depends on the co-op. Grassroots Hopper members are blog readers. The stakes are not comparable.)
 7. **"Anyone can start one" — non-technical people will fork code and set up cooperatives.** (Setting up a Belgian SC costs €1,500+ in notary fees and requires legal expertise. That's not "a QR code and a name.")
-8. **The movement will spread city to city organically.** (Transition Towns spread because climate anxiety is universal and existential. "Better local social media" is not existential.)
+8. **The initiative will spread city to city organically.** (Transition Towns spread because climate anxiety is universal and existential. "Better local social media" is not existential.)
 
 ---
 
@@ -68,7 +68,7 @@ The cooperative instinct is respectable. But:
 
 - **CoopCycle works** because gig workers have a direct economic interest in owning their delivery platform. They earn more money. The cooperative model directly solves their problem.
 - **Resonate** (cooperative Spotify) has struggled for years despite the obvious value proposition of "own your music." They have real product-market pain (musicians get screwed by Spotify) and still can't get traction.
-- **Grassroot Hopper's cooperative value proposition is:** "You co-own a blog reading platform." What decisions are members voting on? Password changes? Whether to add a feature? The governance overhead might exceed the governance value.
+- **Grassroots Hopper's cooperative value proposition is:** "You co-own a blog reading platform." What decisions are members voting on? Password changes? Whether to add a feature? The governance overhead might exceed the governance value.
 
 **The brutal version:** This is cooperative infrastructure for a problem that might not exist, for users who might not care about ownership, with governance that might have nothing meaningful to govern.
 
@@ -97,11 +97,11 @@ The answer in the spec is: "Because it's cooperative and has no engagement featu
 
 ---
 
-## The "Movement" vs "Product" Confusion
+## The "Initiative" vs "Product" Confusion
 
-The spec oscillates between being a movement, a product, a cooperative, and an identity. "A Grassroot Hopper is a person" — but also it's a platform, and also it's a cooperative, and also it's a philosophy. When everything is the brand, nothing is the brand.
+The spec oscillates between being an initiative, a product, a cooperative, and an identity. "A Grassroots Hopper is a person" — but also it's a platform, and also it's a cooperative, and also it's a philosophy. When everything is the brand, nothing is the brand.
 
-The "fastest growing movement in Europe" ambition contradicts the "purposefully slow" principle.
+The "fastest growing initiative in Europe" ambition contradicts the "purposefully slow" principle.
 
 ---
 

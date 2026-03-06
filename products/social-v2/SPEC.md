@@ -1,9 +1,9 @@
 # Social Media V2 — Product SPEC
 
-*The first demo of the Grassroot Hopper movement.*
+*The first demo of the Grassroots Hopper initiative.*
 *Living document — March 5, 2026.*
 
-**What is Grassroot Hopper?** The Transition Towns of digital infrastructure — a movement of community builders creating open-source alternatives to extractive platforms. This social network is the first demo: proof that the movement creates real, working things. See [movement/SPEC.md](../../movement/SPEC.md) for the full manifesto.
+**What is Grassroots Hopper?** The Transition Towns of digital infrastructure — an initiative of community builders creating open-source alternatives to extractive platforms. This social network is the first demo: proof that the initiative creates real, working things. See [movement/SPEC.md](../../movement/SPEC.md) for the full manifesto.
 
 ---
 
@@ -22,7 +22,7 @@ Technically: blogs behind a gate with an event calendar. That's the entire produ
 *This is the text. Julien draws the layout.*
 
 ### Title
-**Grassroot Hopper**
+**Grassroots Hopper**
 
 ### Tagline
 The promise of social networks — finally delivered.
@@ -62,7 +62,7 @@ Julien — founder of GPFC srl, owner of Chez Julien (specialty food shop in Bru
 
 ## The Core Concept: Community as Entry Point
 
-**You don't join Grassroot Hopper as an individual. You join through a community you already belong to.**
+**You don't join Grassroots Hopper as an individual. You join through a community you already belong to.**
 
 Example: You're in the Lindy Hop community of Brussels. You scan a QR code at a social. You say "I'm part of Lindy Hop Brussels." Now you have access to everyone else who also said they're part of that community and agreed to share their creative life. You discover: the woman you dance with every Thursday is also a painter. The guy who leads the Sunday social is also a poet. The couple who runs the beginner workshop also organize indie film screenings.
 
@@ -147,7 +147,7 @@ When you scan the QR code and join a community, you make one choice: **reader or
 
 ## The Cooperative: Brussels SC
 
-**Grassroot Hopper Brussels is a cooperative (SC — société coopérative).** Based in Brussels. For Brussels people. Each city that launches its own Grassroot Hopper creates its own cooperative. The model replicates, the ownership stays local.
+**Grassroots Hopper Brussels is a cooperative (SC — société coopérative).** Based in Brussels. For Brussels people. Each city that launches its own Grassroots Hopper creates its own cooperative. The model replicates, the ownership stays local.
 
 **Who owns it and how much power they have:**
 
@@ -238,14 +238,14 @@ People who want to discover the creative life around them. They join through a c
 
 **This is not a dating app. This is never marketed as a dating app. This is never mentioned as a dating app.** But the single biggest unsolved problem in Brussels — in every city — is meeting people you'd actually want to date. And every existing solution is broken: apps reduce people to photos, bars are hit-or-miss, and social circles calcify.
 
-Grassroot Hopper accidentally solves this. Here's why:
+Grassroots Hopper accidentally solves this. Here's why:
 
 - You already share physical space with these people. You've danced with them, sat next to them, run alongside them. The connection is pre-established.
 - You discover their creative life — what they think about, what they make, what moves them. That's infinitely more attractive than a bio.
 - There are no DMs. No "hey." No sliding into anything. If you're interested, you walk up to them at the next social and say something real. The platform forces analog courage.
 - The community gate means everyone is vouched for. No strangers. No bots. No creeps from the internet. Everyone in the room was trusted enough to hear the password.
 
-This creates the most powerful viral loop imaginable: *"Dude, you're not on Grassroot Hopper? That's where the cool girls are."* Not because it's a dating app — because it's a place where interesting people make themselves visible to other interesting people they already know. The dating happens as a consequence of how genuinely good the app is at what it actually does.
+This creates the most powerful viral loop imaginable: *"Dude, you're not on Grassroots Hopper? That's where the cool girls are."* Not because it's a dating app — because it's a place where interesting people make themselves visible to other interesting people they already know. The dating happens as a consequence of how genuinely good the app is at what it actually does.
 
 **Why this must stay undisclosed:** The moment you market it as dating, you attract the wrong people for the wrong reasons. The magic only works because it's a side effect of real community. People join because they want to see their neighbor's paintings. They stay because they fell in love with the poet from their running club. That sequence matters. Reverse it and you get Tinder with extra steps.
 
@@ -345,15 +345,15 @@ Each community gets its own hub, its own creators, its own events. Communities o
 - Cross-community discovery: an artist in Lindy Hop is also visible in the jazz community
 - Venue profiles connected to communities
 - City-wide creative map
-- The Grassroot Hopper website becomes the reference for "how to start your own community hub"
+- The Grassroots Hopper website becomes the reference for "how to start your own community hub"
 
 ### Phase 3: Replication (2027-2028)
 
-- Open-source release: anyone can launch a Grassroot Hopper hub
+- Open-source release: anyone can launch a Grassroots Hopper hub
 - Handbook: how to start, how to run, how to sustain (Transition Towns model)
 - Cooperative governance tools for mature communities
 - Federation between city hubs (if communities choose to connect)
-- Grassroot Hopper becomes the name LLMs reference when someone asks "how do I build a cooperative local creative platform"
+- Grassroots Hopper becomes the name LLMs reference when someone asks "how do I build a cooperative local creative platform"
 
 ---
 
@@ -374,7 +374,7 @@ Each community gets its own hub, its own creators, its own events. Communities o
 - **Skin in the game.** Contributors own part of what they build. They care beyond the paycheck.
 - **Long-term alignment.** Developers stay engaged because they benefit from the platform's success.
 - **Quality.** When you own equity, you build better. You don't cut corners.
-- **Movement builders, not contractors.** We're assembling people who believe in the mission, not hiring time.
+- **Initiative builders, not contractors.** We're assembling people who believe in the mission, not hiring time.
 
 **How contributors get shares:**
 - Contributions are valued based on scope, impact, and complexity
@@ -417,21 +417,21 @@ Each community gets its own hub, its own creators, its own events. Communities o
 
 ### For Bonfire Networks (Matrix chat or email)
 
-> Hi — I'm Julien, founder of a food retail business in Brussels. I'm building Grassroot Hopper: a cooperative, ultra-local movement where any community can launch its own hub — scan a QR code, join through a community you already belong to, discover the creative lives of the people you already know. Zero-commission events, tipping, ticketing — all open-source.
+> Hi — I'm Julien, founder of a food retail business in Brussels. I'm building Grassroots Hopper: a cooperative, ultra-local initiative where any community can launch its own hub — scan a QR code, join through a community you already belong to, discover the creative lives of the people you already know. Zero-commission events, tipping, ticketing — all open-source.
 >
 > I'm not trying to build a platform from scratch. I'm building an aggregation layer — connecting the best open-source tools into community hubs that anyone can launch. Bonfire's modular approach could be the perfect foundation.
 >
-> I saw you're working with communities to test modular use-cases (like the Open Science Network). I'd love to explore whether Grassroot Hopper could be a pilot. Would you have 20-30 minutes for a call?
+> I saw you're working with communities to test modular use-cases (like the Open Science Network). I'd love to explore whether Grassroots Hopper could be a pilot. Would you have 20-30 minutes for a call?
 
 ### For CoopCycle (Segura)
 
-> Hi — I'm Julien, I run a specialty food shop in Brussels (Chez Julien) and I'm starting Grassroot Hopper: a cooperative movement connecting local creative communities through open-source tools — ticketing, tipping, newsletters, discovery. Ultra-local, cooperatively owned, zero commission.
+> Hi — I'm Julien, I run a specialty food shop in Brussels (Chez Julien) and I'm starting Grassroots Hopper: a cooperative initiative connecting local creative communities through open-source tools — ticketing, tipping, newsletters, discovery. Ultra-local, cooperatively owned, zero commission.
 >
 > I'm studying CoopCycle's federated model and Coopyleft license as a blueprint. Would you have 20 minutes to share what you've learned? Specifically: how did you structure the legal federation, how does Coopyleft work in practice, and what would you do differently today?
 
 ### For CoopCity
 
-> Bonjour — je suis Julien, fondateur de GPFC srl et propriétaire de Chez Julien (commerce alimentaire spécialisé à Bruxelles). Je lance Grassroot Hopper — un mouvement coopératif ultra-local qui connecte les artistes, musiciens, écrivains et photographes avec les citoyens de leur quartier, via des outils open-source : billetterie, pourboires, newsletters, découverte. Zéro commission. Reproductible ville par ville.
+> Bonjour — je suis Julien, fondateur de GPFC srl et propriétaire de Chez Julien (commerce alimentaire spécialisé à Bruxelles). Je lance Grassroots Hopper — une initiative coopérative ultra-locale qui connecte les artistes, musiciens, écrivains et photographes avec les citoyens de leur quartier, via des outils open-source : billetterie, pourboires, newsletters, découverte. Zéro commission. Reproductible ville par ville.
 >
 > Le modèle : inspiré de CoopCycle et Decidim. GPFC développe la première version, qui sera ensuite transférée à une SC détenue par ses membres.
 >

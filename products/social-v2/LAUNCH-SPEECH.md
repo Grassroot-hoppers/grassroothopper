@@ -1,6 +1,6 @@
 # The Launch Speech — Lindy Hop Brussels
 
-*Julien's speech at a Lindy Hop social. The moment Grassroot Hopper becomes real.*
+*Julien's speech at a Lindy Hop social. The moment Grassroots Hopper becomes real.*
 
 ---
 
@@ -24,7 +24,7 @@ And you would be surprised to learn that some of you are opera singers. House ba
 
 Maybe you are also an illustrator. And you've been dancing with your next collaborator without knowing.
 
-This is the Grassroot Hopper project.
+This is the Grassroots Hopper project.
 
 A social network. Ultra-local. By the people, for the people. Where you only see content from the people you already like.
 

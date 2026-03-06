@@ -1,4 +1,4 @@
-# Grassroot Hopper — Technical & Administrative Roadmap
+# Grassroots Hopper — Technical & Administrative Roadmap
 
 *Last updated: March 4, 2026*
 
@@ -29,7 +29,7 @@ GPFC already has access to this Brussels Region recognition. This is a major lev
 
 **Recognized labels that qualify:** Entreprise Écodynamique, Good Food, B Corp, Enterprise Sociale, or being selected for supported project calls (Be Circular, Women in Business, etc.)
 
-**Action:** Verify which label(s) GPFC currently holds or can quickly obtain. Talk to Serge about this — he'll know GPFC's current status. If you don't have one yet, the **Enterprise Sociale agrément** is the most relevant for Grassroot Hopper.
+**Action:** Verify which label(s) GPFC currently holds or can quickly obtain. Talk to Serge about this — he'll know GPFC's current status. If you don't have one yet, the **Enterprise Sociale agrément** is the most relevant for Grassroots Hopper.
 
 Source: [Exemplarité — Bruxelles Économie et Emploi](https://economie-emploi.brussels/exemplarite-concept)
 
@@ -85,7 +85,7 @@ All of these are available to GPFC srl as a Brussels-based SME. With exemplarit�
 | **Innoviris — Digital Innovation** | R&D for digital innovation projects | Up to **70% of R&D costs** | [Innoviris](https://www.innoviris.brussels/digital-innovation) |
 | **Innoviris — GenAI** | Projects using generative AI | Specific program for AI projects | [Innoviris](https://www.innoviris.brussels/program/genai) |
 
-**The big one: Innoviris PYSI.** €100,000 at 100% funding to validate a social innovation. Grassroot Hopper is a textbook social innovation project. CoopCity is an Innoviris partner and can help you apply.
+**The big one: Innoviris PYSI.** €100,000 at 100% funding to validate a social innovation. Grassroots Hopper is a textbook social innovation project. CoopCity is an Innoviris partner and can help you apply.
 
 ### Later (when the cooperative exists)
 
@@ -241,7 +241,7 @@ GPFC srl (exists today)
 │   ├── Febecoop → cooperative legal expertise
 │   └── Finance.Brussels → potential investment
 │
-└── Spins off into → SC (Société Coopérative) "Grassroot Hopper"
+└── Spins off into → SC (Société Coopérative) "Grassroots Hopper"
     ├── Member-owned (writers, readers, organizers)
     ├── Enterprise Sociale agrément → dedicated subsidies
     ├── investcoop.brussels → citizen investment with tax credits
@@ -254,6 +254,6 @@ GPFC srl (exists today)
 
 1. **Call Serge.** Ask: What is GPFC's current exemplarité status? Are Henry and Lucas officially GPFC employees? How many employees has GPFC formally hired (premiers recrutements eligibility)? What would it take to hire a developer under GPFC?
 
-2. **Email CoopCity.** Introduce yourself. Mention GPFC, the Chez Julien story, and the Grassroot Hopper vision. Ask for an introductory meeting.
+2. **Email CoopCity.** Introduce yourself. Mention GPFC, the Chez Julien story, and the Grassroots Hopper vision. Ask for an introductory meeting.
 
 3. **Write the one-pager and buy grassroothopper.be.**

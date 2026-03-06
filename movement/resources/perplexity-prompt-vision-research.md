@@ -1,10 +1,10 @@
-# Perplexity Pro Prompt — Grassroot Hopper Vision Research
+# Perplexity Pro Prompt — Grassroots Hopper Vision Research
 
 *Copy-paste this into Perplexity Pro with Deep Research enabled.*
 
 ---
 
-I'm building a concept called **Grassroot Hopper** — a cooperative, ultra-local platform connecting creative people (artists, musicians, writers, photographers, workshop organizers, poets) with normal people in their city who want to discover, follow, and meet them in real life.
+I'm building a concept called **Grassroots Hopper** — a cooperative, ultra-local platform connecting creative people (artists, musicians, writers, photographers, workshop organizers, poets) with normal people in their city who want to discover, follow, and meet them in real life.
 
 The core idea: solve the attention problem for local creatives without Instagram, Facebook, or Spotify. Instead, build an interconnected web of local newsletters, artist portfolios, and community-driven discovery — cooperatively owned by its members, non-commercial, ultra-local (people you can meet on the street), and open-source so other cities can fork it.
 
@@ -76,6 +76,6 @@ For each finding, give me:
 - **What they do** in 1-2 sentences
 - **GitHub link** if available
 - **Website or key article**
-- **Why it matters** for the Grassroot Hopper vision
+- **Why it matters** for the Grassroots Hopper vision
 
 Prioritize things that are **active, European, community-owned, and actually usable** over theoretical or academic work. If a category has very few results, say so — the gaps tell me what needs to be built.

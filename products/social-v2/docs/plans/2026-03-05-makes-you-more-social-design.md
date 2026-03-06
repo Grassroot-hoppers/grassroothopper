@@ -97,4 +97,4 @@ Placed after "The Undisclosed Loop: Dating." Captures:
 - Clara's flywheel (slide 06, steps 1-9) stays exactly as is
 - Arnaud's cameo in steps 7-8 of Clara's flywheel stays exactly as is
 - The core product constraints (no comments, no likes, no DMs) are untouched
-- The movement SPEC is not affected — this is a product-level change only
+- The initiative SPEC is not affected — this is a product-level change only

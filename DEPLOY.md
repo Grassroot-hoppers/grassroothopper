@@ -16,7 +16,7 @@ The org is already created at https://github.com/Grassroot-hoppers
 
 ## Step 2: Push the Code
 
-From your terminal, inside the Grassroot Hopper folder:
+From your terminal, inside the Grassroots Hopper folder:
 
 ```bash
 # Add the new remote (keep the old one as a backup)
@@ -80,7 +80,7 @@ If you want all four domains to show the site directly (no redirect), you'll nee
 
 After DNS propagation (5 minutes to 48 hours, usually fast):
 
-- [ ] https://grassroothopper.com loads the movement pitch deck
+- [ ] https://grassroothopper.com loads the initiative pitch deck
 - [ ] https://grassroothopper.com/social-v2.html loads the Social Media V2 deck
 - [ ] https://grassroothopper.com/david-retail.html loads the David Retail deck
 - [ ] grassroothopper.org redirects to grassroothopper.com
@@ -103,10 +103,10 @@ Once everything is live on the new org:
 
 | URL | What it serves |
 |-----|---------------|
-| grassroothopper.com | Movement pitch deck (index.html) |
+| grassroothopper.com | Initiative pitch deck (index.html) |
 | grassroothopper.com/social-v2.html | Social Media V2 pitch deck |
 | grassroothopper.com/david-retail.html | David Retail pitch deck |
-| github.com/Grassroot-hoppers/grassroothopper | The full repo (movement + products + website) |
+| github.com/Grassroot-hoppers/grassroothopper | The full repo (initiative + products + website) |
 
 ---
 

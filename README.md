@@ -1,6 +1,8 @@
-# Grassroot Hoppers
+# Grassroots Hoppers
 
-Grassroot Hoppers is the movement shell: the public website, manifesto, product strategy, and companion artifacts that explain the operating model behind the products.
+Brussels-based open-source social innovation initiative helping communities create, govern, and replicate community-owned software and digital commons through workshops, roadmaps, and no-code, AI-assisted development
+
+Grassroots Hoppers is the initiative shell: the public website, manifesto, product strategy, and companion artifacts that explain the operating model behind the products.
 
 This repository is intentionally not the place where product runtime code lives. Product code belongs in separate contributor-ready repositories with their own licenses, docs, issue trackers, and release cadence.
 
@@ -24,9 +26,9 @@ This umbrella repository is licensed under `CC BY-SA 4.0` for docs, narrative, a
 
 ## March 2026 Status
 
-Grassroot Hoppers is no longer just a thesis repo.
+Grassroots Hoppers is no longer just a thesis repo.
 
-- The movement site is live.
+- The initiative site is live.
 - David Toolkit is moving into a five-day public hackathon from March 9 to March 13, 2026.
 - The product runtime now lives in a separate repo.
 - The workflow map in this repo shows the operating model David Toolkit is meant to support.
@@ -36,10 +38,10 @@ Grassroot Hoppers is no longer just a thesis repo.
 The standard is explicit:
 
 - no custom “source-available” license during the hackathon
-- no hiding the runnable code inside the movement repo
+- no hiding the runnable code inside the initiative repo
 - no vague “open” claims without docs, setup, and contribution paths
 
-The movement repo explains the why. The product repo carries the real OSS burden: runnable demo, issues, contribution docs, security policy, and roadmap.
+The initiative repo explains the why. The product repo carries the real OSS burden: runnable demo, issues, contribution docs, security policy, and roadmap.
 
 ## Build In Public
 

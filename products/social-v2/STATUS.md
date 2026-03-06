@@ -1,7 +1,7 @@
-# Grassroot Hopper — STATUS
+# Grassroots Hopper — STATUS
 
 **Status:** Idea — Vision defined, entering exploration phase
-**Type:** Platform / Grassroots movement / Cooperative
+**Type:** Platform / Grassroots initiative / Cooperative
 **Priority:** Exploring — could become #1 life project
 **Created:** March 4, 2026
 
@@ -13,7 +13,7 @@ A cooperative, ultra-local platform connecting Brussels' creative people — art
 
 ## Where this lives
 
-- Movement SPEC (identity, principles, strategy): `movement/SPEC.md`
+- Initiative SPEC (identity, principles, strategy): `movement/SPEC.md`
 - Product SPEC (features, MVP, technical decisions): `products/social-v2/SPEC.md`
 - Research & reference models: `movement/resources/`
 - Perplexity prompt (vision deep-dive): `movement/resources/perplexity-prompt-vision-research.md`
@@ -125,4 +125,4 @@ By then you'll know:
 - Technical: what's the simplest possible first version? Just newsletters + a shared directory?
 - How to prevent the platform from becoming what it fights against as it grows?
 - What's the specific role of AI? Recommendation? Distribution? Portfolio generation?
-- Name: "Grassroot Hopper" is free and clear. No conflicts with Hopper (travel app) or Grasshopper (Google's dead coding app / GoTo's phone system). Keep it?
+- Name: "Grassroots Hopper" is free and clear. No conflicts with Hopper (travel app) or Grasshopper (Google's dead coding app / GoTo's phone system). Keep it?
