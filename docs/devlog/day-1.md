@@ -4,7 +4,7 @@ date: 2026-03-09
 day: 1
 status: live
 hero_image: media/day-1-screenshot.png
-shipped: ["Repo bootstrap", "POS anatomy source of truth", "Dashboard coherence research", "Pencil design exploration"]
+shipped: ["Repo bootstrap", "Excel-to-dashboard workflow", "Dashboard coherence research", "Pencil design exploration"]
 ---
 
 My laptop is in the sun. It is a beautiful day, so I want to mix a phone-based Cursor/agent workflow with Cursor on the web and Cursor on my MacBook Pro.
@@ -52,19 +52,19 @@ A lot happened for a Day 1. The plan was to set up the operating rhythm and grou
 
 Initial demo committed. AGENTS.md, phone-agent workflow docs, cloud agent starter skill, French operator-facing product copy, issue backlog. The repo went from nothing to contributor-ready scaffolding.
 
-### POS Anatomy Source of Truth
+### Excel-to-dashboard workflow
 
-Biggest chunk of work. Studied the POS system documentation and built a canonical registry of everything we know (and don't know) about the POS — what it tracks, what it exports, what's still unverified.
+Biggest chunk of work. Mapped the path from raw shop exports to a trustworthy dashboard pipeline — what files exist, what they contain, what is still unverified, and what needs a live export before any dashboard logic can claim to be real.
 
-Five commits, TDD-style with a dedicated verifier (`scripts/verify-pos-anatomy.mjs`):
+Five commits, with dedicated verification around the export workflow:
 
-1. **Canonical registry** — `sample-data/config/pos-anatomy.json` with governance rules, precedence order (live evidence > documentation > older notes)
+1. **Canonical export registry** — a versioned map of the raw files, the evidence behind them, and the rules for trusting them
 2. **Source index + report families** — 8 report families (category stats, daily closure, CA/TVA, evolutionary stats, stock movements, client segments, product listings, client listings)
-3. **Core entities + workflows + companion guide** — 6 entities (product, supplier, client, sale-ticket, stock-movement, assisted-order) and 5 operator workflows (scan-sell-pay, return, standby, stock-entry, assisted-ordering). Companion doc at `docs/research/microconcept-pos-anatomy.md`
+3. **Dashboard workflow mapping** — clarified how raw exports can become usable sales, stock, client, and ordering signals inside the dashboard
 4. **Phase gate + live evidence protocol** — 5 explicit unknowns that need live export verification. Phase 2 is blocked until we capture one real `44A` CSV export
 5. **Data intake structure + 3-year export SOP** — how exports get captured and stored going forward
 
-The key decision: **no app wiring until we have one real export that proves the schema is not wishful thinking.** The registry distinguishes between "what the documentation says" and "what the POS actually exports."
+The key decision: **no dashboard wiring until we have one real export proving the file format in practice.** Documentation helps, but the live files decide.
 
 ### Dashboard coherence research
 
@@ -84,10 +84,10 @@ Key design shift: the warm/artisanal cream palette is out. The real users are 26
 
 ## Decisions
 
-- **POS anatomy is registry-first, not code-first.** Document what we know, verify against reality, then wire into the app.
+- **The export workflow is evidence-first, not assumption-first.** Raw files first, dashboard logic second.
 - **Performance zones are the core logic.** Rouge/Orange/Vert/Bleu isn't decoration — it's the ordering confidence signal that drives the entire dashboard.
 - **Old Pencil prompt is discarded.** A new prompt must be grounded in Notion reality and the chosen visual direction.
-- **Phase gate is real.** No `build-data.mjs` changes or UI work until one live export proves the schema.
+- **Phase gate is real.** No data pipeline or UI work until one live export proves the file shape.
 - **Design direction needs brainstorming.** Structure (3 zones, no-scroll, ordering confidence) stays. The visual skin is open.
 
 ## What's next (Day 2)
@@ -98,5 +98,5 @@ Tomorrow is the data day. The goal is to go from synthetic demo data to real sho
 - **Clean and normalize the exports** — handle the usual POS export mess: semicolons, Latin-1 encoding, decimal commas, inconsistent date formats.
 - **Build the canonical database** — replace the synthetic `demo.json` with a real data pipeline.
 - **Wire live data sources** — Open-Meteo for weather, Todoist for daily tasks, Notion for supplier cadences. All at build time.
-- **Unblock Phase 2** — the first real `44A` CSV export lifts the phase gate on the POS anatomy registry.
+- **Unblock Phase 2** — the first real `44A` CSV export lifts the phase gate on the export workflow.
 - **Design direction** — if time allows, brainstorm the new visual direction and write the updated Pencil prompt.
