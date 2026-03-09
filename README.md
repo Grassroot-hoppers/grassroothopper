@@ -32,6 +32,7 @@ Grassroots Hoppers is no longer just a thesis repo.
 - David Toolkit is moving into a five-day public hackathon from March 10 to March 14, 2026.
 - The product runtime now lives in a separate repo.
 - The workflow map in this repo shows the operating model David Toolkit is meant to support.
+- Julien is not looking for a CTO right now and is staying fully solo until that becomes the bottleneck.
 
 ## Open-Source Posture
 
