@@ -2,7 +2,7 @@
 title: "Hackathon Kickoff & Data Archaeology"
 date: 2026-03-09
 day: 1
-status: live
+status: done
 hero_image: media/day-1-screenshot.png
 shipped: ["Repo bootstrap", "Excel-to-dashboard workflow", "Dashboard coherence research", "Pencil design exploration"]
 ---
