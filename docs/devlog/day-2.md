@@ -2,7 +2,7 @@
 title: "The Data Day"
 date: 2026-03-10
 day: 2
-status: live
+status: done
 hero_image: media/day-2-brainstorming.png
 shipped: ["24 POS exports inventoried", "Bronze → Silver → Gold pipeline", "Alpha dashboard with real data", "V2 intelligence tool design"]
 ---
