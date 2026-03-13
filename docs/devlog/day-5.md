@@ -31,13 +31,13 @@ Three days of building felt like the hard part was over. Day 4 proved it wasn't.
 
 Look at where the progress went: Day 1 — every hour produced visible output. Day 2 — the pipeline shipped in an afternoon. Day 3 — the entire Dashboard V2 materialized overnight. Day 4 — hours of work, zero code shipped. The marginal productivity rate didn't slow down. It crashed.
 
-![Marginal productivity rate — progress per hour across 5 days](media/vibe-coding-productivity-rate.png)
+<iframe src="graph3_community.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
 
 This isn't a personal failure. It's a pattern. Vibe-coded games do this too: playable in three days, weeks of grinding after. What works in vibe coding works straight away. What doesn't takes ages to fix — because "what doesn't work" usually means a structural problem, not a missing line.
 
 The three curves:
 
-![The three development curves](media/vibe-coding-three-curves.png)
+<iframe src="graph1_roadmap.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
 
 The **pure vibe coder** (what I did): rapid early output, then a wall. The **software engineer** (what an experienced engineer would have done): slower start, research phase, architecture first — then more sustainable progress, no wall. The **Grassroot Hopper fix** (what I'll do next time): research phase up front, even though it produces zero visible output. Buy the sustainable curve. Ship in the sweet spot.
 

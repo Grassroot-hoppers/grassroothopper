@@ -28,7 +28,7 @@ When something doesn't work, the failure could be in the POS export, the Bronze 
 
 This is the wall. Not a bug. Not a missing feature. The wall is the point where the complexity of what exists exceeds the maintainer's ability to reason about it.
 
-![The three development curves — pure vibe coder, software engineer, Grassroot Hopper](media/vibe-coding-three-curves.png)
+<iframe src="graph1_roadmap.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
 
 ---
 
@@ -48,7 +48,7 @@ I skipped most of that. Not because I didn't know it mattered — Day 2 had Perp
 
 > This isn't just my experience. Uncle Bob Martin said it this week: "For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up." Craig Weiss put it differently: "The highest ROI has moved up the stack." They're right. The bar isn't going down. It's going up — and vibe coding doesn't change that. It just changes where you hit it.
 
-![Perceived progress vs hidden tech debt — the perception gap](media/vibe-coding-flow-debt.png)
+<iframe src="graph2_research.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
 
 ---
 

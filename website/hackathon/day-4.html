@@ -61,7 +61,8 @@
 <p>The codebase is now real enough to resist. <code>build-demo.mjs</code> is 900+ lines. The pipeline has four layers (Bronze, Master Config, Silver, Gold), three config registries, a two-pass import, and a cascade of fallback logic that nobody wrote down in one place. Every new feature or fix requires understanding how all of it connects — which CSVs produce which Silver files, which Silver fields feed which Gold aggregations, which Gold shape the dashboard reads.</p>
 <p>When something doesn't work, the failure could be in the POS export, the Bronze parsing, the Master Config transformation, the Silver schema, the Gold aggregation, the demo.json build, or the UI rendering. Six places to look. And looking requires reading code that I didn't write in a single clear-headed pass — I wrote it in sprints, at night, from plans that were sometimes overtaken by the code before the plan was finished.</p>
 <p>This is the wall. Not a bug. Not a missing feature. The wall is the point where the complexity of what exists exceeds the maintainer's ability to reason about it.</p>
-<p><img alt="The three development curves — pure vibe coder, software engineer, Grassroot Hopper" src="media/vibe-coding-three-curves.png" /></p>
+<iframe src="graph1_roadmap.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
+
 <hr />
 <h3 id="what-vibe-coding-actually-is">What "vibe coding" actually is</h3>
 <p>There's a phrase circulating in software engineering communities right now: <strong>vibe coding</strong>. It describes a way of building that's become possible with AI-assisted development — move fast, generate code from descriptions, iterate in real time, let the AI hold the context you can't. It produces remarkable early output. In three days, a non-engineer ran a medallion architecture data pipeline for a French cheese shop and shipped a dark-theme analytics dashboard with sparklines, ABCD ranking, and a weather integration.</p>
@@ -76,7 +77,8 @@
 <blockquote>
 <p>This isn't just my experience. Uncle Bob Martin said it this week: "For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up." Craig Weiss put it differently: "The highest ROI has moved up the stack." They're right. The bar isn't going down. It's going up — and vibe coding doesn't change that. It just changes where you hit it.</p>
 </blockquote>
-<p><img alt="Perceived progress vs hidden tech debt — the perception gap" src="media/vibe-coding-flow-debt.png" /></p>
+<iframe src="graph2_research.html" width="100%" height="480" frameborder="0" scrolling="no" style="border:none;border-radius:8px;"></iframe>
+
 <hr />
 <h3 id="the-specific-debt">The specific debt</h3>
 <p>The hardest thing to admit: the CSV-to-Gold pipeline is more complex than I can reliably maintain alone.</p>
