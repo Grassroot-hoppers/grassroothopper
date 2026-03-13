@@ -36,13 +36,13 @@
         <h1>The Data Day</h1>
         <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">Tuesday, March 10</p>
         <div class="day-dots">
-            <a href="day-1.html" class="dot  done">1</a><a href="day-2.html" class="dot active done">2</a><a href="day-3.html" class="dot  live">3</a>
+            <a href="day-1.html" class="dot  done">1</a><a href="day-2.html" class="dot active done">2</a><a href="day-3.html" class="dot  done">3</a><a href="day-4.html" class="dot  done">4</a><a href="day-5.html" class="dot  done">5</a>
         </div>
     </section>
 
     <div class="hero-image"><img src="media/day-2-brainstorming.png" alt="Day 2 hero"></div>
 
-    <div class="shipped-list"><h4>Shipped today</h4><ul><li>24 POS exports inventoried</li><li>Bronze → Silver → Gold pipeline</li><li>Alpha dashboard with real data</li><li>V2 intelligence tool design</li></ul></div>
+    <div class="shipped-list"><h4>Shipped today</h4><ul><li>24 POS exports</li><li>Data pipeline</li><li>Alpha dashboard</li><li>The stock lie</li></ul></div>
 
     <!-- CONTENT -->
     <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
@@ -52,225 +52,38 @@
   <p class="video-caption">Day 2 kicked off with a brainstorming session — what should this hackathon actually deliver?</p>
 </div>
 
-<h2 id="shipped-today">Shipped today</h2>
-<ul>
-<li>24 real POS CSVs exported and inventoried</li>
-<li>Bronze → Silver → Gold data pipeline (6 Silver importers, 7 Gold builders, 28 commits)</li>
-<li>Data inventory documenting all 7 file types</li>
-<li>Alpha dashboard — real data, live weather, growth scoring, category/supplier cleanup</li>
-<li>V2 design doc — 8-tab intelligence tool architecture for Day 3+</li>
-</ul>
-<p>Yesterday was about anchoring the project in reality — building the operating rhythm, proving we can work phone + laptop + Cursor, and establishing what we know vs what we assume. Today was about backing all of that up with actual data.</p>
-<p>The Day 1 phase gate said: "no dashboard wiring until we have one real export proving the file format in practice." Today we blew past that gate with 24 exports, a full data architecture, and a running pipeline.</p>
-<hr />
-<h2 id="the-pos-data-archaeology">The POS data archaeology</h2>
-<p>The morning started at the shop. Sitting at the POS terminal, exporting everything: 3 years of monthly product stats, 4 years of annual sales, 4 years of transaction detail, category breakdowns, margin analysis, hourly traffic patterns, and the full product master catalog.</p>
-<p>24 CSV files. CP1252 encoding, semicolon-delimited, European decimal commas. The usual Belgian POS mess.</p>
-<p>Then the inventory work: reading every single file, documenting every column, every quirk, every edge case. The result is <code>docs/data-inventory.md</code> — a 314-line canonical reference for every file type:</p>
-<ol>
-<li><strong>Monthly Product Stats</strong> (3,667 products × 12 months × 3 years) — the most valuable files</li>
-<li><strong>Annual Product Sales</strong> (1,085–3,830 products/year, including 2026 partial)</li>
-<li><strong>Category Mix</strong> (65–98 categories/year with VAT breakdowns)</li>
-<li><strong>Margin Analysis</strong> (~47,000 transaction-level margin rows, 2025–2026 only)</li>
-<li><strong>Product Master</strong> (3,108 products, 60+ columns, no header row)</li>
-<li><strong>Hourly Revenue by Weekday</strong> (peak hour analysis across 3 years)</li>
-<li><strong>Transaction Detail</strong> (~150,000 individual sale lines across 3+ years)</li>
-</ol>
-<p>Key discovery: the <code>id</code> column uses internal sequential IDs in some files but EAN codes in others. Product matching must use normalized name as the join key, not ID. This would have been invisible with synthetic data.</p>
-<hr />
-<h2 id="two-designs-then-the-right-one">Two designs, then the right one</h2>
-<p>The first design was a simple two-step pipeline: import CSVs to normalized JSON, then build <code>demo.json</code> from that. It worked on paper but felt flat — too shaped for the current dashboard, not shaped for reality.</p>
-<p>The breakthrough came from research into the Medallion Architecture pattern. The data isn't for one dashboard. It's for every future consumer: the weekly briefing, the AI ordering assistant, the supplier analysis, the seasonal prediction engine. All of them need the same canonical truth.</p>
-<p>So the "Data Temple" was born: Bronze → Silver → Gold.</p>
+<p>The Day 1 phase gate said: <em>no dashboard wiring until we have one real export</em>. Today we blew past that gate with 24 exports and a running pipeline.</p>
+<h2 id="the-archaeology">The archaeology</h2>
+<p>I started the morning at the POS terminal in the shop. Exporting everything: three years of monthly product stats, four years of annual sales, transaction detail, category breakdowns, margin analysis, hourly traffic patterns, the full product catalog.</p>
+<p>24 CSV files. CP1252 encoding, semicolons, European decimal commas. The usual Belgian POS mess.</p>
+<p>The data isn't for one dashboard. It's for everything that comes after — the weekly briefing, the ordering assistant, the seasonal prediction. So we built layers: raw truth, cleaned truth, computed truth. Bronze → Silver → Gold.</p>
 <div class="video-embed">
   <img src="media/day-2-pipeline.png" alt="Bronze → Silver → Gold data pipeline architecture" class="timelapse-gif">
   <p class="video-caption">The full pipeline: 24 POS exports → Bronze → Silver → Gold → Dashboard</p>
 </div>
 
-<pre><code>data/real/*.csv            ← BRONZE (24 raw POS exports, untouched)
-    ↓  import-silver.mjs
-data/silver/               ← SILVER (cleaned, entity-centric JSON)
-    ↓  build-gold.mjs
-data/gold/                 ← GOLD (small, pre-computed, dashboard-ready)
-    ↓  build-demo.mjs
-public/data/demo.json      ← Current dashboard's specific slice
-</code></pre>
-<p>Each layer has a clear job. Bronze is the raw truth. Silver is the cleaned truth. Gold is the computed truth. Any new consumer plugs into Gold — or into Silver if it needs more granularity.</p>
-<hr />
-<h2 id="21-tasks-in-25-minutes">21 tasks in 25 minutes</h2>
-<p>The implementation plan had 21 tasks across 5 phases. The execution was fast — 15 commits between 13:43 and 14:07.</p>
-<p><strong>Phase 1 — Foundation (2 tasks)</strong>
-- Directory scaffolding (<code>data/silver/</code>, <code>data/gold/</code>, npm scripts)
-- Core CSV utilities module (<code>scripts/lib/csv-utils.mjs</code>) with tests: encoding detection, decimal parsing, compound monthly cell parsing (<code>"7418  (218,88)"</code> → <code>{ quantity: 7418, revenue: 218.88 }</code>), product name cleaning, file type detection</p>
-<p><strong>Phase 2 — Silver Importers (8 tasks)</strong></p>
-<p>Six specialized importers, each handling one POS export type:</p>
-<ul>
-<li><strong>Product Master</strong> — the trickiest. No header row, 60+ columns by position. EAN, name, price, cost, stock, category, supplier, BIO label, creation date, last sold date.</li>
-<li><strong>Monthly Stats</strong> — per-product monthly breakdown. Auto-detects year from column prefixes (<code>25_01</code> → 2025). Parses compound <code>quantity (revenue)</code> cells.</li>
-<li><strong>Annual Stats</strong> — simpler per-product annual totals. Filters refund rows and summary footers.</li>
-<li><strong>Transactions</strong> — the heaviest. ~44k rows/year. Timestamp parsing (<code>03-01-25 14:41</code> → ISO), weight prefix stripping, payment method detection.</li>
-<li><strong>Category Mix</strong> — category + VAT rate splitting, typo correction (<code>02. FRA</code> → <code>02. FROMAGE</code>).</li>
-<li><strong>Hourly Patterns</strong> — French day names to ISO day numbers, revenue by weekday × hour.</li>
-</ul>
-<p>Plus the orchestrator (<code>import-silver.mjs</code>): scans <code>data/real/</code>, auto-classifies each CSV by header fingerprint, routes to the right importer, writes Silver JSON, produces an import report.</p>
-<p><strong>Phase 3 — Gold Builders (7 files from one script)</strong></p>
-<p><code>build-gold.mjs</code> reads Silver and produces 7 dashboard-ready aggregate files:</p>
-<table>
-<thead>
-<tr>
-<th>Gold file</th>
-<th>What it contains</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>product-catalog.json</code></td>
-<td>Master reference: every product with category, supplier, price, margin, lifecycle status</td>
-</tr>
-<tr>
-<td><code>daily-sales.json</code></td>
-<td>One row per calendar day — revenue trends, weather join surface</td>
-</tr>
-<tr>
-<td><code>monthly-product-stats.json</code></td>
-<td>36-month seasonality curves per product</td>
-</tr>
-<tr>
-<td><code>category-evolution.json</code></td>
-<td>Category share trends across 4 years</td>
-</tr>
-<tr>
-<td><code>hourly-heatmap.json</code></td>
-<td>Peak hours by weekday, multi-year</td>
-</tr>
-<tr>
-<td><code>margin-ranking.json</code></td>
-<td>Profitability ranking with margin ratios</td>
-</tr>
-<tr>
-<td><code>store-summary.json</code></td>
-<td>Annual KPIs: total revenue, product count, trading days</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Phase 4 — Dashboard migration</strong></p>
-<p><code>build-demo.mjs</code> reads from Gold instead of directly from CSVs. The scoring engine applies, <code>demo.json</code> comes out the other end. Verified with <code>verify-data.mjs</code>.</p>
-<p><strong>Phase 5 — Cleanup</strong></p>
-<p>Removed legacy <code>import-exports.mjs</code>. Updated architecture docs. The old <code>data/normalized/</code> path still works as fallback.</p>
-<p>The full pipeline: <code>npm run import</code> → <code>npm run build:gold</code> → <code>npm run build:demo</code>. Or just <code>npm run build:full</code>.</p>
-<hr />
+<h2 id="the-speed">The speed</h2>
+<p>21 tasks in 25 minutes. 15 commits between 13:43 and 14:07. The pipeline went from sketch to running in one afternoon — six Silver importers, seven Gold builders, a full orchestrator that auto-classifies every CSV by header fingerprint.</p>
+<p>It felt effortless. Like the hard part was over. It wasn't.</p>
 <h2 id="the-stock-lie">The stock lie</h2>
-<p>The most important discovery of the day happened while studying the Gold output.</p>
-<p>The <code>STOCK</code> field in the POS exports is not current inventory. It's cumulative sold units from an initial value of zero. A product showing <code>STOCK: -41</code> means "41 units have been sold since the counter was last reset." The POS was never set up with real stock management.</p>
-<p>This means every stock-based signal in the current scoring engine — stock cover days, stockout suspicion, demand pressure — is built on fiction. The entire ordering confidence framework that drives the performance zones is based on data that doesn't exist.</p>
-<p>This is exactly the kind of thing the Day 1 phase gate was designed to catch.</p>
-<hr />
-<h2 id="alpha-dashboard-reframe">Alpha dashboard reframe</h2>
-<p>With stock data gone, the dashboard can't be an ordering tool. Not yet. Not until real inventory tracking exists.</p>
+<p>The most important thing we found wasn't in the plan.</p>
+<p>The <code>STOCK</code> field in the POS exports is not current inventory. It's cumulative sold units since the counter was last reset. A product showing <code>STOCK: -41</code> means 41 units have been sold — not that there are -41 items on the shelf. The POS was never configured for real stock management.</p>
+<p>Every stock-based signal in the scoring engine — stock cover days, stockout suspicion, demand pressure — was built on fiction. The entire ordering confidence framework that drives the performance zones is based on a field that doesn't mean what we thought it meant.</p>
+<p>This is exactly the kind of thing the Day 1 phase gate was designed to catch. We caught it.</p>
+<h2 id="the-reframe">The reframe</h2>
+<p>With stock data gone, the dashboard can't be an ordering tool yet. Not until real inventory tracking exists.</p>
 <p>So the alpha becomes what it honestly can be: <strong>a big picture intelligence tool.</strong></p>
 <ul>
-<li>"How is the shop doing this week vs last year?"</li>
-<li>"Which categories are growing or shrinking?"</li>
-<li>"Which products are moving fastest?"</li>
-<li>"Which suppliers matter most?"</li>
+<li>How is the shop doing this week versus last year?</li>
+<li>Which categories are growing or shrinking?</li>
+<li>Which products are moving fastest?</li>
 </ul>
-<p><strong>New scoring</strong> — growth-based, not stock-based:
-- <strong>en hausse</strong>: YoY revenue growth &gt; 10%
-- <strong>stable</strong>: within ±10%
-- <strong>en baisse</strong>: YoY decline &gt; 10%</p>
-<p><strong>Category cleanup</strong> — the raw POS exports have 149 category entries (same category with different VAT rates, typos, junk entries). The alpha cleans them down to ~15 meaningful categories with proper French title case.</p>
-<p><strong>Supplier normalization</strong> — 85 raw POS supplier names contain duplicates, typos, and variations (ANKORSTORE/ANKORESTORE/ANKOR STORE/ANKORESTRORE/ANKOSTORE/ANKHORESTORE). Mapped down to ~40 clean names with Notion page links.</p>
-<p><strong>Weekly metrics from real data</strong> — last full week revenue, same-week-last-year comparison, week-over-week change, performance zone placement. All computed from <code>daily-sales.json</code>.</p>
-<p><strong>Live weather</strong> — Open-Meteo API (free, no key needed) fetched at page load for Brussels. Real 7-day forecast in the weather strip.</p>
+<p>Scoring shifts from stock-based to growth-based. Clean, honest, defensible.</p>
+<h2 id="end-of-day">End of day</h2>
+<p>The alpha ships. Real data. Live weather. 28 commits. A V2 design doc that asks: <em>"Is this actually useful?"</em> The honest answer — not yet. But the foundation is real, and that matters.</p>
+<p>The pipeline is beautiful. What's hiding inside it, we'll find out on Day 3.</p>
 <hr />
-<h2 id="the-alpha-ships">The alpha ships</h2>
-<p>Everything on the workbench landed. 28 commits across the full day.</p>
-<p><code>demo/app.js</code> was rewritten from scratch to load Gold-sourced <code>demo.json</code> and populate every section with real data — weekly metrics, category breakdown, top products with growth badges, supplier ranking, monthly revenue timeline. No hardcoded numbers. Every figure traces back through Gold → Silver → Bronze to real POS exports.</p>
-<p><code>demo/index.html</code> was stripped of legacy markup and rebuilt with data-binding IDs. The old <code>public/</code> directory (static demo shell with preview screenshot) was removed entirely — the new <code>demo/</code> directory is the only dashboard now.</p>
-<p>Live Brussels weather from Open-Meteo API loads at page render. 7-day forecast in the weather strip, no API key needed.</p>
-<p>The old <code>build-data.mjs</code> with its stock-fiction scoring was deleted. Replaced by a clean <code>build-demo.mjs</code> that reads from Gold and applies honest growth-based scoring, category cleanup (~149 raw POS entries → ~15 meaningful categories), and supplier normalization (85 raw names → ~40 clean names with Notion links).</p>
-<p>Final cleanup: dropped the <code>xlsx</code> dependency that was pulling in two high-severity vulnerabilities (prototype pollution, ReDoS). The pipeline never needed it — all POS exports are CSV.</p>
-<hr />
-<h2 id="the-brainstorming-pivot">The brainstorming pivot</h2>
-<p>With the alpha working, the natural question was: "Is this actually useful?" The honest answer: not yet. A metrics summary isn't what an operator reaches for at 7am before opening. It's what you glance at once and forget.</p>
-<p>So the end of Day 2 became a brainstorming session for what the dashboard needs to become: a <strong>real intelligence tool</strong> with daily operational value.</p>
-<p>Three priorities crystallized:</p>
-<ol>
-<li>
-<p><strong>Trust the data</strong> — the auto-cleaned categories and product names are ~80% right, but the 20% that's wrong undermines everything. Every data dimension needs a human-in-the-loop review pass: listing scripts that dump data in reviewable format, config files where corrections live, and a pipeline that applies them at build time.</p>
-</li>
-<li>
-<p><strong>ABCD product ranking</strong> — revenue Pareto classification. A-products (top 20% of cumulative revenue) get attention, D-products (bottom 20%) are delist candidates. This replaces the meaningless "en hausse / stable / en baisse" with something that drives action.</p>
-</li>
-<li>
-<p><strong>Multi-tab architecture</strong> — eight tabs, each with a specific operational purpose. Not a single scrolling page with everything. A daily briefing tab that says what today means operationally. A products tab with seasonality curves and ordering suggestions. A categories tab with revenue-per-shelf-meter analysis. A pipeline visualization tab.</p>
-</li>
-</ol>
-<p>The result is <code>docs/plans/2026-03-10-day3-dashboard-v2-design.md</code> — a full design document covering the expanded data model, tab architecture, new config files, and implementation sequence. This is the plan for Day 3+.</p>
-<hr />
-<h2 id="decisions">Decisions</h2>
-<ul>
-<li><strong>Phase gate: lifted.</strong> 24 real exports proved the schema. The formats match the documentation. We can wire data into the dashboard with confidence.</li>
-<li><strong>Bronze → Silver → Gold is the architecture.</strong> Not a temporary hack — this is the canonical data layer for everything that comes after.</li>
-<li><strong>Stock data is fake.</strong> No stock-based signals until real inventory management exists in the POS. The dashboard is an intelligence tool, not an ordering tool.</li>
-<li><strong>The scoring reframe is permanent.</strong> Growth-based classification (en hausse / stable / en baisse) is the honest signal for now. ABCD Pareto ranking replaces it in V2.</li>
-<li><strong>Category and supplier cleanup happens at build time.</strong> Raw POS names go in, clean French display names come out. The cleanup rules live in config, not in the pipeline code.</li>
-<li><strong>The alpha is a proof of concept, not the product.</strong> It proved the pipeline works end-to-end with real data. V2 is the product.</li>
-</ul>
-<h2 id="day-2-by-the-numbers">Day 2 by the numbers</h2>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Count</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Commits</td>
-<td>28</td>
-</tr>
-<tr>
-<td>POS files exported and inventoried</td>
-<td>24</td>
-</tr>
-<tr>
-<td>Silver importers built</td>
-<td>6</td>
-</tr>
-<tr>
-<td>Gold builders</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Raw supplier names cleaned</td>
-<td>85 → ~40</td>
-</tr>
-<tr>
-<td>Raw category entries cleaned</td>
-<td>149 → ~15</td>
-</tr>
-<tr>
-<td>Vulnerabilities eliminated</td>
-<td>2 (dropped xlsx)</td>
-</tr>
-<tr>
-<td>Design docs written</td>
-<td>3 (pipeline, alpha, V2)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="whats-next-day-3">What's next (Day 3)</h2>
-<p>The V2 design doc (<code>docs/plans/2026-03-10-day3-dashboard-v2-design.md</code>) is the roadmap. Day 3 focuses on data trust and the first three tabs:</p>
-<ol>
-<li><strong>Data trust passes</strong> — listing scripts + config files for categories, ABCD ranking, and product names. Categories first (smallest list, highest dashboard impact), then ABCD ranking, then product name review.</li>
-<li><strong>New config files and pipeline extensions</strong> — <code>category-map.json</code>, <code>ranking-overrides.json</code>, <code>product-corrections.json</code>, <code>product-groups.json</code>, <code>shelf-allocation.json</code>, <code>category-tree.json</code>, <code>holidays-be.json</code>.</li>
-<li><strong>Tab framework</strong> — single HTML page with tab bar, section switching, dark theme.</li>
-<li><strong>Tab 1: Briefing du jour</strong> — daily operational intelligence with context engine (ordering days, holiday calendar, weather, same-period-last-year signals, next-week prediction).</li>
-<li><strong>Tab 2: Produits</strong> — product groups, ABCD badges, 36-month sparklines, ordering suggestions.</li>
-<li><strong>Tab 3: Catégories</strong> — revenue per shelf-meter, category tree, kill/expand signals.</li>
-<li><strong>Tabs 4–7</strong> — design pending review after tabs 1–3 are built.</li>
-</ol>
+<p><em>Full technical log: <a href="DEV_LOG_DAY2.md">DEV_LOG_DAY2.md</a></em></p>
         </div>
     </section>
 

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shop Owner Hackathon #001 — Day 1: Hackathon Kickoff & Data Archaeology">
-    <meta property="og:title" content="Day 1: Hackathon Kickoff & Data Archaeology — Shop Owner Hackathon">
-    <meta property="og:description" content="Hackathon Kickoff & Data Archaeology — Day 1 of the Grassroots Hoppers Shop Owner Hackathon. Monday, March 09.">
+    <meta name="description" content="Shop Owner Hackathon #001 — Day 1: The Sun Is Out">
+    <meta property="og:title" content="Day 1: The Sun Is Out — Shop Owner Hackathon">
+    <meta property="og:description" content="The Sun Is Out — Day 1 of the Grassroots Hoppers Shop Owner Hackathon. Monday, March 09.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://grassroothopper.com/hackathon/day-1.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Day 1: Hackathon Kickoff & Data Archaeology — Shop Owner Hackathon">
-    <title>Day 1: Hackathon Kickoff & Data Archaeology — Shop Owner Hackathon — Grassroots Hoppers</title>
+    <meta name="twitter:title" content="Day 1: The Sun Is Out — Shop Owner Hackathon">
+    <title>Day 1: The Sun Is Out — Shop Owner Hackathon — Grassroots Hoppers</title>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="hackathon.css">
 </head>
@@ -33,96 +33,34 @@
             Completed
         </span>
         <p class="slide-number accent" style="margin-bottom: 1rem;">DAY 1 OF 5</p>
-        <h1>Hackathon Kickoff & Data Archaeology</h1>
+        <h1>The Sun Is Out</h1>
         <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">Monday, March 09</p>
         <div class="day-dots">
-            <a href="day-1.html" class="dot active done">1</a><a href="day-2.html" class="dot  done">2</a><a href="day-3.html" class="dot  live">3</a>
+            <a href="day-1.html" class="dot active done">1</a><a href="day-2.html" class="dot  done">2</a><a href="day-3.html" class="dot  done">3</a><a href="day-4.html" class="dot  done">4</a><a href="day-5.html" class="dot  done">5</a>
         </div>
     </section>
 
     <div class="hero-image"><img src="media/day-1-screenshot.png" alt="Day 1 hero"></div>
 
-    <div class="shipped-list"><h4>Shipped today</h4><ul><li>Repo bootstrap</li><li>Excel-to-dashboard workflow</li><li>Dashboard coherence research</li><li>Pencil design exploration</li></ul></div>
+    <div class="shipped-list"><h4>Shipped today</h4><ul><li>Repo bootstrap</li><li>Excel-to-dashboard workflow</li><li>Dashboard coherence research</li></ul></div>
 
     <!-- CONTENT -->
     <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
         <div class="content-area">
-            <p>My laptop is in the sun. It is a beautiful day, so I want to mix a phone-based Cursor/agent workflow with Cursor on the web and Cursor on my MacBook Pro.</p>
-<p>I started this session by asking for a roadmap based on the spec that was already written instead of jumping straight into implementation.</p>
-<div class="video-embed">
-  <video controls playsinline preload="metadata" poster="media/day-1-screenshot.png">
-    <source src="media/day-1-recap.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <p class="video-caption">Day 1 recap — 1½ min</p>
-</div>
-
-<div class="video-embed">
-  <img src="media/day-1-timelapse.gif" alt="Day 1 accelerated timelapse" class="timelapse-gif">
-  <p class="video-caption">Day 1 timelapse — 2x speed</p>
-</div>
-
-<h2 id="the-brainstorm-what-this-hackathon-is-really-about">The brainstorm: what this hackathon is really about</h2>
-<p>Today is not about trying to build the final product in one leap. It is about turning the existing spec, POS context, and messy high-context notes into a working execution loop.</p>
-<p>The core decision is to treat this hackathon as the creation of a serious <code>v0.1</code> intelligence demo first, not an "AI ordering engine" yet.</p>
-<p><strong>What the hackathon is:</strong></p>
-<ul>
-<li>Build a browser-first intelligence center that can ingest real-shop shaped exports.</li>
-<li>Preserve the raw-vs-interpreted contract so the software stays trustworthy.</li>
-<li>Make the repo contributor-ready early, not only after the demo is pretty.</li>
-<li>Use Cursor, phone, and laptop together as part of the product-building workflow, not as a side experiment.</li>
-</ul>
-<p><strong>What not to do today:</strong></p>
-<ul>
-<li>Do not drift into production architecture.</li>
-<li>Do not pretend this is already a live ordering assistant.</li>
-<li>Do not widen into multi-store, auth, or heavy infrastructure.</li>
-<li>Do not lose the founder narrative under technical noise.</li>
-</ul>
-<h2 id="what-actually-got-done">What actually got done</h2>
-<p>A lot happened for a Day 1. The plan was to set up the operating rhythm and ground everything in reality. That happened — and then some.</p>
-<h3 id="repo-bootstrap">Repo bootstrap</h3>
-<p>Initial demo committed. AGENTS.md, phone-agent workflow docs, cloud agent starter skill, French operator-facing product copy, issue backlog. The repo went from nothing to contributor-ready scaffolding.</p>
-<h3 id="excel-to-dashboard-workflow">Excel-to-dashboard workflow</h3>
-<p>Biggest chunk of work. Mapped the path from raw shop exports to a trustworthy dashboard pipeline — what files exist, what they contain, what is still unverified, and what needs a live export before any dashboard logic can claim to be real.</p>
-<p>Five commits, with dedicated verification around the export workflow:</p>
-<ol>
-<li><strong>Canonical export registry</strong> — a versioned map of the raw files, the evidence behind them, and the rules for trusting them</li>
-<li><strong>Source index + report families</strong> — 8 report families (category stats, daily closure, CA/TVA, evolutionary stats, stock movements, client segments, product listings, client listings)</li>
-<li><strong>Dashboard workflow mapping</strong> — clarified how raw exports can become usable sales, stock, client, and ordering signals inside the dashboard</li>
-<li><strong>Phase gate + live evidence protocol</strong> — 5 explicit unknowns that need live export verification. Phase 2 is blocked until we capture one real <code>44A</code> CSV export</li>
-<li><strong>Data intake structure + 3-year export SOP</strong> — how exports get captured and stored going forward</li>
-</ol>
-<p>The key decision: <strong>no dashboard wiring until we have one real export proving the file format in practice.</strong> Documentation helps, but the live files decide.</p>
-<h3 id="dashboard-coherence-research">Dashboard coherence research</h3>
-<p>Deep dive into what Notion actually contains vs what the codebase assumes vs what the old Pencil prompt described. Established a signal hierarchy:</p>
-<ol>
-<li><strong>Notion</strong> (strongest) — the real operational system with 23 suppliers, Cap 2026 financial framework</li>
-<li><strong>Codebase</strong> (solid) — POS scoring engine works but runs on synthetic data</li>
-<li><strong>Old Pencil prompt</strong> (weakest) — written without checking Notion, data examples were wrong</li>
-</ol>
-<p>Locked several decisions: build-time data pipeline, Open-Meteo for weather, Todoist for tasks, all 23 suppliers (not a subset), performance zones drive ordering confidence.</p>
-<h3 id="pencil-design-exploration">Pencil design exploration</h3>
-<p>Researched Pencil (.pen files) as a design-as-code tool. Assessed fit for the David dashboard — strong match for Git-native design, CSS variable sync, and component extraction. Created the first <code>.pen</code> file (<code>davidtoolkit.pen</code>) and wrote a detailed prompt for the "Tableau de Pilotage" dashboard.</p>
-<p>Key design shift: the warm/artisanal cream palette is out. The real users are 26-27 year olds — they want modern, sharp, high-impact. Dark background, clean typography, performance zone colors that pop.</p>
-<h2 id="decisions">Decisions</h2>
-<ul>
-<li><strong>The export workflow is evidence-first, not assumption-first.</strong> Raw files first, dashboard logic second.</li>
-<li><strong>Performance zones are the core logic.</strong> Rouge/Orange/Vert/Bleu isn't decoration — it's the ordering confidence signal that drives the entire dashboard.</li>
-<li><strong>Old Pencil prompt is discarded.</strong> A new prompt must be grounded in Notion reality and the chosen visual direction.</li>
-<li><strong>Phase gate is real.</strong> No data pipeline or UI work until one live export proves the file shape.</li>
-<li><strong>Design direction needs brainstorming.</strong> Structure (3 zones, no-scroll, ordering confidence) stays. The visual skin is open.</li>
-</ul>
-<h2 id="whats-next-day-2">What's next (Day 2)</h2>
-<p>Tomorrow is the data day. The goal is to go from synthetic demo data to real shop data feeding the dashboard.</p>
-<ul>
-<li><strong>Export two years of POS data</strong> — pull category stats, CA/TVA, and evolutionary reports from the POS.</li>
-<li><strong>Clean and normalize the exports</strong> — handle the usual POS export mess: semicolons, Latin-1 encoding, decimal commas, inconsistent date formats.</li>
-<li><strong>Build the canonical database</strong> — replace the synthetic <code>demo.json</code> with a real data pipeline.</li>
-<li><strong>Wire live data sources</strong> — Open-Meteo for weather, Todoist for daily tasks, Notion for supplier cadences. All at build time.</li>
-<li><strong>Unblock Phase 2</strong> — the first real <code>44A</code> CSV export lifts the phase gate on the export workflow.</li>
-<li><strong>Design direction</strong> — if time allows, brainstorm the new visual direction and write the updated Pencil prompt.</li>
-</ul>
+            <p>My laptop is in the sun. It's a genuinely beautiful day, and I'm mixing three screens — phone Cursor, browser Cursor, MacBook — because I want this workflow to work for the kind of mornings where you only have one hand free.</p>
+<p>Before touching any code, I asked for a roadmap. Not a sprint board. A roadmap based on what I already wrote in the spec. I wanted to start from what I knew, not from what felt exciting.</p>
+<h2 id="what-this-hackathon-is-actually-about">What this hackathon is actually about</h2>
+<p>Not building the final product in five days. Building a serious <code>v0.1</code> intelligence demo — something real, grounded in real shop data, that proves the whole stack can work.</p>
+<p>What it's NOT: drifting into production architecture, pretending this is already a live ordering tool, widening into multi-store or auth or anything that isn't directly needed to prove the point.</p>
+<p>The framing matters. Scope creep doesn't announce itself. It shows up as "while I'm here I might as well..." The phase gate — <em>no dashboard wiring until one real export proves the file format</em> — was Day 1's way of enforcing that.</p>
+<h2 id="the-momentum">The momentum</h2>
+<p>By end of day, the repo went from empty to contributor-ready. AGENTS.md, phone-agent workflow, French operator-facing copy, an issue backlog. Someone could pick this up and know where to start.</p>
+<p>The Excel-to-dashboard mapping took most of the day. I sat with the data — what files exist, what they actually contain, what I'm assuming versus what I've verified. The key decision: nothing gets wired into the dashboard until one live POS export proves the file format in practice. Documentation helps. The actual CSV decides.</p>
+<p>The design direction also shifted. I'd been working with a warm artisanal palette — cream, earth tones. But the real users are 26-27 year olds who open this at 7am before a shift. They don't want something that looks like a chalkboard menu. They want sharp, dark, fast. That's what we're building.</p>
+<h2 id="tomorrow">Tomorrow</h2>
+<p>Tomorrow is the data day. The goal is to go from zero real data to a pipeline that proves the whole chain works — POS exports in, something useful out.</p>
+<hr />
+<p><em>Full technical log: <a href="DEV_LOG_DAY1.md">DEV_LOG_DAY1.md</a></em></p>
         </div>
     </section>
 

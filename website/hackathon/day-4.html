@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Owner Hackathon #001 — Day 4: The Wall">
+    <meta property="og:title" content="Day 4: The Wall — Shop Owner Hackathon">
+    <meta property="og:description" content="The Wall — Day 4 of the Grassroots Hoppers Shop Owner Hackathon. Thursday, March 12.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://grassroothopper.com/hackathon/day-4.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Day 4: The Wall — Shop Owner Hackathon">
+    <title>Day 4: The Wall — Shop Owner Hackathon — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="../index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="../about.html">About</a>
+            <a href="../learn.html">Learn</a>
+            <a href="index.html" class="nav-hackathon active">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; padding-bottom: 2rem; min-height: auto;">
+        <span class="status-badge done">
+            <span class="status-dot"></span>
+            Completed
+        </span>
+        <p class="slide-number accent" style="margin-bottom: 1rem;">DAY 4 OF 5</p>
+        <h1>The Wall</h1>
+        <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">Thursday, March 12</p>
+        <div class="day-dots">
+            <a href="day-1.html" class="dot  done">1</a><a href="day-2.html" class="dot  done">2</a><a href="day-3.html" class="dot  done">3</a><a href="day-4.html" class="dot active done">4</a><a href="day-5.html" class="dot  done">5</a>
+        </div>
+    </section>
+
+    
+
+    <div class="shipped-list"><h4>Shipped today</h4><ul><li>2 implementation plans</li><li>0 code shipped</li><li>Clarity gained</li></ul></div>
+
+    <!-- CONTENT -->
+    <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
+        <div class="content-area">
+            <ul>
+<li>Product Master design doc written — the right solution to keyword-matching technical debt</li>
+<li>Implementation plan written for product-master.csv (6 tasks, ~30 min estimate)</li>
+<li>Day 4 MVP polish plan written (Tab 1 + Tab 2 correct/good/usable)</li>
+<li>None of it shipped</li>
+</ul>
+<p>Day 4 was supposed to be the polish pass that turns a rough demo into something you could show to a shop owner. Instead it became a reckoning.</p>
+<hr />
+<h3 id="the-wall">The wall</h3>
+<p>Days 1–3 were ideas. The energy was high, the output was visible, the pipeline went from nothing to 24 CSVs → 21 Silver files → 7 Gold files → a live dashboard in 72 hours. The commits accumulated. The logs got longer. It felt like progress — because it was.</p>
+<p>Day 4 is where that kind of momentum breaks.</p>
+<p>The codebase is now real enough to resist. <code>build-demo.mjs</code> is 900+ lines. The pipeline has four layers (Bronze, Master Config, Silver, Gold), three config registries, a two-pass import, and a cascade of fallback logic that nobody wrote down in one place. Every new feature or fix requires understanding how all of it connects — which CSVs produce which Silver files, which Silver fields feed which Gold aggregations, which Gold shape the dashboard reads.</p>
+<p>When something doesn't work, the failure could be in the POS export, the Bronze parsing, the Master Config transformation, the Silver schema, the Gold aggregation, the demo.json build, or the UI rendering. Six places to look. And looking requires reading code that I didn't write in a single clear-headed pass — I wrote it in sprints, at night, from plans that were sometimes overtaken by the code before the plan was finished.</p>
+<p>This is the wall. Not a bug. Not a missing feature. The wall is the point where the complexity of what exists exceeds the maintainer's ability to reason about it.</p>
+<p><img alt="The three development curves — pure vibe coder, software engineer, Grassroot Hopper" src="media/vibe-coding-three-curves.png" /></p>
+<hr />
+<h3 id="what-vibe-coding-actually-is">What "vibe coding" actually is</h3>
+<p>There's a phrase circulating in software engineering communities right now: <strong>vibe coding</strong>. It describes a way of building that's become possible with AI-assisted development — move fast, generate code from descriptions, iterate in real time, let the AI hold the context you can't. It produces remarkable early output. In three days, a non-engineer ran a medallion architecture data pipeline for a French cheese shop and shipped a dark-theme analytics dashboard with sparklines, ABCD ranking, and a weather integration.</p>
+<p>But vibe coding has a ceiling. The ceiling shows up when:</p>
+<ul>
+<li>The codebase grows past the point where any single context window can reason about all of it at once.</li>
+<li>Bugs require understanding the interaction between layers that were built in different sessions, sometimes by different AI models.</li>
+<li>Adding a feature means tracing data from origin through four transformations — and the tracing itself requires a level of code literacy that "describe what you want and generate it" can't replace.</li>
+</ul>
+<p>Software engineering — real software engineering — is the discipline of building systems that stay comprehensible as they grow. That means naming conventions enforced everywhere, not just when remembered. Schema definitions that live in one place. Functions that do one thing. Tests that break when the contract changes. Architecture that's written before the code, not reverse-engineered from it.</p>
+<p>I skipped most of that. Not because I didn't know it mattered — Day 2 had Perplexity research on the Medallion Architecture, Day 3 had 22 verification checks — but because I don't have the instincts to enforce it while also moving fast. The plans were good. The execution left seams.</p>
+<blockquote>
+<p>This isn't just my experience. Uncle Bob Martin said it this week: "For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up." Craig Weiss put it differently: "The highest ROI has moved up the stack." They're right. The bar isn't going down. It's going up — and vibe coding doesn't change that. It just changes where you hit it.</p>
+</blockquote>
+<p><img alt="Perceived progress vs hidden tech debt — the perception gap" src="media/vibe-coding-flow-debt.png" /></p>
+<hr />
+<h3 id="the-specific-debt">The specific debt</h3>
+<p>The hardest thing to admit: the CSV-to-Gold pipeline is more complex than I can reliably maintain alone.</p>
+<p>It's not unmaintainable in principle — a data engineer would look at it and find it straightforward. But I'm not a data engineer. The gap isn't intelligence. It's pattern recognition built over years of reading code, debugging pipelines, and knowing intuitively which failure modes to expect.</p>
+<p>Here's the clearest example: why do the product groups show the wrong members in Tab 2? I know it's a <code>displayName</code> vs <code>name</code> field mismatch between <code>build-demo.mjs</code> and <code>app.js</code>. I know exactly where to look. But every time I fix one field mismatch, another appears — because the same data goes through five transformations and I didn't enforce a consistent naming convention from the start.</p>
+<p>The pipeline works. The dashboard renders. The data is real and the numbers are right. But the system is brittle in ways I can't see until something breaks, and fixing breaks requires more code comprehension than I reliably have under pressure.</p>
+<hr />
+<h3 id="the-hackathon-result">The hackathon result</h3>
+<p>The hackathon won't be what I hoped. The goal was a fully working, polished demo — Tab 1 and Tab 2 correct, good, and usable, shown to the shop operator with confidence. That's not what Day 4 produced.</p>
+<p>What Day 4 produced: a clearer understanding of where the architecture needs to go, two well-written plans for the fixes, and an honest accounting of the gap between "built fast with AI" and "built to last."</p>
+<p>That's not nothing. But it's not a hackathon win.</p>
+<hr />
+<h3 id="what-comes-next">What comes next</h3>
+<p>Two options, and I haven't decided between them.</p>
+<p><strong>Option A: Simplify the pipeline before touching the dashboard.</strong>
+The product-master.csv plan is correct — replace keyword matching with an explicit lookup. The category YoY fix is a known 10-line change. The field naming is a 30-minute audit. Do the three foundation fixes first, then polish the UI.</p>
+<p><strong>Option B: Start the pipeline from scratch with a simpler contract.</strong>
+One script. One output format. No Silver, no Gold, no four-layer medallion. The simplest possible pipeline: read CSVs, output one JSON with exactly the fields the dashboard needs, nothing more.</p>
+<p>Option B feels like giving up. It isn't. It's what a software engineer would have built on Day 1 if they'd known how the project would grow. The Medallion Architecture is the right long-term answer. It's not the right answer for a dashboard that one person has to maintain on the side of running a shop.</p>
+<hr />
+<h3 id="the-deeper-lesson">The deeper lesson</h3>
+<p>Vibe coding is a real skill. It's not a shortcut — it's a way of working that requires genuine judgment about what to generate, when to stop, and what debt you're taking on. The problem isn't the method. The problem is that I'm still learning what "knowing when to stop" feels like in practice.</p>
+<p>The signal that I missed: every time I added a new config registry or fallback layer to handle an edge case, I should have asked whether the edge case was a pipeline design problem or a data quality problem. Most of them were data quality problems. And data quality problems don't get fixed by making the pipeline smarter.</p>
+<p>Three days of building taught me that. Day 4 of not shipping confirmed it.</p>
+<hr />
+<p><em>Full technical log: <a href="DEV_LOG_DAY4.md">DEV_LOG_DAY4.md</a></em></p>
+        </div>
+    </section>
+
+    <!-- NAV -->
+    <section class="dark" style="min-height: auto; padding: 3rem 2rem;">
+        <div class="day-nav">
+            <a href="day-3.html" class="nav-arrow">&larr; Day 3</a>
+            <a href="day-5.html" class="nav-arrow">Day 5 &rarr;</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('section').forEach(function(s) { s.classList.add('visible'); });
+    </script>
+</body>
+</html>

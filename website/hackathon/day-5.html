@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Owner Hackathon #001 — Day 5: v0.1">
+    <meta property="og:title" content="Day 5: v0.1 — Shop Owner Hackathon">
+    <meta property="og:description" content="v0.1 — Day 5 of the Grassroots Hoppers Shop Owner Hackathon. Friday, March 13.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://grassroothopper.com/hackathon/day-5.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Day 5: v0.1 — Shop Owner Hackathon">
+    <title>Day 5: v0.1 — Shop Owner Hackathon — Grassroots Hoppers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,wght@0,300..600;1,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hackathon.css">
+</head>
+<body>
+
+    <nav class="site-nav">
+        <a href="../index.html" class="logo">Grassroots Hoppers</a>
+        <div class="nav-links">
+            <a href="../about.html">About</a>
+            <a href="../learn.html">Learn</a>
+            <a href="index.html" class="nav-hackathon active">Hackathon</a>
+            <a href="https://github.com/Grassroot-hoppers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="dark" style="text-align: center; padding-top: 6rem; padding-bottom: 2rem; min-height: auto;">
+        <span class="status-badge done">
+            <span class="status-dot"></span>
+            Completed
+        </span>
+        <p class="slide-number accent" style="margin-bottom: 1rem;">DAY 5 OF 5</p>
+        <h1>v0.1</h1>
+        <p style="font-family: var(--mono); font-size: 0.9rem; opacity: 0.7; margin-bottom: 0;">Friday, March 13</p>
+        <div class="day-dots">
+            <a href="day-1.html" class="dot  done">1</a><a href="day-2.html" class="dot  done">2</a><a href="day-3.html" class="dot  done">3</a><a href="day-4.html" class="dot  done">4</a><a href="day-5.html" class="dot active done">5</a>
+        </div>
+    </section>
+
+    
+
+    <div class="shipped-list"><h4>Shipped today</h4><ul><li>Bug fixes (sparklines, field naming)</li><li>v0.1 tagged</li><li>The vibe coding thesis</li></ul></div>
+
+    <!-- CONTENT -->
+    <section class="dark" style="text-align: center; min-height: auto; padding-top: 2rem;">
+        <div class="content-area">
+            <p>Closing day, not building day.</p>
+<p>Two visual bugs carried from Day 4: 122 products showed a flat red sparkline — a dead line instead of a blank — because they have no monthly history in the POS data. A <code>displayName</code> field referenced throughout <code>app.js</code> didn't exist on any product. Both fixed. Small things. The kind of work that takes 20 minutes when you know what you're doing.</p>
+<h2 id="what-v01-is">What v0.1 is</h2>
+<p>A working retail intelligence dashboard for an independent shop, built in 5 days by a non-engineer between shop shifts.</p>
+<p><strong>What works:</strong>
+- Tab 1 (Briefing): zone signal, ordering reminders, next-week revenue prediction, 14-day weather
+- Tab 2 (Produits): 481 products, ABCD ranking, search, category filter, sparklines for 359 products
+- Tab 3 (Catégories): category mix with revenue, share, YoY growth
+- Tab 4 (Fournisseurs): supplier ranking, ordering days, top products per supplier</p>
+<p><strong>What doesn't work yet:</strong> sparklines for 122 products with no monthly POS data, Tabs 5–7, real-time refresh.</p>
+<p>Honest. Not apologetic.</p>
+<h2 id="the-vibe-coding-curve">The vibe coding curve</h2>
+<p>Three days of building felt like the hard part was over. Day 4 proved it wasn't.</p>
+<p>Look at where the progress went: Day 1 — every hour produced visible output. Day 2 — the pipeline shipped in an afternoon. Day 3 — the entire Dashboard V2 materialized overnight. Day 4 — hours of work, zero code shipped. The marginal productivity rate didn't slow down. It crashed.</p>
+<p><img alt="Marginal productivity rate — progress per hour across 5 days" src="media/vibe-coding-productivity-rate.png" /></p>
+<p>This isn't a personal failure. It's a pattern. Vibe-coded games do this too: playable in three days, weeks of grinding after. What works in vibe coding works straight away. What doesn't takes ages to fix — because "what doesn't work" usually means a structural problem, not a missing line.</p>
+<p>The three curves:</p>
+<p><img alt="The three development curves" src="media/vibe-coding-three-curves.png" /></p>
+<p>The <strong>pure vibe coder</strong> (what I did): rapid early output, then a wall. The <strong>software engineer</strong> (what an experienced engineer would have done): slower start, research phase, architecture first — then more sustainable progress, no wall. The <strong>Grassroot Hopper fix</strong> (what I'll do next time): research phase up front, even though it produces zero visible output. Buy the sustainable curve. Ship in the sweet spot.</p>
+<hr />
+<h2 id="the-grassroot-hopper-insight">The Grassroot Hopper insight</h2>
+<p>The curve is predictable. Once you know its shape, you can design products that stay in the productive zone — past the research phase, before the plateau.</p>
+<p>This requires three things: <strong>design sense</strong> (scope ruthlessly — the dashboard that does one tab well beats the dashboard that does seven tabs badly), <strong>research discipline</strong> (paper before code — the Medallion Architecture came from a Perplexity research pass, not from instinct), and <strong>pattern recognition</strong> (know when the returns are starting to diminish, and stop before the wall).</p>
+<p>Grassroot Hoppers lead the vibe coders. Not on the edge of professional software engineering — on the edge of what everyday people can build. That edge is moving fast. The question is whether you're ahead of it or running into it.</p>
+<h2 id="the-co-founder-gap">The co-founder gap</h2>
+<p>Day 4 wasn't a bad day because I hit a bug. It was a bad day because I hit the limits of what I can see alone.</p>
+<p>The technical co-founder isn't "someone to write the code for me." They're the radar — they see past the edge so I can stay on it. They know what a naming convention inconsistency costs at scale before it costs it. They see the pipeline complexity building before it becomes the wall.</p>
+<p>Uncle Bob Martin said it this week: <em>"For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up."</em> Craig Weiss put it differently: <em>"The highest ROI has moved up the stack."</em></p>
+<p>Both right. Both describing the same gap. With a co-founder, Day 4 doesn't happen. Not because they write the code — because they push the threshold line upward, and I stay in the productive zone longer.</p>
+<h2 id="the-foundation">The foundation</h2>
+<p>What v0.1 leaves behind: real POS data, a documented architecture, a working pipeline, catalogued debt. A codebase that somebody else could pick up.</p>
+<p>What comes next: fix the sparkline data source, modularize <code>build-demo.mjs</code>, implement Tabs 5–7. Find the person who reads Day 4 and thinks "I know exactly how to fix that."</p>
+<p>If that's you — <a href="https://github.com/gpfc-srl/david-retail">the repo is open</a>.</p>
+<hr />
+<p><em>Full technical log: <a href="DEV_LOG_DAY5.md">DEV_LOG_DAY5.md</a></em></p>
+        </div>
+    </section>
+
+    <!-- NAV -->
+    <section class="dark" style="min-height: auto; padding: 3rem 2rem;">
+        <div class="day-nav">
+            <a href="day-4.html" class="nav-arrow">&larr; Day 4</a>
+            <span></span>
+        </div>
+    </section>
+
+    <footer>
+        <p>Powered by GPFC srl · Brussels, 2026 · Good people, for good people.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('section').forEach(function(s) { s.classList.add('visible'); });
+    </script>
+</body>
+</html>
