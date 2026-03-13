@@ -27,47 +27,141 @@ Day 5 doesn't exist yet.
 
 ---
 
-## The vibe coding curve
+## The vibe coding curve — three curves, one insight
 
-The central metaphor for the entire series. A graph of progress vs. time:
+The central metaphor for the entire series. Not one graph — three curves on the same axes (progress vs. time) that tell the whole story.
+
+### Curve 1: The pure vibe coder
 
 ```
 Progress
   ▲
-  │          ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  (plateau)
-  │       ·
-  │     ·
+  │                  · · · · · · · · · · · · · ·  (plateau — tech debt wins)
+  │               ·
+  │            ·
+  │         ·
+  │      ·
   │   ·
-  │  ·
   │ ·
   │·
-  └──────────────────────────────────────────────────► Time
-  Day 1    Day 2    Day 3    Day 4    Day 5
+  └──────────────────────────────────────────────► Time
 ```
 
-Days 1-3: steep climb. Massive output from vibe coding with AI. Day 4: flatline. Hours in, zero code shipped. Day 5: small bump (bug fixes, closing) but the curve stays flat.
+Steep early climb. AI generates features fast. Everything seems to work. Then tech debt compounds — each fix creates new problems, each feature requires understanding more context than the vibe coder can hold. Progress-per-hour collapses. You're still getting *some* output, but without engineering skills, you can fully plateau. Hours in, nothing meaningful out.
 
-This isn't unique to this hackathon. It's a pattern: vibe coding games show it (playable in 3 days, then weeks grinding on balance and broken features). What works in vibe coding works straight away. What doesn't takes ages to fix.
+This is what happened in the hackathon. Days 1-3 were the steep part. Day 4 was the plateau.
 
-The graph is a real visual asset — embedded in the published dev logs, referenced across multiple days.
+This pattern shows up everywhere: vibe-coded games are playable in 3 days, then spend weeks grinding on balance, UI, and broken features. What works in vibe coding works straight away. What doesn't takes ages to fix.
+
+### Curve 2: The software engineer
+
+```
+Progress
+  ▲
+  │                                              ╱
+  │                                            ╱
+  │                                          ╱
+  │                                        ╱
+  │                                      ╱
+  │                                    ╱
+  │                                  ╱
+  │                                ╱
+  │                              ╱
+  │                            ╱
+  │                          ╱
+  │                        ╱
+  │                     ╱
+  │                  ╱
+  │              ╱
+  │          ╱
+  │      ╱
+  │  ╱
+  │╱
+  └──────────────────────────────────────────────► Time
+```
+
+Slow start. Days of planning, architecture, proper abstractions, tests. Looks like nothing is shipping. Then steady, sustained climb — each feature builds on a solid foundation. Progress-per-hour stays roughly constant. There's a crossover point where the engineer's total output passes the vibe coder's — and then the engineer keeps going while the vibe coder is stuck.
+
+### Curve 3: The Grassroot Hopper fix
+
+```
+Progress
+  ▲
+  │                                · · · · · · ·  (plateau — but later & higher)
+  │                             ·
+  │                          ·
+  │                       ·
+  │                    ·
+  │                 ·
+  │              ·
+  │           ·
+  │         ·
+  │        ·
+  │       |
+  │       |
+  │  research
+  │  phase: 0
+  │  visible
+  │  progress
+  └──────────────────────────────────────────────► Time
+```
+
+Front-load research with zero visible progress. Paper first. System design with LLMs. Understand the data model, the architecture, the product design *before writing a single line of code*. No output for days — looks like nothing is happening.
+
+Then vibe code from that foundation. Steep climb like Curve 1, but from better ground. The plateau still comes — Grassroot Hoppers aren't engineers and don't need to be — but it arrives **later and higher** than the pure vibe coder. The research phase pushed the inflection point out.
+
+The hackathon lesson: if Day 0 had been spent on paper — researching database systems, working with LLMs purely on system design, architecture, and product design — the steep climb would have lasted through Day 4 instead of dying on it. One day of zero visible progress buys two more days of steep climb.
+
+### The three curves together
+
+```
+Progress
+  ▲
+  │                                               ╱ ← Engineer (steady, no ceiling)
+  │                                             ╱
+  │             · · · · · · · · · · · · · ·   ╱
+  │           ·  ← Vibe coder (plateau)     ╱
+  │         ·                     ○ ○ ○ ○ ○╱○ ○  ← GH fix (higher plateau)
+  │       ·                    ○         ╱
+  │     ·                   ○          ╱
+  │   ·                  ○           ╱
+  │  ·                ○            ╱
+  │ ·              ○             ╱
+  │·            ○              ╱
+  │          ○               ╱
+  │        |               ╱
+  │  ╱   |research|      ╱
+  │╱                    ╱
+  └──────────────────────────────────────────────► Time
+```
+
+The vibe coder starts fastest but plateaus earliest. The engineer starts slowest but never stops. The Grassroot Hopper starts with a research phase (zero progress), then climbs steeply, and plateaus later and higher than the pure vibe coder — but still plateaus, because they're not engineers.
+
+The crossover between the engineer and the Grassroot Hopper is where the tech co-founder becomes essential. The co-founder doesn't replace the vibe coder — they push the plateau upward and outward. They're the radar that says "this architecture will hold for 3 more features" or "stop here, you're about to cross the complexity line."
 
 ### The voices from the discourse
 
-Two screenshots captured during the hackathon (in `docs/devlog/`) anchor this in the broader conversation:
+Two screenshots captured during the hackathon (in `docs/devlog/`) anchor this in the broader conversation happening right now:
 
-- **Uncle Bob Martin:** "For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up."
+- **Uncle Bob Martin:** "For all the hype and hullabaloo about AI and vibe coding; this is not a layman's domain. The engineering bar is going way up, and getting over that bar will not be easy."
 - **Craig Weiss:** "If you want to survive in the age of vibe coding, you need to become an expert in system design, architecture & product design. The highest ROI has moved up the stack."
 - **Ben Dickson:** "The biggest winners of AI-assisted coding and vibe coding will be people who have actual experience writing real code and building software pre-AI era."
 
-These voices say the bar is going up. Julien's hackathon is the lived case study.
+These voices say the bar is going up and vibe coding doesn't change that. Julien's hackathon is the lived case study — 5 days that show exactly where the bar is, what happens when you hit it, and what it would take to push it.
 
-### The Grassroot Hopper insight
+### The Grassroot Hopper position
 
-The curve has a predictable shape. If you can know in advance where the plateau hits, you can design products that ship before crossing it.
+Grassroot Hoppers don't care about software engineering. They are NOT trying to become engineers. They are on the edge of what everyday people can build with open-source tools — leading the vibe coders and hobbyists.
 
-This requires: design sense, deep understanding of what AI is good at vs bad at, and the discipline to scope ruthlessly. The Grassroot Hopper position is NOT on the edge of software engineering — it's on the edge of what everyday people can build with open-source tools. Leading the vibe coders and hobbyists.
+The insight: the vibe coding curve has a predictable shape. If you deeply understand AI (what it's good at, what it's bad at, why things plateau), you can **design products that maximize the steep part of the curve**. This requires:
 
-A tech co-founder's role: provide "beyond the edge" insight. They can see where things will break before you hit the wall. They extend the sweet spot. They're the radar that lets you stay on the edge instead of falling off it.
+1. **Design sense** — scope ruthlessly, build things AI can deliver well
+2. **Research discipline** — spend time on paper before touching code. System design, architecture, product design. Zero visible progress that pays off later.
+3. **Pattern recognition** — know when you're approaching the plateau and stop, hand off, or simplify before you cross it
+
+A tech co-founder's role is not to replace the vibe coder. It's to provide **"beyond the edge" insight** — they can see where things will break before Julien hits the wall. They extend the sweet spot. They're the radar that lets you stay on the edge instead of falling off it.
+
+The combination of a design-minded founder who understands the curve + a technical co-founder who can see beyond it = products that non-engineers build and engineers can sustain. That's the Grassroot Hopper model.
 
 ---
 
